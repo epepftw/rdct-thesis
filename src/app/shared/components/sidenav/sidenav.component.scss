@@ -1,0 +1,21 @@
+.sidenav {
+    background: #222;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    z-index: 999;
+
+    ul{
+        padding-left: 0;
+    }
+    .side-links{
+       list-style: none;
+       padding: 10px 20px;
+       transition: 0.3s;
+    }
+    .side-links:hover{
+        background-color: orange;
+    }
+}

@@ -1,0 +1,11 @@
+<aside id="sidenav" class="sidenav">
+    <div style="height: 150px; text-align: center;">
+        <h1 style=" color: white;">LOGO</h1>
+    </div>
+    <div>
+        <ul>
+            <a  *ngFor="let s of sidenavLinks" [routerLink]="[s.link]"><li class="side-links">{{ s.label }}</li></a>
+        </ul>
+    </div>
+  
+</aside>

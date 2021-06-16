@@ -1,0 +1,24 @@
+<div class="admin-dashboard-page p-4">
+    <div class="container-fluid">
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="m-0">Welcome Back John Doe!</h2>
+            </div>
+        </div>
+        <!-- Title -->
+
+        <hr class="mb-4">
+
+        <!-- Contents -->
+            <div class="row">
+                <div class="col-lg-4" *ngFor="let c of card_data_sample">
+                    <app-card
+                    [digit]="c.digit"
+                    [description]="c.description">
+                    </app-card>
+                </div>
+            </div>
+        <!-- Contents -->
+    </div>
+</div>

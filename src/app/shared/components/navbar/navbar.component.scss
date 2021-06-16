@@ -1,0 +1,16 @@
+.nav {
+    background: orange;
+    padding: 15px;
+
+    .menu {
+        ul {
+            margin: 0;
+            padding: 0;
+            
+            li {
+                list-style: none;
+            }
+        }
+    }
+}
+
