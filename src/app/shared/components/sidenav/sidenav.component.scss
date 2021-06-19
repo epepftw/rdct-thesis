@@ -14,8 +14,12 @@
        list-style: none;
        padding: 10px 20px;
        transition: 0.3s;
+        color: #fff;
+       
     }
     .side-links:hover{
         background-color: orange;
+        padding-left: 30px;
+        color: #000;
     }
 }
