@@ -4,16 +4,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CardComponent } from './components/card/card.component';
 import { RouterModule } from '@angular/router';
+import { PlayersTableComponent } from './components/players-table/players-table.component';
 
 const shared_components = [
 	NavbarComponent,
 	SidenavComponent,
-	CardComponent
+	CardComponent,
+	PlayersTableComponent
 ]
 
 @NgModule({
 	declarations: [
-		shared_components
+		shared_components,
+  PlayersTableComponent
 	],
 	imports: [
 		CommonModule,

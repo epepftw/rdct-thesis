@@ -15,11 +15,11 @@ import { UsersComponent } from './pages/users/users.component';
 	declarations: [
 		LayoutComponent,
 		DashboardComponent,
-  AdvertisersComponent,
-  MediaComponent,
-  PlaylistComponent,
-  TemplateComponent,
-  UsersComponent
+		AdvertisersComponent,
+		MediaComponent,
+		PlaylistComponent,
+		TemplateComponent,
+		UsersComponent
 	],
 	imports: [
 		CommonModule,

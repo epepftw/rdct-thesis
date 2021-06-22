@@ -8,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class DashboardComponent implements OnInit {
 
+	ad_players: {
+		alias: string;
+		player_key: string;
+		status: string;
+		date_created: string;
+	}[] = [];
+
 	card_data_sample: any = [
 		{
 			digit: 20,
@@ -23,9 +30,55 @@ export class DashboardComponent implements OnInit {
 		}
 	]
 
+	table_column_title_ad: any = [
+		{
+			title: "Alias"
+		},
+		{
+			title: "Player Key"
+		},
+		{
+			title: "Status"
+		},
+		{
+			title: "Date Created"
+		}
+	]
+
 	constructor() { }
 
 	ngOnInit(): void {
+		this.getAllPlayer();
 	}
+
+	getAllPlayer() {
+
+		this.ad_players = [
+			{
+				alias: "Bossboss",
+				player_key: "PLAYER123456",
+				status: "Online",
+				date_created: "June 20, 2021"
+			},
+			{
+				alias: "Deku",
+				player_key: "PLAYER1234567",
+				status: "Online",
+				date_created: "June 21, 2021"
+			},
+			{
+				alias: "Deku",
+				player_key: "PLAYER1234567",
+				status: "Online",
+				date_created: "June 21, 2021"
+			},
+			{
+				alias: "Deku",
+				player_key: "PLAYER1234567",
+				status: "Online",
+				date_created: "June 21, 2021"
+			},
+		]
+	}	
 
 }
