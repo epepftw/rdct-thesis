@@ -1,7 +1,7 @@
 .sidenav {
-    background: #222;
+    background: linear-gradient(#5d0d32, #ff7979);
     height: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 200px;
@@ -18,7 +18,7 @@
        
     }
     .side-links:hover{
-        background-color: orange;
+        background: linear-gradient(to right, #ff7979, #5d0d32);
         padding-left: 30px;
         color: #000;
     }

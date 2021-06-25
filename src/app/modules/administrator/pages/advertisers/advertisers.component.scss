@@ -1,0 +1,20 @@
+
+
+.search-box{
+    i{
+        color: #ff7979;
+    }
+}
+
+.search-txt{
+    border: 1px solid #ff7979;
+    margin: 0 10px;
+    border-radius: 50px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-txt::placeholder{
+    color: #ff7979;
+    
+}

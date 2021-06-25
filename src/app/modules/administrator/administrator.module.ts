@@ -10,6 +10,7 @@ import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { UsersComponent } from './pages/users/users.component';
 	imports: [
 		CommonModule,
 		SharedModule,
+		FormsModule,
 		RouterModule.forChild(ADMIN_ROUTES)
 	]
 })
