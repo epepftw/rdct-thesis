@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { PlayersTableComponent } from './components/players-table/players-table.component';
 import { AdvertisersTableComponent } from './components/advertisers-table/advertisers-table.component';
 import { MediaFilesComponent } from './components/media-files/media-files.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 const shared_components = [
 	NavbarComponent,
@@ -14,7 +15,8 @@ const shared_components = [
 	CardComponent,
 	PlayersTableComponent,
 	AdvertisersTableComponent,
-	MediaFilesComponent
+	MediaFilesComponent,
+	UsersTableComponent
 ]
 
 @NgModule({
@@ -22,7 +24,8 @@ const shared_components = [
 		shared_components,
 		PlayersTableComponent,
 		AdvertisersTableComponent,
-  MediaFilesComponent
+ 		MediaFilesComponent,
+    	UsersTableComponent,
 	],
 	imports: [
 		CommonModule,

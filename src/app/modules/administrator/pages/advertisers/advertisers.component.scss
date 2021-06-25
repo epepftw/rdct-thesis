@@ -2,12 +2,12 @@
 
 .search-box{
     i{
-        color: #ff7979;
+        color: linear-gradient(to right, #243B55, #141E30);  /* fallback for old browsers */
     }
 }
 
 .search-txt{
-    border: 1px solid #ff7979;
+    border: 1px solid linear-gradient(to right, #243B55, #141E30);;
     margin: 0 10px;
     border-radius: 50px;
     outline: none;
@@ -15,6 +15,6 @@
 }
 
 .search-txt::placeholder{
-    color: #ff7979;
+    color: linear-gradient(to right, #243B55, #141E30);;
     
 }
