@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/services/user/user.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +7,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  users: any[] = [];
+  search_key: string = "";
+	searching: boolean = false;
+	search_results: any[] = [];
 
-  constructor() { }
+
+  table_column_title: any = [
+		{
+			title: "Name"
+		},
+		{
+			title: "Username"
+		},
+		{
+			title: "E-mail"
+		},
+		{
+			title: "Phone"
+		}
+	]
+  
+  constructor(private _users: UserService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
+
+  searchData(){
+    if (this.search_key !== '') {
+      this.searching = true;
+    
+      this.search_results = this.users.filter(
+        i => i.name.toLowerCase().includes(this.search_key.toLowerCase())
+      )
+    } else {
+      this.searching = false;
+    }
+    }
+
+  getUsers() {
+    this._users.get_users().subscribe(
+      (data: any) =>  {
+        this.users = data;
+        console.log('#USERS', this.users)
+      }
+    )
+  }
 }

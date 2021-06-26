@@ -1,1 +1,60 @@
-<p>users works!</p>
+<div class="admin-users-page p-4">
+    <div class="container-fluid">
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="m-0">Users</h2>
+            </div>
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-danger d-flex buttonAdd">
+                    <i class="fas fa-user-times"></i>
+                    <p>Delete</p>
+                </button>
+                <button type="button" class="btn btn-success d-flex buttonAdd">
+                    <i class="fas fa-user-edit"></i>
+                    <p>Edit</p>
+                </button>
+                <button type="button" class="btn bton d-flex buttonAdd">
+                    <i class="fas fa-user-plus"></i>
+                    <p>Add</p>
+                </button>
+            </div>
+        </div>
+        
+
+        <hr class="mb-4">
+    </div>
+
+        <div class="card text-white shadow-lg p-3 bg-white">
+            <div class="row">
+                <div class="my-4 input-group justify-content-end">
+                    <div class="search-box"> 
+                        <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search User"/>
+                            <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-12">
+                    <app-users-table
+                    [column_title]="table_column_title"
+                    [data]="users">
+                    </app-users-table>
+                </div> -->
+                    <app-users-table
+                    *ngIf="!searching; else search_result"
+                    [column_title]="table_column_title"
+                    [data]="users">
+                    </app-users-table>
+        
+                    <ng-template #search_result>
+                        <app-users-table
+                        [column_title]="table_column_title"
+                        [data]="search_results">
+                        </app-users-table>
+                    </ng-template>
+
+            </div> 
+        </div>
+
+
+</div>

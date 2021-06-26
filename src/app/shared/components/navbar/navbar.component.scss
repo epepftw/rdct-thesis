@@ -1,5 +1,6 @@
+
+
 .nav {
-    background: orange;
     padding: 15px;
 
     .menu {
@@ -9,6 +10,11 @@
             
             li {
                 list-style: none;
+                color: white;
+
+                a{
+                    color: white;
+                }
             }
         }
     }

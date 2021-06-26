@@ -1,7 +1,6 @@
 .sidenav {
-    background: #222;
     height: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 200px;
@@ -18,8 +17,16 @@
        
     }
     .side-links:hover{
-        background-color: orange;
         padding-left: 30px;
-        color: #000;
     }
+
+    i{
+        padding-right: 10px;
+    }
+}
+
+#sidenav .tabs a.active > li {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    padding-left: 40px;
+    color: #fff;
 }

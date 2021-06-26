@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  @Input() sidenavLinks: {label: string, link: string}[] = [];
+  @Input() sidenavLinks: {label: string, icon: string, link: string}[] = [];
   constructor() {
     
    }

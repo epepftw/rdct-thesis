@@ -1,0 +1,17 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-center" *ngFor="let t of column_title">
+                {{ t.title }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of data">
+            <td class="text-center">{{ a.name }}</td>
+            <td class="text-center">{{ a.username }}</td>
+            <td class="text-center">{{ a.email }}</td>
+            <td class="text-center">{{ a.phone }}</td>
+        </tr>
+    </tbody>
+</table>
