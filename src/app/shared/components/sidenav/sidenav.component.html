@@ -3,8 +3,8 @@
         <h1 style=" color: white;">LOGO</h1>
     </div>
     <div>
-        <ul>
-            <a  *ngFor="let s of sidenavLinks" [routerLink]="[s.link]"><li class="side-links"><i [class]="s.icon"></i>{{ s.label }}</li></a>
+        <ul class="tabs">
+            <a [routerLinkActive]="['active']" *ngFor="let s of sidenavLinks" [routerLink]="[s.link]"><li class="side-links"><i [class]="s.icon"></i>{{ s.label }}</li></a>
         </ul>
     </div>
   

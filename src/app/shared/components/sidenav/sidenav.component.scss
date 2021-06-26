@@ -17,12 +17,16 @@
        
     }
     .side-links:hover{
-        background: linear-gradient(to right, #2c3e50, #4ca1af);;
         padding-left: 30px;
-        color: #000;
     }
 
     i{
         padding-right: 10px;
     }
+}
+
+#sidenav .tabs a.active > li {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    padding-left: 40px;
+    color: #fff;
 }
