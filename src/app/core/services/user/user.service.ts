@@ -6,11 +6,14 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-
   
   constructor(private _http: HttpClient) { }
 
   get_users() {
-    return this._http.get(`${environment.api}${environment.users}`)
+    return this._http.get(`${environment.api}${environment.get.users}`)
+  }
+
+  get_user_profile() {
+    return this._http.get(`${environment.base_api}${environment.get.users_profile}`)
   }
 }

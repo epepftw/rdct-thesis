@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaFileService } from 'src/services/mediaFile/media-file.service';
+import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
 
 @Component({
   selector: 'app-media',
