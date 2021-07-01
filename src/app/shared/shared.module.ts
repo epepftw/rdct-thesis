@@ -9,6 +9,7 @@ import { AdvertisersTableComponent } from './components/advertisers-table/advert
 import { MediaFilesComponent } from './components/media-files/media-files.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { KeysTableComponent } from './components/keys-table/keys-table.component';
 
 const shared_components = [
 	NavbarComponent,
@@ -18,7 +19,8 @@ const shared_components = [
 	AdvertisersTableComponent,
 	MediaFilesComponent,
 	UsersTableComponent,
-	UserInfoComponent
+	UserInfoComponent,
+	KeysTableComponent
 ]
 
 @NgModule({
@@ -29,6 +31,7 @@ const shared_components = [
  		MediaFilesComponent,
     	UsersTableComponent,
      	UserInfoComponent,
+     	KeysTableComponent,
 	],
 	imports: [
 		CommonModule,

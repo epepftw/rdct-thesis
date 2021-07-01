@@ -7,7 +7,8 @@ export const environment = {
   base_api: 'http://localhost:3000/api',
   get: {
     users: '/users',
-    users_profile: '/users/profile'
+    users_profile: '/users/profile',
+    keys: '/keys'
   },
   authenticate: 'http://localhost:3000/api/users/authenticate',
   api: 'https://jsonplaceholder.typicode.com',

@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
+import { UserKeyComponent } from './pages/user-key/user-key.component';
 import { UsersComponent } from './pages/users/users.component';
 
 export const ADMIN_ROUTES: Routes = [
@@ -24,6 +25,10 @@ export const ADMIN_ROUTES: Routes = [
                 path: 'advertiser',
                 component: AdvertisersComponent
             },
+            {
+                path: 'keys',
+                component: UserKeyComponent
+            },  
             {
                 path: 'media',
                 component: MediaComponent

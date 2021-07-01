@@ -1,0 +1,51 @@
+<div class="admin-keys-page p-4">
+    <div class="container-fluid">
+        <!--TITLE-->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="m-0">User Keys</h2>
+            </div>
+        </div>
+
+        <hr class="m4">
+
+        <div class="row">
+            <div class="col-lg-3" *ngFor="let c of card_data_sample">
+                <app-card
+                [digit]="c.digit"
+                [description]="c.description"
+                [logo]="c.logo">
+                
+                </app-card>
+            </div>
+        </div>
+
+        <div class="my-4 input-group justify-content-end">
+            <div class="search-box"> 
+                <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Advertiser"/>
+                    <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="card text-white shadow-lg p-5 bg-white">
+            
+            <app-keys-table
+            *ngIf="!searching; else search_result"
+            [title]="table_title"
+            [data]="keys"
+            [column_title]="table_column_title"
+            >
+            </app-keys-table>
+
+            <ng-template #search_result>
+                <app-keys-table
+                [title]="table_title"
+                [column_title]="table_column_title"
+                [data]="search_results">
+                </app-keys-table>
+            </ng-template>
+        </div>
+    </div>
+</div>
