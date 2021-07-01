@@ -10,6 +10,7 @@ export class CardComponent implements OnInit {
 
 	@Input() digit: any = 'N/A';
 	@Input() description: string = 'No Available Data';
+	@Input() logo: any = '';
 
 	constructor() { }
 

@@ -11,6 +11,7 @@ import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FormsModule } from '@angular/forms';
+import { UserKeyComponent } from './pages/user-key/user-key.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
 		MediaComponent,
 		PlaylistComponent,
 		TemplateComponent,
-		UsersComponent
+		UsersComponent,
+  UserKeyComponent
 	],
 	imports: [
 		CommonModule,

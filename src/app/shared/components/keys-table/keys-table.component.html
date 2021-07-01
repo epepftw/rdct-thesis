@@ -1,3 +1,4 @@
+<h2>{{ title }}</h2>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -9,9 +10,9 @@
     <tbody>
         <tr *ngFor="let a of data">
             <td>{{ a.name }}</td>
-            <td>{{ a.username }}</td>
-            <td>{{ a.email }}</td>
-            <td>{{ a.phone }}</td>
+            <td>{{ a.total_key }}</td>
+            <td>{{ a.online_key }}</td>
+            <td>{{ a.offline_key }}</td>
         </tr>
     </tbody>
 </table>
