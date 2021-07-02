@@ -6,7 +6,7 @@ export const environment = {
     users_profile: '/users/profile',
     keys: '/keys'
   },
-  authenticate: 'http://localhost:3000/api/users/authenticate',
+  authenticate: '/users/authenticate',
   api: 'https://jsonplaceholder.typicode.com',
   mediaFiles: '/photos?_start=0&_limit=40',
 };

@@ -13,7 +13,7 @@ export class AuthService {
 	constructor(private _http: HttpClient) { }
 
 	authenticate(userCredentials: UserCredentials): any {
-		return this._http.post<any>(`${environment.authenticate}`, userCredentials);
+		return this._http.post<any>(`${environment.base_api}${environment.authenticate}`, userCredentials);
 	}
 
 	isLoggedIn(): boolean {
