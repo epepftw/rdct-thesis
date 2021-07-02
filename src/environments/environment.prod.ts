@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  base_api: 'http://192.168.100.11:3000/api',
+  base_api: 'http://localhost:3000/api',
   get: {
     users: '/users',
     users_profile: '/users/profile',
