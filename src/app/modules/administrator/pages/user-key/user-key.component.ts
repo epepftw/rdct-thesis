@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
 
 @Component({
   selector: 'app-user-key',
@@ -23,12 +25,12 @@ export class UserKeyComponent implements OnInit {
       {
         digit: 420,
         description: "Total Keys Generated",
-        logo: "fas fa-key fa-5x"
+        logo: "fas fa-key"
       },
       {
         digit: 69,
         description: "Newly Generated Keys",
-        logo: "fab fa-keybase fa-5x"
+        logo: "fab fa-keybase"
       }
     ]
     
@@ -46,10 +48,35 @@ export class UserKeyComponent implements OnInit {
         title: "Offline Keys"
       }
     ]
-  constructor(/*private _keys: UserKeysService*/) { }
+  closeResult: string = '';
+  constructor(/*private _keys: UserKeysService*/private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getKeys();
+  }
+
+  openEdit(data : any) {
+    const modalRef = this.modalService.open(GenerateKeyFormComponent);
+    modalRef.componentInstance.test = 'Edit';
+    modalRef.componentInstance.rawdata = data;
+    console.log(data)
+  }
+
+  openDelete(data : any) {
+    const modalRef = this.modalService.open(GenerateKeyFormComponent);
+    modalRef.componentInstance.test = 'Delete';
+    modalRef.componentInstance.rawdata = data;
+    console.log(data)
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   searchData(){

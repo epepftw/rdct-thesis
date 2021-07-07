@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -25,7 +26,11 @@ export class UsersComponent implements OnInit {
 		},
 		{
 			title: "Phone"
-		}
+		},
+    {
+      title: "Address"
+    }
+     
 	]
   
   constructor(private _users: UserService) { }
@@ -33,7 +38,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
   }
-
 
   searchData(){
     if (this.search_key !== '') {

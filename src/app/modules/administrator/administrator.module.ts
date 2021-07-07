@@ -10,7 +10,7 @@ import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { UserKeyComponent } from './pages/user-key/user-key.component';
 		CommonModule,
 		SharedModule,
 		FormsModule,
+		ReactiveFormsModule,
 		RouterModule.forChild(ADMIN_ROUTES)
 	]
 })

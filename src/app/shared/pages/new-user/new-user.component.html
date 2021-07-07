@@ -1,0 +1,7 @@
+<div>
+    <ng-container *ngFor="let r of user_roles">
+        <button class="advertiser" (click)="setCurrentRole(r)">{{ r.role_name }}</button>
+    </ng-container>
+
+    <app-newuser-form *ngIf="user_roles.length > 0 && selected_role" [current_role]="selected_role"></app-newuser-form>
+</div>

@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './core/services/auth.service';
+import { AdvertiserService } from './core/services/advertiser/advertiser.service';
+import { DashboardService } from './core/services/dashboard/dashboard.service';
+import { MediaFileService } from './core/services/mediaFile/media-file.service';
+import { RoleService } from './core/services/role/role.service';
+import { UserService } from './core/services/user/user.service';
+import { UserKeysService } from './core/services/user-keys/user-keys.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,15 @@ import { AuthService } from './core/services/auth.service';
     NgbModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService, 
+    AdvertiserService,
+    DashboardService,
+    MediaFileService,
+    RoleService,
+    UserService,
+    UserKeysService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
