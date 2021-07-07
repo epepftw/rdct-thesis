@@ -3,5 +3,11 @@
         <button class="advertiser" (click)="setCurrentRole(r)">{{ r.role_name }}</button>
     </ng-container>
 
-    <app-newuser-form *ngIf="user_roles.length > 0 && selected_role" [current_role]="selected_role"></app-newuser-form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <app-newuser-form *ngIf="user_roles.length > 0 && selected_role" [current_role]="selected_role"></app-newuser-form>
+            </div>
+        </div>
+    </div>
 </div>

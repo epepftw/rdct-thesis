@@ -8,12 +8,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let a  of data">
+        <tr *ngFor="let a of data">
             <td>{{ a.name }}</td>
             <td>{{ a.total_key }}</td>
             <td>{{ a.online_key }}</td>
             <td>{{ a.offline_key }}</td>
-            <td><button (click)="showModal(a)">Edit</button> <button (click)="deleteModal(a)">Delete</button></td>
         </tr>
     </tbody>
 </table>

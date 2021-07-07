@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
@@ -55,19 +55,21 @@ export class UserKeyComponent implements OnInit {
     this.getKeys();
   }
 
-  openEdit(data : any) {
+  openAdd() {
     const modalRef = this.modalService.open(GenerateKeyFormComponent);
-    modalRef.componentInstance.test = 'Edit';
-    modalRef.componentInstance.rawdata = data;
-    console.log(data)
-  }
+    modalRef.componentInstance.test = 'Generate Key';
+  //   modalRef.componentInstance.rawdata = data;
+  //   console.log(data)
+ }
 
-  openDelete(data : any) {
-    const modalRef = this.modalService.open(GenerateKeyFormComponent);
-    modalRef.componentInstance.test = 'Delete';
-    modalRef.componentInstance.rawdata = data;
-    console.log(data)
-  }
+
+  
+  // openDelete(data : any) {
+  //   const modalRef = this.modalService.open(GenerateKeyFormComponent);
+  //   modalRef.componentInstance.test = 'Delete';
+  //   modalRef.componentInstance.rawdata = data;
+  //   console.log(data)
+  // }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

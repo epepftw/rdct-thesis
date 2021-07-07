@@ -14,6 +14,11 @@ import { NewuserFormComponent } from './components/newuser-form/newuser-form.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateKeyFormComponent } from './components/generate-key-form/generate-key-form.component';
 
+//Angular Material Components
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+
 const shared_components = [
 	NavbarComponent,
 	SidenavComponent,
@@ -25,7 +30,14 @@ const shared_components = [
 	KeysTableComponent,
 	NewUserComponent,
 	NewuserFormComponent,
-	GenerateKeyFormComponent
+	GenerateKeyFormComponent,
+	
+]
+
+const ng_material = [
+	MatButtonModule,
+	MatInputModule,
+	MatCardModule
 ]
 
 @NgModule({
@@ -36,10 +48,12 @@ const shared_components = [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
+		ng_material,
 		RouterModule
 	],
 	exports: [
-		shared_components
+		shared_components,
+		ng_material
 	]
 })
 

@@ -22,7 +22,7 @@ import { UserKeyComponent } from './pages/user-key/user-key.component';
 		PlaylistComponent,
 		TemplateComponent,
 		UsersComponent,
-  UserKeyComponent
+  		UserKeyComponent
 	],
 	imports: [
 		CommonModule,

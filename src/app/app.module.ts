@@ -13,6 +13,7 @@ import { MediaFileService } from './core/services/mediaFile/media-file.service';
 import { RoleService } from './core/services/role/role.service';
 import { UserService } from './core/services/user/user.service';
 import { UserKeysService } from './core/services/user-keys/user-keys.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserKeysService } from './core/services/user-keys/user-keys.service';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService, 

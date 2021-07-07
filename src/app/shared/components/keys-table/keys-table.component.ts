@@ -11,8 +11,7 @@ export class KeysTableComponent implements OnInit {
   @Input() column_title: any = '';
   @Input() data: any = '';
 
-  @Output() edit = new EventEmitter;
-  @Output() delete = new EventEmitter;
+  @Output() add = new EventEmitter;
 
   constructor() { }
 
@@ -20,13 +19,6 @@ export class KeysTableComponent implements OnInit {
   }
 
   showModal(data : any){
-    this.edit.emit(data)
-
+    this.add.emit(data)
   }
-
-  deleteModal(data : any){
-    this.delete.emit(data)
-  }
-
-
 }

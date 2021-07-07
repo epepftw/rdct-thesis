@@ -5,16 +5,15 @@
             <div class="col-md-6">
                 <h2 class="m-0">User Keys</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-end">
 
                 <!--MODAL-->
-                <button type="button" class="btn btn-primary d-flex button-add bton1">
+                <button type="button" mat-raised-button color="primary" (click)="openAdd()">
                     <i class="fas fa-key"></i>
-                    <p>Add Key</p>
+                    <span>Add Key</span>
                 </button>
 
                 <!-- Button trigger modal -->
-                <!-- <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
                 <!--MODAL END-->
             </div>
         </div>
@@ -47,8 +46,7 @@
             [title]="table_title"
             [data]="keys"
             [column_title]="table_column_title"
-            (edit)="openEdit($event)"
-            (delete)="openDelete($event)">
+           >
             </app-keys-table>
 
             <ng-template #search_result>
