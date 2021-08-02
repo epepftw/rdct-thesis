@@ -1,0 +1,50 @@
+
+<form [formGroup]="admin_registration_form" *ngIf="current_role && current_role.role_slug == 'admin'" (ngSubmit)="registerAdmin()">
+    <h2>{{ admin_form_title }}</h2>
+    <div *ngFor="let f of admin_form">
+        <label [for]="f.name">{{ f.label }}</label>
+        <input 
+        [type]="f.type" 
+        [placeholder]="f.placeholder" 
+        [name]="f.name" 
+        [formControlName]="f.name">
+
+        <ng-container *ngIf="f.type == 'password' && f.name == 'password'">
+            <span>{{ password_alert_message }}</span>
+        </ng-container>
+
+        <ng-container *ngIf="f.type == 'password' && f.name == 're_type'">
+            <span>{{ repassword_alert_message }}</span>
+        </ng-container>
+    </div>
+
+    <button type="submit" [disabled]="form_invalid">Register</button>
+</form>
+
+
+<mat-card>
+    <form class="w-100 container" [formGroup]="advertiser_registration_form" *ngIf="current_role && current_role.role_slug == 'advertiser'" (ngSubmit)="registerAdvertiser()">
+        <h2>{{ advertiser_form_title }}</h2>
+        <div *ngFor="let v of advertiser_form">
+           <mat-form-field class="w-100" appearance="fill">
+                <mat-label>{{ v.label }}</mat-label>
+                <input
+                matInput 
+                autocomplete="off"
+                [type]="v.type" 
+                [placeholder]="v.placeholder"
+                [name]="v.name"
+                [formControlName]="v.name">
+    
+                <ng-container *ngIf="v.type == 'password' && v.name == 'password'">
+                    <span>{{ password_alert_message }}</span>
+                </ng-container>
+    
+                <ng-container *ngIf="v.type == 'password' && v.name == 're_type'">
+                    <span>{{ repassword_alert_message }}</span>
+                </ng-container>
+           </mat-form-field>
+        </div>
+        <button type="submit" [disabled]="form_invalid" mat-raised-button color="accent">Register</button>
+    </form>
+</mat-card>

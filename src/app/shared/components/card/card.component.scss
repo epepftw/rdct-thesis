@@ -1,8 +1,19 @@
 .rcdt-card {
     background: #fff;
-    border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 5px;
+    border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    display: inline-block;
+    display: flex;
     width: 100%;
+
+    .cont{
+        padding: 20px;
+
+        i{
+            font-size: 72px;
+            background: -webkit-linear-gradient(#2c3e50, #4ca1af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
 }

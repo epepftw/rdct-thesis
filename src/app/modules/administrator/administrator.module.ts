@@ -10,20 +10,25 @@ import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserKeyComponent } from './pages/user-key/user-key.component';
 
 @NgModule({
 	declarations: [
 		LayoutComponent,
 		DashboardComponent,
-  AdvertisersComponent,
-  MediaComponent,
-  PlaylistComponent,
-  TemplateComponent,
-  UsersComponent
+		AdvertisersComponent,
+		MediaComponent,
+		PlaylistComponent,
+		TemplateComponent,
+		UsersComponent,
+  		UserKeyComponent
 	],
 	imports: [
 		CommonModule,
 		SharedModule,
+		FormsModule,
+		ReactiveFormsModule,
 		RouterModule.forChild(ADMIN_ROUTES)
 	]
 })

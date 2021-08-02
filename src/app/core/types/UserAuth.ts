@@ -22,5 +22,4 @@ export type UsersAuthenticateAPI = {
         role_name: string;
         role_slug: string;
     } 
-
 }

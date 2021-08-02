@@ -1,1 +1,48 @@
-<p>advertisers works!</p>
+<div class="admin-advertiser-page p-4">
+    <div class="container-fluid">
+        <!--TITLE-->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="m-0">Advertisers</h2>
+            </div>
+        </div>
+
+        <hr class="m4">
+
+        <div class="row">
+            <div class="col-lg-6" *ngFor="let c of card_data_sample">
+                <app-card
+                [digit]="c.digit"
+                [description]="c.description">
+                </app-card>
+            </div>
+        </div>
+
+        <div class="my-4 input-group justify-content-end">
+            <div class="search-box"> 
+                <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Advertiser"/>
+                    <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <hr class="my-4">
+        <div class="card text-white shadow-lg p-3 bg-white">
+            <app-advertisers-table
+            *ngIf="!searching; else search_result"
+            [title]="table_title"
+            [column_title]="table_column_title"
+            [data]="advertiser">
+            </app-advertisers-table>
+
+            <ng-template #search_result>
+                <app-advertisers-table
+                [title]="table_title"
+                [column_title]="table_column_title"
+                [data]="search_results">
+                </app-advertisers-table>
+            </ng-template>
+        </div>
+        
+    </div>
+
+</div>

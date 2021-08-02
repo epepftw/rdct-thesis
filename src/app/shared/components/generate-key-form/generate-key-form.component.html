@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>{{ test }}</h1>
+<hr>
+    <div class="infos">
+        <form action="">
+            <!-- <input class="texts" type="text" [value]="rawdata.name">
+            <input class="texts" type="text" [value]="rawdata.total_key">
+            <input class="texts" type="text" [value]="rawdata.online_key">
+            <input class="texts" type="text" [value]="rawdata.offline_key">
+            <button type="submit">Confirm</button> -->
+            <div class="inputs">
+                <h3>Select User</h3>
+                <select class="mdb-select md-form" searchable="Search here..">
+                    <option value="" disabled selected>Select User</option>
+                    <option value="" *ngFor="let r of user_name">{{ r.name }}</option>
+                </select>
+            </div>
+            <div class="inputs">
+                <h3>Keys to add</h3>
+                <input type="text" placeholder="Ex. 4">              
+            </div>
+            <button class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+
+</div>
+

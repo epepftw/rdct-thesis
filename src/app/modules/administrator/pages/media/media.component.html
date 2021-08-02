@@ -1,1 +1,36 @@
-<p>media works!</p>
+<div class="admin-media-page p-4">
+    <div class="container-fluid">
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="m-0">Media Files</h2>
+            </div>
+        </div>
+        <!-- Title -->
+
+        <hr class="mb-4">
+
+          <!-- Contents -->
+          <div class="row">
+            <div class="col-lg-4" *ngFor="let c of card_data_sample">
+                <app-card
+                [digit]="c.digit"
+                [description]="c.description">
+                </app-card>
+            </div>
+        </div>
+    <!-- Contents -->
+        <hr class="my-4">
+        <div class="card text-white shadow-lg p-3 bg-white">
+            <div class="row">
+                <div class="col-lg-1" *ngFor="let f of mediaFiles">
+                    <app-media-files
+                    [url]="f.url"
+                    [title]="f.title">
+                    </app-media-files>
+                </div>
+            </div>
+            
+        </div>
+</div>
+
