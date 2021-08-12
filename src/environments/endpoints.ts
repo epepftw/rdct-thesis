@@ -1,14 +1,25 @@
 export const endpoints = {
     get: {
+        // Users
         users: '/users',
         users_profile: '/users/profile',
+        // Keys
         keys: '/keys',
+        // Roles
         roles: '/roles',
-        advertisers: '/users/advertisers'
+        // Advertisers
+        advertisers: '/users/advertisers',
+        // Media
+        mediaFiles: '/media',
     },
     post: {
+        // Users
         authenticate: '/users/authenticate',
         register: '/users/register',
-        gen_key: '/keys/add'
+        // Keys
+        gen_key: '/keys/add',
+        // Media
+        save_uploaded_file: '/media/add'
+        
     }
 }

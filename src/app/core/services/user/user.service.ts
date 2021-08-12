@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  current_user: any = this._auth.getCurrentUser();
+  	current_user: any = this._auth.getCurrentUser();
 	header: any;
 
 	constructor(
@@ -24,7 +24,7 @@ export class UserService {
 				.set('Authorization',  `${this.current_user.token}`)
 			}
 		}
-	}
+	  }
 
   get_users() {
     return this._http.get(`${environment.base_api}${environment.get.users}`, this.header);

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
 import * as filestack from 'filestack-js'
-import { UploadFileService } from 'src/app/core/services/upload-file/upload-file.service';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 import { environment } from 'src/environments/environment';
 
@@ -14,13 +13,6 @@ import { environment } from 'src/environments/environment';
 export class MediaComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
-  // media_file: {
-  //   albumId: number,
-  //   id: number,
-  //   title: string,
-  //   url: string,
-  //   thumbnailUrl: string
-  // }[] = [];
 
   card_data_sample: any = [
 		{
@@ -39,8 +31,7 @@ export class MediaComponent implements OnInit {
   
   
 
-  constructor(private _mediaFiles: MediaFileService,
-              private _upload: UploadFileService) { 
+  constructor(private _mediaFiles: MediaFileService) { 
                 this.filestack_client = filestack.init(environment.filestackAPI)
               }
 
@@ -65,24 +56,24 @@ export class MediaComponent implements OnInit {
           'image/png',
           'video/mp4'
         ],
-        maxFiles: 5,
+        maxFiles: 10,
         onFileSelected: (e: any) => {
-          console.log(e);
+          console.log('onFilesSelected', e);
         },
-        onUploadDone: (res: any) => {
-          console.log(res);
+        onUploadDone: (res: {filesUploaded: UPLOADED_FILE[], filesFailed: any[]}) => {
+          console.log('onUploadDone', res);
   
-          const uploaded_file: { filename: string; url: string; uploaded_by: string; }[] = [];
-          
-          res.filesUploaded.map(
-            (i: UPLOADED_FILE) => {
-              uploaded_file.push({
-                filename: i.filename,
-                url: i.url,
-                uploaded_by: 'Efraim Gabuat'
-              })
-            }
-          )
+          let uploaded_file: {
+            filename: string; file_url: string; uploaded_by: string;
+          }[] = [];
+
+          res.filesUploaded.map((item: UPLOADED_FILE) => {
+            uploaded_file.push({
+              filename: item.filename,
+              file_url: item.url,
+              uploaded_by: 'Efraim Gabuat'
+            })
+          })
   
           this.saveUploadedFileInfo(uploaded_file);
         }
@@ -91,8 +82,8 @@ export class MediaComponent implements OnInit {
       this.filestack_client.picker(filestack_options).open();
     }
   
-    saveUploadedFileInfo(data: { filename: string; url: string; uploaded_by: string; }[]) {
-      this._upload.save_uploaded_file_info(data).subscribe(
+    saveUploadedFileInfo(data: { filename: string, file_url: string, uploaded_by: string }[]) {
+      this._mediaFiles.save_uploaded_file(data).subscribe(
         data => {
           console.log(data)
         }, 
