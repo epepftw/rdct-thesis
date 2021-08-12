@@ -1,15 +1,33 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserKeysService {
+  current_user: any = this._auth.getCurrentUser();
+	header: any;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient,
+              private _auth: AuthService) {
+                console.log('CONSTRUCTOR', this.current_user);
 
-  get_keys() {
-    return this._http.get(`${environment.api}${environment.get.keys}`)
+                if (this.current_user) {
+                  this.header = {
+                    headers: new HttpHeaders()
+                    .set('Authorization',  `${this.current_user.token}`)
+                  }
+                }
+               }
+
+  get_keys(): Observable<any> {
+    return this._http.get<any>(`${environment.base_api}${environment.get.keys}`, this.header)
   }
+
+  gen_keys(advertiserId : string, count : string): Observable<any> {
+    return this._http.post(`${environment.base_api}${environment.post.gen_key}?advertiserId=${advertiserId}&count=${count}`, null, this.header)
+  }         
 }

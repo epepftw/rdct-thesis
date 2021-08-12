@@ -44,13 +44,13 @@
                     <app-users-table
                     *ngIf="!searching; else search_result"
                     [column_title]="table_column_title"
-                    [data]="users">
+                    [users]="users">
                     </app-users-table>
         
                     <ng-template #search_result>
                         <app-users-table
                         [column_title]="table_column_title"
-                        [data]="search_results">
+                        [users]="search_results">
                         </app-users-table>
                     </ng-template>
 

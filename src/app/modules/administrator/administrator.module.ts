@@ -12,6 +12,7 @@ import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,14 @@ import { UserKeyComponent } from './pages/user-key/user-key.component';
 		SharedModule,
 		FormsModule,
 		ReactiveFormsModule,
+		MatDialogModule,
 		RouterModule.forChild(ADMIN_ROUTES)
+	],
+	providers: [
+		{
+			provide: MatDialogRef,
+			useValue: {}
+		}
 	]
 })
 

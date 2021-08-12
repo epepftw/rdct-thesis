@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
+import * as filestack from 'filestack-js'
+import { UploadFileService } from 'src/app/core/services/upload-file/upload-file.service';
+import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-media',
@@ -7,6 +12,7 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
   styleUrls: ['./media.component.scss']
 })
 export class MediaComponent implements OnInit {
+  filestack_client: any;
   mediaFiles: any[] = [];
   // media_file: {
   //   albumId: number,
@@ -33,7 +39,10 @@ export class MediaComponent implements OnInit {
   
   
 
-  constructor(private _mediaFiles: MediaFileService) { }
+  constructor(private _mediaFiles: MediaFileService,
+              private _upload: UploadFileService) { 
+                this.filestack_client = filestack.init(environment.filestackAPI)
+              }
 
   ngOnInit(): void {
     this.getMediaFiles();
@@ -47,4 +56,50 @@ export class MediaComponent implements OnInit {
       }
     )
   }
+
+    uploadContents() {
+      const filestack_options = {
+        accept: [
+          'image/jpg',
+          'image/jpeg',
+          'image/png',
+          'video/mp4'
+        ],
+        maxFiles: 5,
+        onFileSelected: (e: any) => {
+          console.log(e);
+        },
+        onUploadDone: (res: any) => {
+          console.log(res);
+  
+          const uploaded_file: { filename: string; url: string; uploaded_by: string; }[] = [];
+          
+          res.filesUploaded.map(
+            (i: UPLOADED_FILE) => {
+              uploaded_file.push({
+                filename: i.filename,
+                url: i.url,
+                uploaded_by: 'Efraim Gabuat'
+              })
+            }
+          )
+  
+          this.saveUploadedFileInfo(uploaded_file);
+        }
+      }
+  
+      this.filestack_client.picker(filestack_options).open();
+    }
+  
+    saveUploadedFileInfo(data: { filename: string; url: string; uploaded_by: string; }[]) {
+      this._upload.save_uploaded_file_info(data).subscribe(
+        data => {
+          console.log(data)
+        }, 
+        error => {
+          console.log('Error', error)
+        }
+      )
+    }
+  
 }

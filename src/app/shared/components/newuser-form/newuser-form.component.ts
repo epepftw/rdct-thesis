@@ -128,6 +128,7 @@ export class NewuserFormComponent implements OnInit {
 				phone: ['', Validators.required],
 				password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
 				re_type: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+				role_name: [this.current_role.role_name, Validators.required],
 				role_id: [this.current_role._id, Validators.required],
 			}
 		)
@@ -174,6 +175,7 @@ export class NewuserFormComponent implements OnInit {
 				address: ['', Validators.required],
 				password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
 				re_type: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+				role_name: [this.current_role.role_name, Validators.required],
 				role_id: [this.current_role._id, Validators.required]
 			}
 		)

@@ -9,6 +9,10 @@ export const environment = {
   base_api: 'http://localhost:3000/api',
   api: 'https://jsonplaceholder.typicode.com',
   mediaFiles: '/photos?_start=0&_limit=40',
+  
+  save_uploaded_file: '/media/saveuploadedmediainfo',
+  filestackAPI: 'A7dL8mkNqRwmsg0gvBji6z',
+
   get: endpoints.get,
   post: endpoints.post
 };

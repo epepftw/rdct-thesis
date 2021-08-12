@@ -29,8 +29,10 @@ export class UsersComponent implements OnInit {
 		},
     {
       title: "Address"
-    }
-     
+    },
+     {
+       title: "Privilege"
+     }
 	]
   
   constructor(private _users: UserService) { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvertiserService } from 'src/app/core/services/advertiser/advertiser.service';
 
 @Component({
   selector: 'app-advertisers',
@@ -6,19 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./advertisers.component.scss']
 })
 export class AdvertisersComponent implements OnInit {
+	search_results: any[] = [];
 	table_title: string = "All Advertisers";
 	search_key: string = "";
 	searching: boolean = false;
-	search_results: any[] = [];
-
-	advertiser: {
-		name: string;
-		total_key: string;
-		total_playlist: string;
-		date_created: string;
-		account_status: string;
-
-	}[] = [];
+	advertiser: any[] = [];
 	
 	card_data_sample: any = [
 		{
@@ -50,7 +43,7 @@ export class AdvertisersComponent implements OnInit {
 		}
 	]
 
-  constructor() { }
+  constructor(private _advertiser: AdvertiserService) { }
 
   ngOnInit(): void {
 	  this.getAllAdvertisers();
@@ -69,42 +62,13 @@ export class AdvertisersComponent implements OnInit {
   }
 
   getAllAdvertisers(){
-	  this.advertiser = [
-		  {
-			name: "Peter Porker",
-			total_key: "2",
-			total_playlist: "5",
-			date_created: "June 22, 2021",
-			account_status: "Active"
-		  },
-		  {
-			name: "Putra Porker",
-			total_key: "2",
-			total_playlist: "5",
-			date_created: "June 22, 2021",
-			account_status: "Inactive"
-		  },
-		  {
-			name: "Petero Porker",
-			total_key: "2",
-			total_playlist: "5",
-			date_created: "June 22, 2021",
-			account_status: "Active"
-		  },
-		  {
-			name: "Petera Porker",
-			total_key: "2",
-			total_playlist: "5",
-			date_created: "June 23, 2021",
-			account_status: "Active"
-		  },
-		  {
-			name: "Peters Porker",
-			total_key: "2",
-			total_playlist: "5",
-			date_created: "June 22, 2021",
-			account_status: "Active"
+	  this._advertiser.get_advertisers().subscribe(
+		  (data: any) =>  {
+			  this.advertiser = data;
+			  console.log('#Advertisers', this.advertiser)
 		  }
-	  ]
+		  
+	  )
+	  
   }
 }

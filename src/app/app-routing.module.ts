@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
-///////
 import { AdminGuard } from './route-guard/admin.guard';
 import { AuthGuard } from './route-guard/auth.guard';
 import { LoginGuard } from './route-guard/login.guard';
@@ -29,8 +29,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+	imports: [
+		MatDialogModule,
+		RouterModule.forRoot(routes)
+	],
+	exports: [RouterModule],
+	providers: [
+		{
+			provide: MatDialogRef,
+			useValue: {
+				close: (dialogResult: any) => { }
+			}
+		}
+	]
 })
 
 export class AppRoutingModule { }

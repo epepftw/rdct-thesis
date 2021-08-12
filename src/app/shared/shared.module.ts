@@ -18,6 +18,7 @@ import { GenerateKeyFormComponent } from './components/generate-key-form/generat
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const shared_components = [
 	NavbarComponent,
@@ -31,18 +32,21 @@ const shared_components = [
 	NewUserComponent,
 	NewuserFormComponent,
 	GenerateKeyFormComponent,
-	
 ]
 
 const ng_material = [
 	MatButtonModule,
 	MatInputModule,
-	MatCardModule
+	MatCardModule,
+	MatDialogModule
 ]
 
 @NgModule({
 	declarations: [
 		shared_components
+	],
+	entryComponents: [
+		GenerateKeyFormComponent
 	],
 	imports: [
 		CommonModule,

@@ -2,26 +2,20 @@
     <h1>{{ test }}</h1>
 <hr>
     <div class="infos">
-        <form action="">
-            <!-- <input class="texts" type="text" [value]="rawdata.name">
-            <input class="texts" type="text" [value]="rawdata.total_key">
-            <input class="texts" type="text" [value]="rawdata.online_key">
-            <input class="texts" type="text" [value]="rawdata.offline_key">
-            <button type="submit">Confirm</button> -->
-            <div class="inputs">
-                <h3>Select User</h3>
-                <select class="mdb-select md-form" searchable="Search here..">
+        <form [formGroup]="key_gen_form" (ngSubmit)="onGenKeyFormSubmit()">
+            <div class="inputs form-group">
+                <label class="label" for="name">Select User</label>
+                <select class="mdb-select md-form form-control" formControlName="name" required searchable="Search here..">
                     <option value="" disabled selected>Select User</option>
-                    <option value="" *ngFor="let r of user_name">{{ r.name }}</option>
+                    <option *ngFor="let r of user_name" [value]="r._id">{{ r.name }}</option>
                 </select>
             </div>
-            <div class="inputs">
-                <h3>Keys to add</h3>
-                <input type="text" placeholder="Ex. 4">              
+            <div class="inputs form-group">
+                <label class="label" for="key">Keys to add</label>
+                <input type="number" class="form-control" placeholder="Ex. 4" formControlName="count" required>              
             </div>
             <button class="btn btn-primary">Confirm</button>
         </form>
     </div>
-
 </div>
-
++
