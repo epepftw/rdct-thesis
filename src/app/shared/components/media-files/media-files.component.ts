@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MediaFilesComponent implements OnInit {
 
-  @Input() title: any = '';
-  @Input() url: any = '';
+  @Input() filename: any = '';
+  @Input() file_url: any = '';
 
   constructor() { }
 

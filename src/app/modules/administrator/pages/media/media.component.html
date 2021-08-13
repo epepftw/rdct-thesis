@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="m-0">Media Files</h2>
+                <button (click)="uploadContents()">Upload</button>
             </div>
         </div>
         <!-- Title -->
@@ -25,8 +26,8 @@
             <div class="row">
                 <div class="col-lg-1" *ngFor="let f of mediaFiles">
                     <app-media-files
-                    [url]="f.url"
-                    [title]="f.title">
+                    [file_url]="f.file_url"
+                    [filename]="f.filename">
                     </app-media-files>
                 </div>
             </div>
