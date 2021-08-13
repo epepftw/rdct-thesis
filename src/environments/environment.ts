@@ -10,7 +10,7 @@ export const environment = {
   api: 'https://jsonplaceholder.typicode.com',
  
   
-  filestackAPI: 'A7dL8mkNqRwmsg0gvBji6z',
+  filestackAPI: 'ALjKIdQzT1uQvACcqMCnQz',
 
   get: endpoints.get,
   post: endpoints.post

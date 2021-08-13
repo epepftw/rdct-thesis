@@ -11,6 +11,7 @@ export const endpoints = {
         advertisers: '/users/advertisers',
         // Media
         mediaFiles: '/media',
+        mediaFiles_by_userId: '/media/getByUserId'
     },
     post: {
         // Users

@@ -32,6 +32,10 @@ export class MediaFileService {
     return this._http.get<any>(`${environment.base_api}${environment.get.mediaFiles}`, this.header)
   }
 
+  get_userFiles(userId : string): Observable<any>{
+    return this._http.get<any>(`${environment.base_api}${environment.get.mediaFiles_by_userId}?userId=${userId}`, this.header)
+  }
+
   save_uploaded_file(data: any): Observable<any>{
     return this._http.post(`${environment.base_api}${environment.post.save_uploaded_file}`, data, this.header)
   }

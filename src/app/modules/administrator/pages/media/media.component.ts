@@ -4,6 +4,8 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
 import * as filestack from 'filestack-js'
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 
 @Component({
   selector: 'app-media',
@@ -14,24 +16,13 @@ export class MediaComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
 
-  card_data_sample: any = [
-		{
-			digit: 5120,
-			description: "All Files"
-		},
-		{
-			digit: 4521,
-			description: "Images"
-		},
-		{
-			digit: 599,
-			description: "Videos"
-		}
-	]
+  card_data_sample: any;
   
   
 
-  constructor(private _mediaFiles: MediaFileService) { 
+  constructor(
+    private _mediaFiles: MediaFileService,
+    private _auth: AuthService ) { 
                 this.filestack_client = filestack.init(environment.filestackAPI)
               }
 
@@ -43,12 +34,32 @@ export class MediaComponent implements OnInit {
     this._mediaFiles.get_mediaFiles().subscribe(
       (data: any) =>  {
         this.mediaFiles = data;
+        this.card_data_sample = [
+          {
+            digit: this.mediaFiles.length,
+            description: "All Files"
+          },
+          {
+            digit: this.mediaFiles.filter((media: SAVE_FILE_INFO) => {
+              return media.mimetype == 'image/jpeg' || media.mimetype == 'image/png'
+            }).length,
+            description: "Images"
+          },
+          {
+            digit: this.mediaFiles.filter((media: SAVE_FILE_INFO) => {
+              return media.mimetype == 'video/mp4'
+            }).length,
+            description: "Videos"
+          }
+        ]
         console.log('#MEDIA FILES', this.mediaFiles)
       }
     )
   }
 
+
     uploadContents() {
+      console.log('Test',this._auth.getCurrentUser().user);
       const filestack_options = {
         accept: [
           'image/jpg',
@@ -64,17 +75,26 @@ export class MediaComponent implements OnInit {
           console.log('onUploadDone', res);
   
           let uploaded_file: {
-            filename: string; file_url: string; uploaded_by: string;
+            filename: string;
+            file_url: string;
+            uploaded_by: string; 
+            user_id: string;
+            mimetype: string;
+            size: number;
           }[] = [];
 
           res.filesUploaded.map((item: UPLOADED_FILE) => {
             uploaded_file.push({
               filename: item.filename,
               file_url: item.url,
-              uploaded_by: 'Efraim Gabuat'
+              uploaded_by: this._auth.getCurrentUser().user.name,
+              user_id: this._auth.getCurrentUser().user._id,
+              mimetype: item.mimetype,
+              size: item.size
+  
             })
           })
-  
+          
           this.saveUploadedFileInfo(uploaded_file);
         }
       }
@@ -82,10 +102,11 @@ export class MediaComponent implements OnInit {
       this.filestack_client.picker(filestack_options).open();
     }
   
-    saveUploadedFileInfo(data: { filename: string, file_url: string, uploaded_by: string }[]) {
+    saveUploadedFileInfo(data: SAVE_FILE_INFO[]) {
       this._mediaFiles.save_uploaded_file(data).subscribe(
         data => {
           console.log(data)
+          this.getMediaFiles();
         }, 
         error => {
           console.log('Error', error)
