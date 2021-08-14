@@ -1,10 +1,11 @@
 import { endpoints } from "./endpoints";
 
 export const environment = {
-  production: true,
-  base_api: 'http://192.168.100.11:3000/api',
-  api: 'https://jsonplaceholder.typicode.com',
-  mediaFiles: '/photos?_start=0&_limit=40',
+  production: false,
+  base_api: 'https://rcdt-api.herokuapp.com/api',
+  filestackAPI: 'AqJu2MTmS4OrNOAI83ApXz',
+                //'A7dL8mkNqRwmsg0gvBji6z'
+
   get: endpoints.get,
   post: endpoints.post
 };
