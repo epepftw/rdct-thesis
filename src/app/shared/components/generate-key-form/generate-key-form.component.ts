@@ -5,6 +5,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdvertiserService } from 'src/app/core/services/advertiser/advertiser.service'
+import { Keys } from 'src/app/core/types/Keys.types'
 
 @Component({
   selector: 'app-generate-key-form',
@@ -13,6 +14,7 @@ import { AdvertiserService } from 'src/app/core/services/advertiser/advertiser.s
 })
 export class GenerateKeyFormComponent implements OnInit {
   user_name : any[] = [];
+  keys: any[] = []; 
   key_gen_form! : FormGroup;
   selected_name : string;
 
@@ -28,6 +30,7 @@ export class GenerateKeyFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserName();
+    this.getKeys();
     this.key_gen_form = this._form.group(
       {
           name: ['', Validators.required],
@@ -45,6 +48,15 @@ export class GenerateKeyFormComponent implements OnInit {
     )
   }
 
+  getKeys() {
+    this._keys.get_keys().subscribe(
+      (data: Keys[]) => {
+        this.keys = data;
+        console.log("#Keys", this.keys)
+      }
+    )
+  }
+
   onGenKeyFormSubmit() {
 		this._keys.gen_keys(
 			this.key_gen_form.get('name').value, 
@@ -53,7 +65,9 @@ export class GenerateKeyFormComponent implements OnInit {
 			(res) => {
         alert(res.msg)
         console.log(this._dialog_ref)
-        this._dialog_ref.close();
+        this._dialog_ref.close;
+        window.location.reload();
+        
 			},
 			(err) => {
 				console.log('#ERROR', err)
