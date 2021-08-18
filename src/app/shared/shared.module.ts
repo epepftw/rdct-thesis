@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PlaylistTableComponent } from './components/playlist-table/playlist-table.component';
 
 const shared_components = [
 	NavbarComponent,
@@ -32,6 +33,7 @@ const shared_components = [
 	NewUserComponent,
 	NewuserFormComponent,
 	GenerateKeyFormComponent,
+	PlaylistTableComponent
 ]
 
 const ng_material = [
@@ -43,7 +45,8 @@ const ng_material = [
 
 @NgModule({
 	declarations: [
-		shared_components
+		shared_components,
+  PlaylistTableComponent
 	],
 	entryComponents: [
 		GenerateKeyFormComponent

@@ -1,0 +1,19 @@
+<h2>{{ title }}</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th *ngFor="let t of column_title">
+                {{ t.title }}
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let a of data">
+            <td>{{ a.playlist_name }}</td>
+            <td>{{ a.date_created }}</td>
+            <td>{{ a.playlist_owner }}</td>
+            <td>{{ a.action }}</td>
+        </tr>
+    </tbody>
+</table>
