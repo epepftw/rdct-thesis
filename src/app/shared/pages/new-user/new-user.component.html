@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <app-newuser-form *ngIf="user_roles.length > 0 && selected_role" [current_role]="selected_role"></app-newuser-form>
+                <app-newuser-form *ngIf="user_roles.length > 0 && selected_role" [current_role]="selected_role" (formSubmitted)="onSubmit($event)"></app-newuser-form>
             </div>
         </div>
     </div>

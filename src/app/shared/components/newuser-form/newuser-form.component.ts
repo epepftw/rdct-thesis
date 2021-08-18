@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -12,6 +12,8 @@ import { Roles } from '../../../core/types/Role';
 
 export class NewuserFormComponent implements OnInit {
 	@Input() current_role!: Roles;
+
+	@Output() formSubmitted = new EventEmitter;
 
 	admin_registration_form!: FormGroup;
 	advertiser_registration_form!: FormGroup;
@@ -117,6 +119,8 @@ export class NewuserFormComponent implements OnInit {
 	ngOnInit(): void {
 		this.buildAdminRegisterForm();
 		this.buildAdvertiserRegisterForm();
+
+		
 	}
 
 	buildAdminRegisterForm() {
@@ -230,7 +234,7 @@ export class NewuserFormComponent implements OnInit {
 				if (!data.success) {
 					this.f.re_type.enable();
 				} else {
-					this._router.navigate(['/admin/user'])
+					// this._router.navigate(['/admin/user'])
 				}
 			}, 
 			error => {
@@ -254,11 +258,12 @@ export class NewuserFormComponent implements OnInit {
 		this._user.register_user(this.advertiser_registration_form.value).subscribe(
 			(data: {success: boolean, msg: string}) => {
 				alert(data.msg)
-				
+				this.formSubmitted.emit(this.advertiser_registration_form.value);
 				if (!data.success) {
+
 					this.v.re_type.enable();
 				} else {
-					this._router.navigate(['/admin/user'])
+					// this._router.navigate(['/admin/user'])
 				}
 			}, 
 			error => {
