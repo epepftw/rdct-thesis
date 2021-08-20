@@ -41,7 +41,7 @@ export class PlaylistComponent implements OnInit {
 			title: "Date Created"
 		},
 		{
-			title: "Player Owner"
+			title: "Playlist Owner"
 		},
 		{
 			title: "Action"
