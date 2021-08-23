@@ -20,7 +20,9 @@ export const endpoints = {
         // Keys
         gen_key: '/keys/add',
         // Media
-        save_uploaded_file: '/media/add'
+        save_uploaded_file: '/media/add',
+        // Playlist
+        create_playlist: '/playlist/create'
         
     }
 }

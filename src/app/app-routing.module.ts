@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './route-guard/admin.guard';
 import { AuthGuard } from './route-guard/auth.guard';
 import { LoginGuard } from './route-guard/login.guard';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
 	{
@@ -30,6 +31,7 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [
+		SharedModule,
 		MatDialogModule,
 		RouterModule.forRoot(routes)
 	],

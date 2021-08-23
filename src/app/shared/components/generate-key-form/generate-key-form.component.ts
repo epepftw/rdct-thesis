@@ -1,11 +1,13 @@
 import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdvertiserService } from 'src/app/core/services/advertiser/advertiser.service'
 import { Keys } from 'src/app/core/types/Keys.types'
+import {map, startWith} from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-generate-key-form',
@@ -13,22 +15,22 @@ import { Keys } from 'src/app/core/types/Keys.types'
   styleUrls: ['./generate-key-form.component.scss']
 })
 export class GenerateKeyFormComponent implements OnInit {
-  user_name : any[] = [];
+  
+  myControl = new FormControl();
+  user_name : any[] = []; 
   keys: any[] = []; 
   key_gen_form! : FormGroup;
   selected_name : string;
-
-  @Input() test : String = '';
 
   constructor(
     private _users: UserService,
     private _advertiser: AdvertiserService,
     private _keys: UserKeysService,
-    private _form: FormBuilder,
-    private _dialog_ref: MatDialogRef<GenerateKeyFormComponent>
+    private _form: FormBuilder
     ) { }
 
   ngOnInit(): void {
+
     this.getUserName();
     this.getKeys();
     this.key_gen_form = this._form.group(
@@ -37,7 +39,9 @@ export class GenerateKeyFormComponent implements OnInit {
           count: ['', Validators.required]
       }
     )
-  }
+  } 
+
+
 
   getUserName(){
     this._advertiser.get_advertisers().subscribe(
@@ -64,8 +68,6 @@ export class GenerateKeyFormComponent implements OnInit {
 		).subscribe(
 			(res) => {
         alert(res.msg)
-        console.log(this._dialog_ref)
-        this._dialog_ref.close;
         window.location.reload();
         
 			},

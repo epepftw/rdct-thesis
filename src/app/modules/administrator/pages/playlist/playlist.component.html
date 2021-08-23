@@ -7,7 +7,12 @@
                 <h2>Playlist</h2>
             </div>
             <div class="col-md-6 text-right">
-                <button>Create Playlist</button>
+                <a [routerLink]="['/admin/playlist/create']">
+                    <button type="button">
+                        <i class="fas fa-plus"></i>
+                        Create Playlist
+                    </button>
+                </a>
             </div>
         </div>
         <hr class="my-4">
