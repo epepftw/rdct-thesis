@@ -13,17 +13,28 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
 import { NewuserFormComponent } from './components/newuser-form/newuser-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateKeyFormComponent } from './components/generate-key-form/generate-key-form.component';
+import { PlaylistTableComponent } from './components/playlist-table/playlist-table.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { CreatePlaylistComponent } from './pages/create-playlist/create-playlist.component';
 
 //Angular Material Components
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import {MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY} from '@angular/material/autocomplete'; 
+import {MatStepperModule} from '@angular/material/stepper';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 const shared_components = [
 	NavbarComponent,
 	SidenavComponent,
 	CardComponent,
+	CreatePlaylistComponent,
 	PlayersTableComponent,
 	AdvertisersTableComponent,
 	MediaFilesComponent,
@@ -32,18 +43,27 @@ const shared_components = [
 	NewUserComponent,
 	NewuserFormComponent,
 	GenerateKeyFormComponent,
+	PlaylistTableComponent,
+	UserProfileComponent
 ]
 
 const ng_material = [
 	MatButtonModule,
 	MatInputModule,
 	MatCardModule,
-	MatDialogModule
+	MatDialogModule,
+	MatSlideToggleModule,
+	MatTabsModule,
+	MatAutocompleteModule,
+	MatStepperModule,
+	ScrollingModule,
+	MatFormFieldModule
 ]
 
 @NgModule({
 	declarations: [
-		shared_components
+		shared_components,
+		
 	],
 	entryComponents: [
 		GenerateKeyFormComponent

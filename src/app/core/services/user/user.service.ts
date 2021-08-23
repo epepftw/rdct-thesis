@@ -30,8 +30,12 @@ export class UserService {
     return this._http.get(`${environment.base_api}${environment.get.users}`, this.header);
   }
 
-  get_user_profile() {
-    return this._http.get(`${environment.base_api}${environment.get.users_profile}`, this.header)
+//   get_user_profile() {
+//     return this._http.get(`${environment.base_api}${environment.get.users_profile}`, this.header)
+//   }
+
+  get_user_info(userId : string): Observable<any>{
+	return this._http.get<any>(`${environment.base_api}${environment.get.users}`,)
   }
 
   register_user(data: UserInformation): Observable<any> {

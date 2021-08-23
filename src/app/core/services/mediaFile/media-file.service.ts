@@ -25,7 +25,6 @@ export class MediaFileService {
           .set('Authorization',  `${this.current_user.token}`)
         }
       }
-
     }
 
   get_mediaFiles(): Observable<any>{

@@ -27,6 +27,10 @@ export class NewUserComponent implements OnInit {
 		)
 	}
 
+	onSubmit(e : any) {
+		console.log('#Test',e)
+	}
+
 	setCurrentRole(role: Roles) {
 		this.selected_role = role;
 		console.log(role);

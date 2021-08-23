@@ -25,9 +25,7 @@
         </div>
         <button type="submit" [disabled]="form_invalid" mat-raised-button color="accent">Register</button>
     </form>
-</mat-card>
 
-<mat-card>
     <form class="w-100 container" [formGroup]="advertiser_registration_form" *ngIf="current_role && current_role.role_slug == 'advertiser'" (ngSubmit)="registerAdvertiser()">
         <h2>{{ advertiser_form_title }}</h2>
         <div *ngFor="let v of advertiser_form">
@@ -53,3 +51,4 @@
         <button type="submit" [disabled]="form_invalid" mat-raised-button color="accent">Register</button>
     </form>
 </mat-card>
+

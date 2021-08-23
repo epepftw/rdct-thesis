@@ -3,6 +3,7 @@ import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.servi
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
 import { Keys } from 'src/app/core/types/Keys.types';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-key',
@@ -16,7 +17,8 @@ export class UserKeyComponent implements OnInit {
     searching: boolean = false;
     search_results: any[] = [];
 
-   
+    myControl = new FormControl();
+    options: string[] = ['One', 'Two', 'Three'];
     
     card_data_sample: any = [
       {

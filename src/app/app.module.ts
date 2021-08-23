@@ -12,7 +12,11 @@ import { MediaFileService } from './core/services/mediaFile/media-file.service';
 import { RoleService } from './core/services/role/role.service';
 import { UserService } from './core/services/user/user.service';
 import { UserKeysService } from './core/services/user-keys/user-keys.service';
+import { PlaylistService } from './core/services/playlist/playlist.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { AdvertiserModule } from './modules/advertiser/advertiser.module';
+import { AdministratorModule } from './modules/administrator/administrator.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MediaFileService,
     RoleService,
     UserService,
-    UserKeysService
+    UserKeysService,
+    PlaylistService
   ],
   bootstrap: [AppComponent]
 })
