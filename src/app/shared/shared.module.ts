@@ -28,6 +28,8 @@ import {MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY} from '@angular/
 import {MatStepperModule} from '@angular/material/stepper';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MediaFileModalComponent } from './components/media-file-modal/media-file-modal.component';
+import { SortablejsModule } from 'ngx-sortablejs';
 
 
 const shared_components = [
@@ -63,6 +65,7 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
+  MediaFileModalComponent,
 		
 	],
 	entryComponents: [
@@ -72,8 +75,10 @@ const ng_material = [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
+		SortablejsModule,
 		ng_material,
-		RouterModule
+		RouterModule,
+		
 	],
 	exports: [
 		shared_components,

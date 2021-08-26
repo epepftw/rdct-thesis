@@ -28,6 +28,7 @@ export class UserKeysService {
   }
 
   gen_keys(advertiserId : string, count : string): Observable<any> {
+    console.log(advertiserId)
     return this._http.post(`${environment.base_api}${environment.post.gen_key}?advertiserId=${advertiserId}&count=${count}`, null, this.header)
   }         
 }
