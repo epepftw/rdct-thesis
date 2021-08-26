@@ -1,4 +1,4 @@
-# Rcdt Testing Jira Connection from my VSCode WOW
+# Rcdt Testing Jira
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
