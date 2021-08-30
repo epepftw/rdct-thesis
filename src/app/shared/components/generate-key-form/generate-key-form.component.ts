@@ -17,13 +17,15 @@ import { Observable, Subject } from 'rxjs';
 export class GenerateKeyFormComponent implements OnInit {
   
   myControl = new FormControl();
-  user_name : any[] = []; 
+  options : any[] = []; 
   keys: any[] = []; 
   key_gen_form! : FormGroup;
   selected_name : string;
+  filteredOptions: Observable<any[]>;
 
   constructor(
     private _users: UserService,
+    private _formBuilder: FormBuilder,
     private _advertiser: AdvertiserService,
     private _keys: UserKeysService,
     private _form: FormBuilder
@@ -39,15 +41,49 @@ export class GenerateKeyFormComponent implements OnInit {
           count: ['', Validators.required]
       }
     )
+
+
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );
+    
+    this.filteredOptions.subscribe((data : any[]) => {
+      if (data.length > 0) {
+        this.key_gen_form.controls['name'].setValue(data[0]._id)
+      }
+    }); 
+
+   
+
+      // this.myControl.valueChanges.subscribe()
   } 
+
+  displayFn(user: any): string {
+    return user && user.name ? user.name : '';
+  }
+
+  private _filter(name: string): any[] {
+    console.log("#TESTTRTTR",name)
+    const filterValue = name.toLowerCase();
+
+    this.options.filter(option => {
+      
+      console.log('$GDFDFDFD',option.name.toLowerCase().includes(filterValue))
+    })
+
+    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
 
 
 
   getUserName(){
     this._advertiser.get_advertisers().subscribe(
       (data : any) => {
-        this.user_name = data;
-        console.log('#adver_advertiser', this.user_name)
+        this.options = data;
+        console.log('#adver_advertiser', this.options)
       }
     )
   }

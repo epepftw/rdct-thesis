@@ -23,19 +23,21 @@
       </form>
       
     </mat-step>
+    <!--Media Files-->
     <mat-step [stepControl]="secondFormGroup" label="Select media files">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field appearance="fill">
-          <mat-label>Media Library</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
+        <div>
+          <h1>Playlist Content</h1>
+          <button mat-button (click)="openDialog()">Add Content</button>
+          <button>Play Demo</button>
+        </div>
+        <div class="container">
+        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
-      </form>
     </mat-step>
+    <!--Publishing-->
     <mat-step>
       <ng-template matStepLabel>Finalization</ng-template>
       <p>You are now done.</p>

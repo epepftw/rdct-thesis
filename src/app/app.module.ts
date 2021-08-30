@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AdvertiserModule } from './modules/advertiser/advertiser.module';
 import { AdministratorModule } from './modules/administrator/administrator.module';
+import { SortablejsModule } from 'ngx-sortablejs';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AdministratorModule } from './modules/administrator/administrator.modul
     NgbModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SortablejsModule.forRoot({ animation: 150 }),
     AppRoutingModule
   ],
   providers: [

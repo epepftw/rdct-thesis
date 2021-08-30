@@ -4,6 +4,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
 import { Keys } from 'src/app/core/types/Keys.types';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-key',
@@ -49,8 +50,10 @@ export class UserKeyComponent implements OnInit {
     ]
   closeResult: string = '';
 
-  constructor(private _keys: UserKeysService, 
-              private modalService: NgbModal) { 
+  constructor(
+          public dialog: MatDialog,
+          private _keys: UserKeysService, 
+          private modalService: NgbModal) { 
                 
               }
 
@@ -58,20 +61,29 @@ export class UserKeyComponent implements OnInit {
     this.getKeys();
   }
 
-  openAdd() {
-    const modalRef = this.modalService.open(GenerateKeyFormComponent);
-    modalRef.componentInstance.test = 'Generate Key';
-    modalRef.closed.subscribe(
-      (res) => {
-        console.log(res)
-      },
-      (err) => {
+//   openAdd() {
+//     const modalRef = this.modalService.open(GenerateKeyFormComponent);
+//     modalRef.componentInstance.test = 'Generate Key';
+//     modalRef.closed.subscribe(
+//       (res) => {
+//         console.log(res)
+//       },
+//       (err) => {
 
-      }
-    )
-  //   modalRef.componentInstance.rawdata = data;
-  //   console.log(data)
- }
+//       }
+//     )
+//   //   modalRef.componentInstance.rawdata = data;
+//   //   console.log(data)
+//  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(GenerateKeyFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 
 
   

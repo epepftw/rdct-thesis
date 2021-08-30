@@ -5,10 +5,10 @@ import { UserService } from 'src/app/core/services/user/user.service';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
 
-import { CREATE_PLAYLIST } from 'src/app/core/types/playlist.types';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
+import {MatDialog} from '@angular/material/dialog';
+import { MediaFileModalComponent } from '../../components/media-file-modal/media-file-modal.component';
 
 
 export interface User {
@@ -32,6 +32,7 @@ export class CreatePlaylistComponent implements OnInit {
   filteredOptions: Observable<User[]>;
 //
   constructor(
+    public dialog: MatDialog,
     private _formBuilder: FormBuilder,
     private _users: UserService,
     private _keys: UserKeysService,
@@ -73,4 +74,13 @@ export class CreatePlaylistComponent implements OnInit {
       }
     )
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(MediaFileModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
+
