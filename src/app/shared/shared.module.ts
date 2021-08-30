@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
-import {MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY} from '@angular/material/autocomplete'; 
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import {MatStepperModule} from '@angular/material/stepper';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -65,8 +65,7 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
-  MediaFileModalComponent,
-		
+  		MediaFileModalComponent
 	],
 	entryComponents: [
 		GenerateKeyFormComponent
@@ -75,10 +74,9 @@ const ng_material = [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
-		SortablejsModule,
 		ng_material,
-		RouterModule,
-		
+		SortablejsModule,
+		RouterModule
 	],
 	exports: [
 		shared_components,

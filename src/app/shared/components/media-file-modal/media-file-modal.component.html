@@ -17,7 +17,7 @@
     <!---->
     <div class="card text-white shadow-lg p-3 bg-white">
       <div class="row" [sortablejs]="mediaFiles">
-          <div class="col-lg-1" *ngFor="let f of mediaFiles">
+          <div class="col-lg-1" *ngFor="let f of mediaFiles" (click)="selectedFile(f)" [ngClass]="isFileIncluded(f) ? 'highlight' : ''">
               <app-media-files
               [file_url]="f.file_url"
               [filename]="f.filename">

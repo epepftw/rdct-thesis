@@ -28,13 +28,9 @@ import { SortablejsModule } from 'ngx-sortablejs';
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    SortablejsModule.forRoot({ 
-      // multiDrag: true,
-      // selectedClass: 'selected',
-      animation: 150 }),
     BrowserAnimationsModule,
+    SortablejsModule.forRoot({ animation: 150 }),
     AppRoutingModule
-    
   ],
   providers: [
     AuthService, 

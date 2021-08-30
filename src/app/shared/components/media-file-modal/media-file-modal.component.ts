@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { io } from "socket.io-client";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as filestack from 'filestack-js'
 // ENVIRONMENT AND SERVICES
 import { environment } from 'src/environments/environment';
@@ -15,9 +13,11 @@ import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
   templateUrl: './media-file-modal.component.html',
   styleUrls: ['./media-file-modal.component.scss']
 })
+
 export class MediaFileModalComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
+  selected_files: any[] = [];
   socket: any;
 
   constructor(
@@ -30,6 +30,7 @@ export class MediaFileModalComponent implements OnInit {
     this.getMediaFiles();
   }
 
+  
 
   getMediaFiles() {
     this._mediaFiles.get_mediaFiles().subscribe(
@@ -73,7 +74,6 @@ export class MediaFileModalComponent implements OnInit {
             user_id: this._auth.getCurrentUser().user._id,
             mimetype: item.mimetype,
             size: item.size
-
           })
         })
         
@@ -94,6 +94,21 @@ export class MediaFileModalComponent implements OnInit {
         console.log('Error', error)
       }
     )
+  }
+  
+  selectedFile(data: SAVE_FILE_INFO){
+    if (this.selected_files.includes(data)) {
+      
+      this.selected_files = this.selected_files.filter(file => file._id !== data._id)
+    } else {
+      this.selected_files.push(data)
+    }
+
+    console.log(this.selected_files);
+  }
+
+  isFileIncluded(data : any){
+    return this.selected_files.includes(data)
   }
 
   
