@@ -53,6 +53,7 @@ export class GenerateKeyFormComponent implements OnInit {
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
         this.key_gen_form.controls['name'].setValue(data[0]._id)
+        console.log(data[0]._id)
       }
     }); 
 
@@ -66,12 +67,12 @@ export class GenerateKeyFormComponent implements OnInit {
   }
 
   private _filter(name: string): any[] {
-    console.log("#TESTTRTTR",name)
+    console.log("#FILTERED NAME",name)
     const filterValue = name.toLowerCase();
 
     this.options.filter(option => {
       
-      console.log('$GDFDFDFD',option.name.toLowerCase().includes(filterValue))
+      console.log('$Filtered Values',option.name.toLowerCase().includes(filterValue))
     })
 
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));

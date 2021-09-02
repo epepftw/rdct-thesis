@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import * as filestack from 'filestack-js'
 // ENVIRONMENT AND SERVICES
 import { environment } from 'src/environments/environment';
@@ -7,6 +7,8 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
 // TYPES
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
+import { CREATE_PLAYLIST } from 'src/app/core/types/Playlist.types';
+import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 
 @Component({
   selector: 'app-media-file-modal',
@@ -18,20 +20,26 @@ export class MediaFileModalComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
   selected_files: any[] = [];
+  created_playlist: any[] = [];
+  media_contents: any[] = [];
   socket: any;
+
+  // @Output() formSubmitted = new EventEmitter();
 
   constructor(
     private _mediaFiles: MediaFileService,
+    private _playlist: PlaylistService,
     private _auth: AuthService) {
       this.filestack_client = filestack.init(environment.filestackAPI)
      }
 
   ngOnInit(): void {
     this.getMediaFiles();
+    this.getPlaylist();
   }
 
   
-
+  //GET FUNCTIONS START
   getMediaFiles() {
     this._mediaFiles.get_mediaFiles().subscribe(
       (data: any) =>  {
@@ -41,6 +49,17 @@ export class MediaFileModalComponent implements OnInit {
     )
   }
 
+  getPlaylist(){
+    this._playlist.get_playlist().subscribe(
+      (data: any) => {
+        this.created_playlist = data;
+        console.log('#CREATED PLAYLIST', this.created_playlist)
+      }
+    )
+  } 
+  //GET FUNCTIONS END
+
+  // Function
   uploadContents() {
     console.log('Test',this._auth.getCurrentUser().user);
     const filestack_options = {
@@ -80,10 +99,9 @@ export class MediaFileModalComponent implements OnInit {
         this.saveUploadedFileInfo(uploaded_file);
       }
     }
-
     this.filestack_client.picker(filestack_options).open();
   }
-
+  // Function
   saveUploadedFileInfo(data: SAVE_FILE_INFO[]) {
     this._mediaFiles.save_uploaded_file(data).subscribe(
       data => {
@@ -95,7 +113,7 @@ export class MediaFileModalComponent implements OnInit {
       }
     )
   }
-  
+  // Function
   selectedFile(data: SAVE_FILE_INFO){
     if (this.selected_files.includes(data)) {
       
@@ -106,10 +124,21 @@ export class MediaFileModalComponent implements OnInit {
 
     console.log(this.selected_files);
   }
-
+  // Function
   isFileIncluded(data : any){
     return this.selected_files.includes(data)
   }
+  // Function
 
-  
+  savePlaylist(data: CREATE_PLAYLIST) {
+    this._playlist.create_playlist(data).subscribe(
+      data => {
+        console.log(data)
+        this.getPlaylist();
+      },
+      error => {
+        console.log('Error', error)
+      }
+    )
+  } 
 }
