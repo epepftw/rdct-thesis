@@ -10,12 +10,7 @@ export class PlaylistComponent implements OnInit {
   search_results: any[] = [];
   search_key: string = "";
 	searching: boolean = false;
-  playlist: {
-    playlist_name: string;
-    date_created: string;
-    playlist_owner: string;
-    action: string;
-  }[]
+  playlist: any[] = [];
 
 
   card_data_sample: any = [
@@ -50,7 +45,9 @@ export class PlaylistComponent implements OnInit {
 	]
 
 
-  constructor() { }
+  constructor(
+    private _playlist: PlaylistService
+  ) { }
 
   ngOnInit(): void {
     this.getPlaylist();
@@ -69,32 +66,11 @@ export class PlaylistComponent implements OnInit {
     }
 
   getPlaylist() {
-    this.playlist = [
-      {
-        playlist_name: "Player 1",
-        date_created: "Today",
-        playlist_owner: "Your Mom",
-        action: "Sample"
-      },
-      {
-        playlist_name: "Player 1",
-        date_created: "Today",
-        playlist_owner: "Your Mom",
-        action: "Sample"
-      },
-      {
-        playlist_name: "Player 1",
-        date_created: "Today",
-        playlist_owner: "Your Mom",
-        action: "Sample"
-      },
-      {
-        playlist_name: "Player 1",
-        date_created: "Today",
-        playlist_owner: "Your Mom",
-        action: "Sample"
-      },
-      
-    ]
+    this._playlist.get_playlist().subscribe(
+      (data : any) => {
+        this.playlist = data;
+        console.log('#Playlist', this.playlist)
+      }
+    )
   }
 }

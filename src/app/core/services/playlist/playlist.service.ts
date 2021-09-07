@@ -34,4 +34,8 @@ export class PlaylistService {
     create_playlist(data: CREATE_PLAYLIST): Observable<any> {
       return this._http.post(`${environment.base_api}${environment.post.create_playlist}`, data, this.header)
     }
+
+    get_playlist_page(playlistId : string): Observable<any>{
+      return this._http.get<any>(`${environment.base_api}${environment.get.playlist}/${playlistId}`, this.header )
+    }
 }

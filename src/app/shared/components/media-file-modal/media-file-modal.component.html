@@ -30,5 +30,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="selected_files" cdkFocusInitial>Finish</button>
+  <button mat-button [mat-dialog-close]="selected_files" cdkFocusInitial [disabled]="selected_files.length == 0">Finish</button>
 </mat-dialog-actions>

@@ -10,9 +10,9 @@
 
     <tbody>
         <tr *ngFor="let a of data">
-            <td>{{ a.playlist_name }}</td>
+            <td><a [routerLink]="[a._id]">{{ a.playlist_name }}</a></td>
             <td>{{ a.date_created }}</td>
-            <td>{{ a.playlist_owner }}</td>
+            <td>{{ a.playlist_owner_name }}</td>
             <td>{{ a.action }}</td>
         </tr>
     </tbody>

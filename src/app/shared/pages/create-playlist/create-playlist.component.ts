@@ -25,7 +25,7 @@ export interface User {
 })
 export class CreatePlaylistComponent implements OnInit {
   formSubmitted: any;
-  isLinear = false;
+  isLinear = true;
   user_name: any[] = [];
   keys: any;
   mediaFiles: any[] = [];
@@ -60,7 +60,8 @@ export class CreatePlaylistComponent implements OnInit {
     this.firstFormGroup = this._form.group(
       {
         playlist_name: ['', Validators.required],
-        playlist_owner: ['', Validators.required]
+        playlist_owner_id: ['', Validators.required],
+        playlist_owner_name: ['', Validators.required]
       }
     )
     // 
@@ -73,8 +74,15 @@ export class CreatePlaylistComponent implements OnInit {
 
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
-        this.firstFormGroup.controls['playlist_owner'].setValue(data[0]._id)
-        console.log(data[0]._id)
+        this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
+        console.log('#PLAYLIST CREATOR ID',data[0]._id)
+      }
+    })
+
+    this.filteredOptions.subscribe((data : any[]) => {
+      if (data.length > 0) {
+        this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
+        console.log('#PLAYLIST CREATOR',data[0].name)
       }
     })
   }
@@ -84,13 +92,7 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   private _filter(name: string): User[] {
-    console.log('#FILTERED NAME PLAYLIST', name)
     const filterValue = name.toLowerCase();
-
-    this.options.filter(option => {
-      console.log('$Filtered Values',option.name.toLowerCase().includes(filterValue))
-    })
-
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
   //
@@ -125,7 +127,7 @@ export class CreatePlaylistComponent implements OnInit {
     
     console.log(this.firstFormGroup.get('playlist_name').value)
     
-    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this.firstFormGroup.get('playlist_owner').value, this.contents)
+    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this.firstFormGroup.get('playlist_owner_id').value, this.firstFormGroup.get('playlist_owner_name').value, this.contents)
     this._playlist.create_playlist(structuredPayload).subscribe(
       (data: CREATE_PLAYLIST) => {
 
@@ -143,7 +145,11 @@ export class CreatePlaylistComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result:', result);
       this.contents = result;
-      this.onFormSubmit();
+      
+      if(result && result.length > 0){
+        this.onFormSubmit();
+      }
+      
     });
   }
 
