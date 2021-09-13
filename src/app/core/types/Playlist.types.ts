@@ -4,13 +4,17 @@ export class CREATE_PLAYLIST {
     playlist_name: string;
     playlist_owner_id: string;
     playlist_owner_name: string;
+    date_created: string;
     contents: SAVE_FILE_INFO[];
+    uuid: string;
 
-    constructor(p_name: string, p_owner_id: string, p_owner_name: string, p_contents: SAVE_FILE_INFO[]) {
+    constructor(p_name: string, p_owner_id: string, p_owner_name: string, d_created: string, p_contents: SAVE_FILE_INFO[], uuid: string) {
         this.playlist_name = p_name;
         this.playlist_owner_id = p_owner_id;
         this.playlist_owner_name = p_owner_name;
+        this.date_created = d_created;
         this.contents = p_contents;
+        this.uuid = uuid;
     }
 }
 
@@ -21,4 +25,5 @@ export type PLAYLIST = {
     playlist_owner_id: string;
     playlist_owner_name: string;
     contents: SAVE_FILE_INFO[];
+    uuid: string;
 }

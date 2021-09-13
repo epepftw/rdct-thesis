@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -37,6 +37,8 @@ export class CreatePlaylistComponent implements OnInit {
   options: User[] = [];
   filteredOptions: Observable<User[]>;
   created_playlist: any[] = [];
+  date_created: string;
+  uuid: string;
 //
   constructor(
     public dialog: MatDialog,
@@ -127,7 +129,7 @@ export class CreatePlaylistComponent implements OnInit {
     
     console.log(this.firstFormGroup.get('playlist_name').value)
     
-    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this.firstFormGroup.get('playlist_owner_id').value, this.firstFormGroup.get('playlist_owner_name').value, this.contents)
+    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this.firstFormGroup.get('playlist_owner_id').value, this.firstFormGroup.get('playlist_owner_name').value, this.date_created, this.contents, this.uuid)
     this._playlist.create_playlist(structuredPayload).subscribe(
       (data: CREATE_PLAYLIST) => {
 

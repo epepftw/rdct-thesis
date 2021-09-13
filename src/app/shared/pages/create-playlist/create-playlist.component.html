@@ -9,7 +9,7 @@
           <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select User">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option.name}}
+              {{ option.name }}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>

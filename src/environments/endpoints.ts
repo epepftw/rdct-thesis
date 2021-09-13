@@ -32,5 +32,10 @@ export const endpoints = {
         // Playlist
         create_playlist: '/playlist/create'
         
+    },
+
+    put: {
+        // Playlist
+        update: '/playlist/update'
     }
 }

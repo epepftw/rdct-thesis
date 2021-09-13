@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth.service';
 import { CREATE_PLAYLIST } from '../../types/Playlist.types';
+import { SAVE_FILE_INFO } from '../../types/MediaFile.types';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class PlaylistService {
 
     get_playlist_page(playlistId : string): Observable<any>{
       return this._http.get<any>(`${environment.base_api}${environment.get.playlist}/${playlistId}`, this.header )
+    }
+
+    update_playlist_contents(data : any): Observable<any>{
+      return this._http.put<any>(`${environment.base_api}${environment.put.update}`, data, this.header )
     }
 }

@@ -129,7 +129,6 @@ export class MediaFileModalComponent implements OnInit {
     return this.selected_files.includes(data)
   }
   // Function
-
   savePlaylist(data: CREATE_PLAYLIST) {
     this._playlist.create_playlist(data).subscribe(
       data => {
