@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
 import { Keys } from 'src/app/core/types/Keys.types';
 import { FormControl } from '@angular/forms';
@@ -52,8 +51,7 @@ export class UserKeyComponent implements OnInit {
 
   constructor(
           public dialog: MatDialog,
-          private _keys: UserKeysService, 
-          private modalService: NgbModal) { 
+          private _keys: UserKeysService) { 
                 
               }
 
@@ -93,16 +91,6 @@ export class UserKeyComponent implements OnInit {
   //   modalRef.componentInstance.rawdata = data;
   //   console.log(data)
   // }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
   searchData(){
     if (this.search_key !== '') {

@@ -4,14 +4,22 @@ export const endpoints = {
         users: '/users',
         users_profile: '/users/profile',
         // Keys
+
         keys: '/keys',
         // Roles
+
         roles: '/roles',
+
         // Advertisers
         advertisers: '/users/advertisers',
+
         // Media
         mediaFiles: '/media',
-        mediaFiles_by_userId: '/media/getByUserId'
+        mediaFiles_by_userId: '/media/getByUserId',
+
+        // Playlist
+        playlist: '/playlist'
+
     },
     post: {
         // Users
@@ -24,5 +32,10 @@ export const endpoints = {
         // Playlist
         create_playlist: '/playlist/create'
         
+    },
+
+    put: {
+        // Playlist
+        update: '/playlist/update'
     }
 }

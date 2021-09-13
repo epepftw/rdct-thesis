@@ -30,6 +30,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MediaFileModalComponent } from './components/media-file-modal/media-file-modal.component';
 import { SortablejsModule } from 'ngx-sortablejs';
+import { SinglePlaylistComponent } from './pages/single-playlist/single-playlist.component';
+import { PlaylistContentTableComponent } from './components/playlist-content-table/playlist-content-table.component';
 
 
 const shared_components = [
@@ -65,7 +67,9 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
-  		MediaFileModalComponent
+  		MediaFileModalComponent,
+    SinglePlaylistComponent,
+    PlaylistContentTableComponent
 	],
 	entryComponents: [
 		GenerateKeyFormComponent

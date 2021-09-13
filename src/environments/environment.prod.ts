@@ -7,5 +7,6 @@ export const environment = {
                 //'A7dL8mkNqRwmsg0gvBji6z'
 
   get: endpoints.get,
-  post: endpoints.post
+  post: endpoints.post,
+  put: endpoints.put
 };

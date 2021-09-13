@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CreatePlaylistComponent } from 'src/app/shared/pages/create-playlist/create-playlist.component';
 import { NewUserComponent } from 'src/app/shared/pages/new-user/new-user.component';
+import { SinglePlaylistComponent } from 'src/app/shared/pages/single-playlist/single-playlist.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AdvertisersComponent } from './pages/advertisers/advertisers.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -44,6 +45,10 @@ export const ADMIN_ROUTES: Routes = [
                 component: CreatePlaylistComponent
             },
             {
+                path: 'playlist/:id',
+                component: SinglePlaylistComponent
+            },
+            {
                 path: 'template',
                 component: TemplateComponent
             },
@@ -54,11 +59,7 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'user/add',
                 component: NewUserComponent
-            },
-            {
-                path: ''
             }
-
         ]
 	}
 ];
