@@ -4,10 +4,10 @@ export const endpoints = {
         users: '/users',
         users_profile: '/users/profile',
         // Keys
-
         keys: '/keys',
-        // Roles
+        keys_by_userId: '/keys/getByUserId',
 
+        // Roles
         roles: '/roles',
 
         // Advertisers
@@ -18,7 +18,8 @@ export const endpoints = {
         mediaFiles_by_userId: '/media/getByUserId',
 
         // Playlist
-        playlist: '/playlist'
+        playlist: '/playlist',
+        playlist_by_userId: '/playlist/getByUserId',
 
     },
     post: {

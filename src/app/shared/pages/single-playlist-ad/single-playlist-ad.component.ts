@@ -3,17 +3,17 @@ import { ActivatedRoute, Router } from '@angular/router';import { PlaylistServic
 import { CREATE_PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
-import { MediaFileModalComponent } from '../../components/media-file-modal/media-file-modal.component'
 import {MatDialog} from '@angular/material/dialog';
 import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
 import * as Sortable from 'sortablejs';
 import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
+import { MediaFileModalAdComponent } from '../../components/media-file-modal-ad/media-file-modal-ad.component';
 @Component({
-  selector: 'app-single-playlist',
-  templateUrl: './single-playlist.component.html',
-  styleUrls: ['./single-playlist.component.scss']
+  selector: 'app-single-playlist-ad',
+  templateUrl: './single-playlist-ad.component.html',
+  styleUrls: ['./single-playlist-ad.component.scss']
 })
-export class SinglePlaylistComponent implements OnInit {
+export class SinglePlaylistAdComponent implements OnInit {
   playlist_id: string;
   playlist_data: PLAYLIST;
   contents: any[] = [];
@@ -57,7 +57,7 @@ export class SinglePlaylistComponent implements OnInit {
 
   //MODAL
   openDialog() {
-    const dialogRef = this.dialog.open(MediaFileModalComponent);
+    const dialogRef = this.dialog.open(MediaFileModalAdComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result:', result);
       this.contents = result;

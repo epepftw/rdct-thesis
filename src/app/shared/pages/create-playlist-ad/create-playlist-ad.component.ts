@@ -1,4 +1,4 @@
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -9,7 +9,7 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
 //
 import { map, startWith } from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import { MediaFileModalComponent } from '../../components/media-file-modal/media-file-modal.component';
+import { MediaFileModalAdComponent } from '../../components/media-file-modal-ad/media-file-modal-ad.component';
 // TYPES
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
@@ -19,11 +19,11 @@ export interface User {
 }
 
 @Component({
-  selector: 'app-create-playlist',
-  templateUrl: './create-playlist.component.html',
-  styleUrls: ['./create-playlist.component.scss']
+  selector: 'app-create-playlist-ad',
+  templateUrl: './create-playlist-ad.component.html',
+  styleUrls: ['./create-playlist-ad.component.scss']
 })
-export class CreatePlaylistComponent implements OnInit {
+export class CreatePlaylistAdComponent implements OnInit {
   formSubmitted: any;
   isLinear = true;
   user_name: any[] = [];
@@ -141,7 +141,7 @@ export class CreatePlaylistComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(MediaFileModalComponent);
+    const dialogRef = this.dialog.open(MediaFileModalAdComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result:', result);

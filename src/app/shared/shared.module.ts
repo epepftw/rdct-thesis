@@ -32,6 +32,10 @@ import { MediaFileModalComponent } from './components/media-file-modal/media-fil
 import { SortablejsModule } from 'ngx-sortablejs';
 import { SinglePlaylistComponent } from './pages/single-playlist/single-playlist.component';
 import { PlaylistContentTableComponent } from './components/playlist-content-table/playlist-content-table.component';
+import { AssignKeyComponent } from './components/assign-key/assign-key.component';
+import { MediaFileModalAdComponent } from './components/media-file-modal-ad/media-file-modal-ad.component';
+import { CreatePlaylistAdComponent } from './pages/create-playlist-ad/create-playlist-ad.component';
+import { SinglePlaylistAdComponent } from './pages/single-playlist-ad/single-playlist-ad.component';
 
 
 const shared_components = [
@@ -69,7 +73,11 @@ const ng_material = [
 		shared_components,
   		MediaFileModalComponent,
     SinglePlaylistComponent,
-    PlaylistContentTableComponent
+    PlaylistContentTableComponent,
+    AssignKeyComponent,
+    MediaFileModalAdComponent,
+    CreatePlaylistAdComponent,
+    SinglePlaylistAdComponent
 	],
 	entryComponents: [
 		GenerateKeyFormComponent
