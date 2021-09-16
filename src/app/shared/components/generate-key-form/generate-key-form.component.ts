@@ -101,15 +101,17 @@ export class GenerateKeyFormComponent implements OnInit {
   onGenKeyFormSubmit() {
 		this._keys.gen_keys(
 			this.key_gen_form.get('name').value, 
-			this.key_gen_form.get('count').value
+			this.key_gen_form.get('count').value,
+      
 		).subscribe(
 			(res) => {
-        alert(res.msg)
-        window.location.reload();
-        
+          alert(res.msg)
+          window.location.reload();
+          this.keys
 			},
 			(err) => {
 				console.log('#ERROR', err)
+         alert("No such Advertiser")
 			}
 		)
   }
