@@ -14,6 +14,7 @@ import { MediaFileModalAdComponent } from '../../components/media-file-modal-ad/
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 import { CREATE_PLAYLIST } from 'src/app/core/types/Playlist.types'
+import { AuthService } from 'src/app/core/services/auth.service';
 export interface User {
   name: string;
 }
@@ -46,12 +47,12 @@ export class CreatePlaylistAdComponent implements OnInit {
     private _form: FormBuilder,
     private _users: UserService,
     private _keys: UserKeysService,
+    private _auth: AuthService,
     private _playlist: PlaylistService,
     private _router: Router) { }
 
   ngOnInit(): void {
     this.getMediaFiles();
-    this.getUsers();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -61,53 +62,53 @@ export class CreatePlaylistAdComponent implements OnInit {
     this.firstFormGroup = this._form.group(
       {
         playlist_name: ['', Validators.required],
-        playlist_owner_id: ['', Validators.required],
-        playlist_owner_name: ['', Validators.required]
+        // playlist_owner_id: ['', Validators.required],
+        // playlist_owner_name: ['', Validators.required]
       }
     )
     // 
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
-      );
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(value => typeof value === 'string' ? value : value.name),
+    //     map(name => name ? this._filter(name) : this.options.slice())
+    //   );
 
-    this.filteredOptions.subscribe((data : any[]) => {
-      if (data.length > 0) {
-        this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
-        console.log('#PLAYLIST CREATOR ID',data[0]._id)
-      }
-    })
+    // this.filteredOptions.subscribe((data : any[]) => {
+    //   if (data.length > 0) {
+    //     this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
+    //     console.log('#PLAYLIST CREATOR ID',data[0]._id)
+    //   }
+    // })
 
-    this.filteredOptions.subscribe((data : any[]) => {
-      if (data.length > 0) {
-        this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
-        console.log('#PLAYLIST CREATOR',data[0].name)
-      }
-    })
+    // this.filteredOptions.subscribe((data : any[]) => {
+    //   if (data.length > 0) {
+    //     this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
+    //     console.log('#PLAYLIST CREATOR',data[0].name)
+    //   }
+    // })
   }
   
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
+  // displayFn(user: User): string {
+  //   return user && user.name ? user.name : '';
+  // }
 
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-  //
-  getUsers() {
-    this._users.get_users().subscribe(
-      (data: any) =>  {
-        this.options = data;
-        console.log('#USERS', this.options)
-      }
-    )
-  }
+  // private _filter(name: string): User[] {
+  //   const filterValue = name.toLowerCase();
+  //   return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  // }
+  // //
+  // getUsers() {
+  //   this._users.get_users().subscribe(
+  //     (data: any) =>  {
+  //       this.options = data;
+  //       console.log('#USERS', this.options)
+  //     }
+  //   )
+  // }
 
   getMediaFiles() {
-    this._mediaFiles.get_mediaFiles().subscribe(
+    this._mediaFiles.get_userFiles(this._auth.getCurrentUser().user._id).subscribe(
       (data: any) =>  {
         this.mediaFiles = data;
         console.log('#MEDIA FILES', this.mediaFiles)
@@ -124,15 +125,16 @@ export class CreatePlaylistAdComponent implements OnInit {
     )
   }
 
+
   onFormSubmit() {
     
     console.log(this.firstFormGroup.get('playlist_name').value)
     
-    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this.firstFormGroup.get('playlist_owner_id').value, this.firstFormGroup.get('playlist_owner_name').value, this.date_created, this.contents, this.uuid)
+    const structuredPayload = new CREATE_PLAYLIST(this.firstFormGroup.get('playlist_name').value, this._auth.getCurrentUser().user._id, this._auth.getCurrentUser().user.name, this.date_created, this.contents, this.uuid)
     this._playlist.create_playlist(structuredPayload).subscribe(
       (data: CREATE_PLAYLIST) => {
 
-        this._router.navigate(['/admin/playlist/', data._id])
+        this._router.navigate(['/advertiser/playlist/', data._id])
       },
       error => {
         console.log(error)

@@ -36,6 +36,10 @@ import { AssignKeyComponent } from './components/assign-key/assign-key.component
 import { MediaFileModalAdComponent } from './components/media-file-modal-ad/media-file-modal-ad.component';
 import { CreatePlaylistAdComponent } from './pages/create-playlist-ad/create-playlist-ad.component';
 import { SinglePlaylistAdComponent } from './pages/single-playlist-ad/single-playlist-ad.component';
+import { MyChartComponent } from './components/my-chart/my-chart.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProfileKeyComponent } from './components/profile-key/profile-key.component';
+import { ProfileTableComponent } from './components/profile-table/profile-table.component';
 
 
 const shared_components = [
@@ -52,7 +56,15 @@ const shared_components = [
 	NewuserFormComponent,
 	GenerateKeyFormComponent,
 	PlaylistTableComponent,
-	UserProfileComponent
+	UserProfileComponent,
+	MediaFileModalComponent,
+    SinglePlaylistComponent,
+    PlaylistContentTableComponent,
+    AssignKeyComponent,
+    MediaFileModalAdComponent,
+    CreatePlaylistAdComponent,
+    SinglePlaylistAdComponent,
+    MyChartComponent
 ]
 
 const ng_material = [
@@ -71,13 +83,9 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
-  		MediaFileModalComponent,
-    SinglePlaylistComponent,
-    PlaylistContentTableComponent,
-    AssignKeyComponent,
-    MediaFileModalAdComponent,
-    CreatePlaylistAdComponent,
-    SinglePlaylistAdComponent
+  HeaderComponent,
+  ProfileKeyComponent,
+  ProfileTableComponent
 	],
 	entryComponents: [
 		GenerateKeyFormComponent

@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let a of users">
-            <td>{{ a.name }}</td>
+            <td><a [routerLink]="['profile']">{{ a.name }}</a></td>
             <td>{{ a.username }}</td>
             <td>{{ a.email }}</td>
             <td>{{ a.phone }}</td>

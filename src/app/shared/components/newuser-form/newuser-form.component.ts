@@ -234,7 +234,7 @@ export class NewuserFormComponent implements OnInit {
 				if (!data.success) {
 					this.f.re_type.enable();
 				} else {
-					// this._router.navigate(['/admin/user'])
+					this._router.navigate(['/admin/user'])
 				}
 			}, 
 			error => {
@@ -263,7 +263,7 @@ export class NewuserFormComponent implements OnInit {
 
 					this.v.re_type.enable();
 				} else {
-					// this._router.navigate(['/admin/user'])
+					this._router.navigate(['/admin/user'])
 				}
 			}, 
 			error => {
