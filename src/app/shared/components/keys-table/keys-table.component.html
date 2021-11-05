@@ -10,7 +10,7 @@
     <tbody>
         <tr *ngFor="let a of data">
             <td>{{ a.advertiser.name }}</td>
-            <td>{{ a.key }}</td>
+            <td><a [routerLink]="[a._id]">{{ a.key }}</a></td>
             <td>{{ a.isOnline ? 'Online':'Offline'}}</td>
             <td>{{ a.dateCreated }}</td>
         </tr>

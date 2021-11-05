@@ -6,7 +6,7 @@ import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
-
+import { io } from "socket.io-client";
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -15,14 +15,15 @@ import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 export class MediaComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
-
+  socket: any;
   card_data_sample: any;
   
   
 
   constructor(
     private _mediaFiles: MediaFileService,
-    private _auth: AuthService ) { 
+    private _auth: AuthService ) {  
+                this.socket = io('http://localhost:3200')
                 this.filestack_client = filestack.init(environment.filestackAPI)
               }
 
@@ -102,6 +103,10 @@ export class MediaComponent implements OnInit {
       this.filestack_client.picker(filestack_options).open();
     }
   
+    pushContents() {
+      this.socket.emit('pushUpdates');
+    }
+
     saveUploadedFileInfo(data: SAVE_FILE_INFO[]) {
       this._mediaFiles.save_uploaded_file(data).subscribe(
         data => {

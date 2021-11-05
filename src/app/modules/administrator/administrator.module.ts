@@ -13,6 +13,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ScreenComponent } from './pages/screen/screen.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 		PlaylistComponent,
 		TemplateComponent,
 		UsersComponent,
-  		UserKeyComponent
+  		UserKeyComponent,
+    	ScreenComponent
 	],
 	imports: [
 		CommonModule,

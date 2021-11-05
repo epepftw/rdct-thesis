@@ -1,0 +1,17 @@
+<div class="p-4">
+    <div class="container-fluid" *ngIf="key_data">
+        <div>
+            <h1>{{ key_data.advertiser.name }}</h1>
+            <h2>License Key : {{ key_data.key }}</h2>
+            <h4>Key ID : {{ key_data._id }}</h4>
+        </div>
+        <div>
+            <button mat-button  mat-raised-button (click)="openDialog()">Assign Playlist</button>
+        </div>
+    
+        <div class="card text-white shadow-lg p-3 bg-white">
+           <h2>Playlist(s) Assigned</h2>
+           <h4>(These are just samples.)</h4>
+        </div>
+    </div>
+</div>

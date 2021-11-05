@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
+import { CreateScreenComponent } from 'src/app/shared/components/create-screen/create-screen.component';
 import { CreatePlaylistComponent } from 'src/app/shared/pages/create-playlist/create-playlist.component';
+import { CreateTemplateComponent } from 'src/app/shared/pages/create-template/create-template.component';
 import { NewUserComponent } from 'src/app/shared/pages/new-user/new-user.component';
+import { SingleKeyComponent } from 'src/app/shared/pages/single-key/single-key.component';
 import { SinglePlaylistComponent } from 'src/app/shared/pages/single-playlist/single-playlist.component';
 import { UserProfileComponent } from 'src/app/shared/pages/user-profile/user-profile.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -8,6 +11,7 @@ import { AdvertisersComponent } from './pages/advertisers/advertisers.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
+import { ScreenComponent } from './pages/screen/screen.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -32,7 +36,11 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'keys',
                 component: UserKeyComponent
-            },  
+            },
+            {
+                path: 'keys/:id',
+                component: SingleKeyComponent
+            },
             {
                 path: 'media',
                 component: MediaComponent
@@ -50,8 +58,20 @@ export const ADMIN_ROUTES: Routes = [
                 component: SinglePlaylistComponent
             },
             {
+                path: 'screen',
+                component: ScreenComponent
+            },
+            {
+                path: 'screen/create',
+                component: CreateScreenComponent
+            },
+            {
                 path: 'template',
                 component: TemplateComponent
+            },
+            {
+                path: 'template/create',
+                component: CreateTemplateComponent
             },
             {
                 path: 'user',

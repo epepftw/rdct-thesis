@@ -1,0 +1,88 @@
+<div class="container-fluid p-4">
+    <h1>Create Template</h1>
+    <form [formGroup]="createTemplateForm">
+        <mat-form-field>
+            <mat-label>Template Name</mat-label>
+            <input type="text" matInput placeholder="Ex. Spaghetti Template" formControlName="name">
+        </mat-form-field>
+        <div>
+          <button class="m-1" mat-raised-button (click)="openDialog()">Add Zone</button>
+          <button class="m-1" mat-raised-button color="primary"  (click)="onSave()">Save</button>
+         </div>
+    </form>
+    <div class="row">
+      <div class="col-lg-5">
+        <div *ngFor="let z of zones; let i = index">        
+              <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel class=" my-3">
+                  <mat-expansion-panel-header [ngStyle]="{'background': z.background}">
+                    <mat-panel-title>
+                      <p style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Name: {{z.zone_name}}</p>     
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <p style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Size: {{z.width}} x {{z.height}}</p>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  
+                  <mat-form-field class="form-field mt-4 m-2">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" [(ngModel)]="zones[i].zone_name" [value]="zones[i].zone_name">
+                  </mat-form-field>
+
+                  <mat-form-field class="form-field mt-4 m-2">
+                    <mat-label>Width</mat-label>
+                    <input matInput type="number" [(ngModel)]="zones[i].width" [value]="zones[i].width">
+                  </mat-form-field>
+
+
+                  <mat-form-field class="form-field mt-4 m-2">
+                    <mat-label>Height</mat-label>
+                    <input matInput type="number" [(ngModel)]="zones[i].height" [value]="zones[i].height">
+                  </mat-form-field>
+                      
+                  <mat-form-field class="form-field mt-4 m-2">
+                    <mat-label>Position X</mat-label>
+                    <input matInput type="number" [(ngModel)]="zones[i].position_x" [value]="zones[i].position_x">
+                  </mat-form-field>
+
+                  <mat-form-field class="form-field m-2">
+                    <mat-label>Position Y</mat-label>
+                    <input matInput type="number" [(ngModel)]="zones[i].position_y" [value]="zones[i].position_y">
+                  </mat-form-field>
+
+                  <mat-form-field class="form-field m-2">
+                    <mat-label>Z-Index</mat-label>
+                    <input matInput type="number" [(ngModel)]="zones[i].z_index" [value]="zones[i].z_index">
+                  </mat-form-field>
+
+                  <mat-form-field class="form-field m-2">
+                    <mat-label>Background</mat-label>
+                    <input matInput type="color" [(ngModel)]="zones[i].background" [value]="zones[i].background">
+                  </mat-form-field>
+              
+                </mat-expansion-panel>
+              </mat-accordion>
+              
+        </div>
+      
+       
+      </div>
+      
+      <div class="col-lg-7">
+        <div class="template-demo">
+          <div class="text-white" *ngFor="let z of zones"
+          [ngStyle]="{
+            'background': z.background,
+            'width.%': (z.width/1920)*100,
+            'height.%': (z.height/1080)*100,
+            'left.%': (z.position_x/1920)*100,
+            'top.%': (z.position_y/1080)*100,
+            'z-index': z.z_index,
+            'position': 'absolute'
+          }">
+        </div>
+          
+        </div>
+      </div>
+    </div>
+</div>

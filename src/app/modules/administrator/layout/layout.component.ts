@@ -28,6 +28,11 @@ export class LayoutComponent implements OnInit {
       link: "media"
     },
     {
+      label: "Screens",
+      icon: "fas fa-tv",
+      link: "screen"
+    },
+    {
       label: "Playlists",
       icon: "fas fa-play",
       link: "playlist"

@@ -1,17 +1,18 @@
 export const endpoints = {
     get: {
         // Users
-        users: '/users',
-        users_profile: '/users/profile',
+        users: '/user',
+        users_profile: '/user/profile',
         // Keys
         keys: '/keys',
+        keys_by_keyId: '/keys/getByKeyId',
         keys_by_userId: '/keys/getByUserId',
 
         // Roles
-        roles: '/roles',
+        roles: '/role',
 
         // Advertisers
-        advertisers: '/users/advertisers',
+        advertisers: '/user/advertisers',
 
         // Media
         mediaFiles: '/media',
@@ -21,22 +22,40 @@ export const endpoints = {
         playlist: '/playlist',
         playlist_by_userId: '/playlist/getByUserId',
 
+        // Template
+        template: '/template',
+
+        // Zone
+        zone: '/zones',
+
+        // Screen
+        screen: '/screen'
     },
     post: {
         // Users
-        authenticate: '/users/authenticate',
-        register: '/users/register',
+        authenticate: '/user/authenticate',
+        register: '/user/register',
         // Keys
         gen_key: '/keys/add',
         // Media
         save_uploaded_file: '/media/add',
         // Playlist
-        create_playlist: '/playlist/create'
+        create_playlist: '/playlist/create',
+        // Template
+        create_template: '/template/create',
+
+        // Zone
+        create_zone: '/zones/create',
+
+        // Screen
+        create_screen: '/screen/create',
         
     },
 
     put: {
         // Playlist
-        update: '/playlist/update'
+        update: '/playlist/update',
+        // Keys
+        update_key: '/keys/update'
     }
 }

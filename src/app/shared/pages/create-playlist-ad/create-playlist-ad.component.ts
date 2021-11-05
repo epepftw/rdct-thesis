@@ -62,50 +62,9 @@ export class CreatePlaylistAdComponent implements OnInit {
     this.firstFormGroup = this._form.group(
       {
         playlist_name: ['', Validators.required],
-        // playlist_owner_id: ['', Validators.required],
-        // playlist_owner_name: ['', Validators.required]
       }
     )
-    // 
-    // this.filteredOptions = this.myControl.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => typeof value === 'string' ? value : value.name),
-    //     map(name => name ? this._filter(name) : this.options.slice())
-    //   );
-
-    // this.filteredOptions.subscribe((data : any[]) => {
-    //   if (data.length > 0) {
-    //     this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
-    //     console.log('#PLAYLIST CREATOR ID',data[0]._id)
-    //   }
-    // })
-
-    // this.filteredOptions.subscribe((data : any[]) => {
-    //   if (data.length > 0) {
-    //     this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
-    //     console.log('#PLAYLIST CREATOR',data[0].name)
-    //   }
-    // })
   }
-  
-  // displayFn(user: User): string {
-  //   return user && user.name ? user.name : '';
-  // }
-
-  // private _filter(name: string): User[] {
-  //   const filterValue = name.toLowerCase();
-  //   return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
-  // }
-  // //
-  // getUsers() {
-  //   this._users.get_users().subscribe(
-  //     (data: any) =>  {
-  //       this.options = data;
-  //       console.log('#USERS', this.options)
-  //     }
-  //   )
-  // }
 
   getMediaFiles() {
     this._mediaFiles.get_userFiles(this._auth.getCurrentUser().user._id).subscribe(

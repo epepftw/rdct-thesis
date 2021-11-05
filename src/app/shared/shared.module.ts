@@ -16,18 +16,6 @@ import { GenerateKeyFormComponent } from './components/generate-key-form/generat
 import { PlaylistTableComponent } from './components/playlist-table/playlist-table.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { CreatePlaylistComponent } from './pages/create-playlist/create-playlist.component';
-
-//Angular Material Components
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
-import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
-import {MatStepperModule} from '@angular/material/stepper';
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { MediaFileModalComponent } from './components/media-file-modal/media-file-modal.component';
 import { SortablejsModule } from 'ngx-sortablejs';
 import { SinglePlaylistComponent } from './pages/single-playlist/single-playlist.component';
@@ -40,6 +28,27 @@ import { MyChartComponent } from './components/my-chart/my-chart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileKeyComponent } from './components/profile-key/profile-key.component';
 import { ProfileTableComponent } from './components/profile-table/profile-table.component';
+import { SingleKeyComponent } from './pages/single-key/single-key.component';
+import { CreateTemplateComponent } from './pages/create-template/create-template.component';
+import { CreateZoneComponent } from './components/create-zone/create-zone.component';
+import { AddedZoneLayoutComponent } from './components/added-zone-layout/added-zone-layout.component';
+
+//Angular Material Components
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import {MatStepperModule} from '@angular/material/stepper';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CreateScreenComponent } from './components/create-screen/create-screen.component';
+
 
 
 const shared_components = [
@@ -64,10 +73,19 @@ const shared_components = [
     MediaFileModalAdComponent,
     CreatePlaylistAdComponent,
     SinglePlaylistAdComponent,
-    MyChartComponent
+    MyChartComponent,
+	HeaderComponent,
+	ProfileKeyComponent,
+	ProfileTableComponent,
+	SingleKeyComponent,
+	CreateTemplateComponent,
+	CreateZoneComponent,
+	AddedZoneLayoutComponent,
+	CreateScreenComponent
 ]
 
 const ng_material = [
+	MatIconModule,
 	MatButtonModule,
 	MatInputModule,
 	MatCardModule,
@@ -77,15 +95,16 @@ const ng_material = [
 	MatAutocompleteModule,
 	MatStepperModule,
 	ScrollingModule,
-	MatFormFieldModule
+	MatFormFieldModule,
+	MatDatepickerModule,
+	MatExpansionModule
 ]
 
 @NgModule({
 	declarations: [
 		shared_components,
-  HeaderComponent,
-  ProfileKeyComponent,
-  ProfileTableComponent
+ 
+  
 	],
 	entryComponents: [
 		GenerateKeyFormComponent

@@ -1,6 +1,6 @@
  import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';

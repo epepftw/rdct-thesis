@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
+ import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -19,7 +19,7 @@ export class GenerateKeyFormComponent implements OnInit {
   myControl = new FormControl();
   options : any[] = []; 
   keys: any[] = []; 
-  key_gen_form! : FormGroup;
+  key_gen_form : FormGroup;
   selected_name : string;
   filteredOptions: Observable<any[]>;
 

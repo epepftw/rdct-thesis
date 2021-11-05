@@ -61,20 +61,6 @@ export class UserKeyComponent implements OnInit {
     this.getKeys();
   }
 
-//   openAdd() {
-//     const modalRef = this.modalService.open(GenerateKeyFormComponent);
-//     modalRef.componentInstance.test = 'Generate Key';
-//     modalRef.closed.subscribe(
-//       (res) => {
-//         console.log(res)
-//       },
-//       (err) => {
-
-//       }
-//     )
-//   //   modalRef.componentInstance.rawdata = data;
-//   //   console.log(data)
-//  }
 
   openDialog() {
     const dialogRef = this.dialog.open(GenerateKeyFormComponent);
@@ -83,16 +69,6 @@ export class UserKeyComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-
-
-  
-  // openDelete(data : any) {
-  //   const modalRef = this.modalService.open(GenerateKeyFormComponent);
-  //   modalRef.componentInstance.test = 'Delete';
-  //   modalRef.componentInstance.rawdata = data;
-  //   console.log(data)
-  // }
 
   searchData(){
     if (this.search_key !== '') {
