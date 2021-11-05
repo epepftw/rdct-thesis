@@ -11,6 +11,6 @@ export class CREATE_TEMPLATE {
 }
 
 export type TEMPLATE_TYPE = {
-    _id?: string;
     name: string;
+    zones: CREATE_ZONE[];
 }

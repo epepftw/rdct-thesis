@@ -1,20 +1,30 @@
 <div class="container-fluid p-4">
     <div class="row">
-        <h2>Create Template</h2>
+        <h2>Create Screen</h2>
     </div>
     <div class="row">
-        
         <mat-stepper orientation="vertical">
-            <mat-step>
-            <ng-template matStepLabel>Template Name</ng-template>
-            <ng-template matStepContent>
-                <mat-form-field>
-                    <mat-label>Screen Name</mat-label>
-                    <input matInput type="text" class="m-2" placeholder="Ex. Spaghetti Dessert">
-                </mat-form-field>
-                <br>
-                <button mat-button matStepperNext>Next</button>
-            </ng-template>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Screen Info</ng-template>
+                    <ng-template matStepContent>
+                        <mat-form-field class="m-2">
+                            <mat-label>Screen Name</mat-label>
+                            <input matInput type="text" placeholder="Ex. Spaghetti Dessert" formControlName="screen_name" required>
+                        </mat-form-field>
+                        <mat-form-field class="m-2" *ngIf="options?.length > 0">
+                            <mat-label>Select Advertiser</mat-label>
+                            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select Advertiser">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option *ngFor="let name of filteredOptions | async" [value]="name" required>
+                                    {{ name.name }}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <br>
+                        <button mat-button matStepperNext>Next</button>
+                    </ng-template>
+                </form>
             </mat-step>
             <mat-step>
             <ng-template matStepLabel>Select Template</ng-template>
@@ -36,7 +46,7 @@
                                 </div>
                             
                             </div>
-                          <button mat-raised-button class="m-2" color="primary">{{t.template.name | titlecase}}</button>
+                          <button mat-raised-button matStepperNext class="m-2" color="primary"  (click)="onSelectTemplate(t)" required>{{t.template.name | titlecase}}</button>
                     </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>
@@ -45,7 +55,18 @@
             </mat-step>
             <mat-step>
             <ng-template matStepLabel>Assign Playlist</ng-template>
-            <p>This content was rendered eagerly</p>
+                <ng-container *ngIf="selected_template">
+                    <mat-form-field appearance="fill" class="m-2"*ngFor="let z of selected_template.zones">
+                        
+                        <mat-label>{{ z.zone_name }}</mat-label>
+                        <mat-select (selectionChange)="onPlaylistSelect($event, z)">
+                          <mat-option *ngFor="let p of playlist" [value]="p">
+                            {{ p.playlist_name }}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+                <br>
             <button mat-button matStepperPrevious>Back</button>
             </mat-step>
         </mat-stepper>

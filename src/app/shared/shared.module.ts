@@ -47,6 +47,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 import { CreateScreenComponent } from './components/create-screen/create-screen.component';
 
 
@@ -97,7 +98,8 @@ const ng_material = [
 	ScrollingModule,
 	MatFormFieldModule,
 	MatDatepickerModule,
-	MatExpansionModule
+	MatExpansionModule,
+	MatSelectModule
 ]
 
 @NgModule({
