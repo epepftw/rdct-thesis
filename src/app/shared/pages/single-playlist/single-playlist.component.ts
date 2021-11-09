@@ -15,7 +15,7 @@ import { AssignKeyComponent } from '../../components/assign-key/assign-key.compo
   styleUrls: ['./single-playlist.component.scss']
 })
 export class SinglePlaylistComponent implements OnInit {
-  playlist_id: string;
+  playlist_id: string = '';
   playlist_data: PLAYLIST;
   contents: any[] = [];
   mediaFiles: any[] = [];

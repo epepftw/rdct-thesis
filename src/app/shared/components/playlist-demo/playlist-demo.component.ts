@@ -11,7 +11,8 @@ import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 })
 export class PlaylistDemoComponent implements OnInit {
 
-  @Input() playlist_data :  SAVE_FILE_INFO[] = [];
+  @Input() playlist_data:  SAVE_FILE_INFO[] = [];
+  @Input() is_single_demo: boolean; 
   current_assets : string = '';
   current_file_type : string = '';
   current_sequence : number = 0;

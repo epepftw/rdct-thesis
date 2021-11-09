@@ -36,6 +36,7 @@
     
             <hr class="my-4">
             <div class="card text-white shadow-lg p-3 bg-white">
+                <h2>Playlist Table</h2>
                 <app-playlist-table
                 *ngIf="!searching; else search_result"
                 [column_title]="table_column_title"
@@ -48,5 +49,5 @@
                     [data]="search_results">
                     </app-playlist-table>
                 </ng-template>
-        </div>
+            </div>
     </div>

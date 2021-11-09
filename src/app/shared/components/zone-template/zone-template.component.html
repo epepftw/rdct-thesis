@@ -1,0 +1,26 @@
+
+<div class="text-white  zone-container"
+    *ngIf="zone"
+    [ngStyle]="{
+    'background': zone.background,
+    'width.%': (zone.width/1920)*100,
+    'height.%': (zone.height/1080)*100,
+    'left.%': (zone.position_x/1920)*100,
+    'top.%': (zone.position_y/1080)*100,
+    'zone-index': zone.z_index,
+    'position': 'absolute'
+    }">
+
+    <ng-container *ngIf="!playlist">
+         <div class="d-flex align-items-center justify-content-center h-100" title="{{ zone.width }} x {{ zone.height }}">
+            <div>
+                <p class="m-0">{{zone.zone_name}}</p>
+                <p class="size m-0"></p>
+            </div>
+         </div>
+    </ng-container>
+    
+    <div class="playlist-container" *ngIf="playlist">
+        <app-playlist-demo [playlist_data]="playlist.contents"></app-playlist-demo>
+    </div>
+</div>

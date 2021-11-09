@@ -1,3 +1,5 @@
+import { PLAYLIST } from "./Playlist.types";
+
 export class CREATE_ZONE {
     zone_name: string;
     background: string;
@@ -36,4 +38,9 @@ export type ZONE_TYPE = {
     position_x: number;
     position_y: number;
     template_id: string;
+}
+
+export type ZONE_SCREEN = {
+   zone_data : ZONE_TYPE;
+   zone_playlist_data : PLAYLIST;
 }

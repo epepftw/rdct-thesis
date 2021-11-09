@@ -17,3 +17,8 @@ export type TEMPLATE_TYPE = {
     }
     zones: CREATE_ZONE[];
 }
+
+export type TEMPLATE_SCREEN = {
+        _id?: string;
+        name: string;
+}

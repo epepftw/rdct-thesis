@@ -9,9 +9,9 @@
 
     <tbody>
         <tr *ngFor="let a of data">
-            <td><a [routerLink]="[a._id]">{{ a.playlist_name }}</a></td>
-            <td>{{ a.date_created }}</td>
-            <td>{{ a.playlist_owner_name }}</td>
+            <td><a [routerLink]="[a._id]">{{ a.screen_name }}</a></td>
+            <td>{{ a._id }}</td>
+            <td>{{ a.template_id }}</td>
             <td>{{ a.action }}</td>
         </tr>
     </tbody>

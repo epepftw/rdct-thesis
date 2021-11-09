@@ -1,3 +1,7 @@
+import { TEMPLATE_SCREEN } from "./Template.types";
+import { ZONE_SCREEN } from "./Zones.types";
+
+
 export class CREATE_SCREEN {
     
     screen_name: string;
@@ -17,6 +21,16 @@ export class CREATE_SCREEN {
         this.zone_playlist = zone_playlist;
     }
 }
+
+export type SCREEN = {
+    advertiser_id: string;
+    screen_id: string;
+    screen_name: string;
+    template: TEMPLATE_SCREEN;
+    zones: ZONE_SCREEN[];
+}
+
+
 
 export type SCREEN_TYPE = {
     _id?: string;

@@ -29,7 +29,12 @@ export class ScreenService {
     }
 
     //GET
-    
+    get_screen(): Observable<any> {
+      return this._http.get(`${environment.base_api}${environment.get.screen}`, this.header)
+    }
+    get_screen_byId(screenId : string): Observable<any> {
+      return this._http.get(`${environment.base_api}${environment.get.screen}/${screenId}`, this.header)
+    }
 
     //POST
     create_screen(data : CREATE_SCREEN): Observable<any> {
