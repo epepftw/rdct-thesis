@@ -5,6 +5,7 @@ import { CreateTemplateComponent } from 'src/app/shared/pages/create-template/cr
 import { NewUserComponent } from 'src/app/shared/pages/new-user/new-user.component';
 import { SingleKeyComponent } from 'src/app/shared/pages/single-key/single-key.component';
 import { SinglePlaylistComponent } from 'src/app/shared/pages/single-playlist/single-playlist.component';
+import { SingleScreenComponent } from 'src/app/shared/pages/single-screen/single-screen.component';
 import { UserProfileComponent } from 'src/app/shared/pages/user-profile/user-profile.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AdvertisersComponent } from './pages/advertisers/advertisers.component';
@@ -64,6 +65,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'screen/create',
                 component: CreateScreenComponent
+            },
+            {
+                path: 'screen/:id',
+                component: SingleScreenComponent
             },
             {
                 path: 'template',

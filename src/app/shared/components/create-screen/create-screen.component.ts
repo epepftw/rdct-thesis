@@ -8,8 +8,9 @@ import { TemplateService } from 'src/app/core/services/template/template.service
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { TEMPLATE_TYPE } from 'src/app/core/types/Template.types'
-import { CREATE_SCREEN, SCREEN_TYPE } from 'src/app/core/types/Screen.types';
+import { CREATE_SCREEN, SCREEN_TYPE, ZONE_PLAYLIST } from 'src/app/core/types/Screen.types';
 import { AdvertiserService } from 'src/app/core/services/advertiser/advertiser.service';
+import { ScreenService } from 'src/app/core/services/screen/screen.service';
 
 
 @Component({
@@ -28,17 +29,16 @@ export class CreateScreenComponent implements OnInit {
   selected_playlist: any;
   myControl = new FormControl();
   playlistOptions: PLAYLIST[] = [];
-  zone_playlist:  {
-    zone_id: string,
-    playlist_id: string,
-  }[] = [];
+  zone_playlist:  ZONE_PLAYLIST[] = [];
   filteredOptions: Observable<any[]>;
 
   constructor(
     private _form: FormBuilder,
     private _advertiser: AdvertiserService,
     private _template: TemplateService,
-    private _playlist: PlaylistService
+    private _playlist: PlaylistService,
+    private _screen: ScreenService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class CreateScreenComponent implements OnInit {
     this.firstFormGroup = this._form.group(
       {
         screen_name: ['', Validators.required],
-        advertiser_name: ['', Validators.required]
+        advertiser_id: ['', Validators.required]
       });
     this.secondFormGroup = this._form.group(
       {
@@ -63,7 +63,7 @@ export class CreateScreenComponent implements OnInit {
     
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
-        this.firstFormGroup.controls['advertiser_name'].setValue(data[0]._id)
+        this.firstFormGroup.controls['advertiser_id'].setValue(data[0]._id)
         console.log(data[0]._id)
         this.getPlaylist(data[0]._id)
       }
@@ -111,11 +111,7 @@ export class CreateScreenComponent implements OnInit {
       const index = this.zone_playlist.findIndex(x => x.zone_id === zone._id);
       this.zone_playlist[index].playlist_id = playlist.value._id
     } else {
-      this.zone_playlist.push(
-        {
-          zone_id: zone._id,
-          playlist_id: playlist.value._id
-        })
+      this.zone_playlist.push(new ZONE_PLAYLIST(zone._id, playlist.value._id))
         
     }
     console.log('ssssssssssss', this.zone_playlist)
@@ -136,19 +132,21 @@ export class CreateScreenComponent implements OnInit {
     
   }
 
-  // onSelectPlaylist(data : any) {
-  //   if(this.selected_playlist.includes(data)) {
-  //     this.selected_playlist = this.selected_template.filter(file => file.id === data.id)
-  //   } else {
-  //     this.selected_playlist.push(data)
-  //   }
-  //   console.log('HOIII',this.selected_playlist)
-  // }
-
   onFormSubmit() {
     console.log(this.firstFormGroup.get('screen_name').value)
 
-    //const structuredPayload = new CREATE_SCREEN(this.firstFormGroup.get('screen_name'.value, ))
+    const structuredPayload = new CREATE_SCREEN(this.firstFormGroup.get('screen_name').value,  this.firstFormGroup.get('advertiser_id').value, this.selected_template.template._id, this.zone_playlist)
+    console.log('asfasdasd', structuredPayload )
+    this._screen.create_screen(structuredPayload).subscribe(
+      (data : SCREEN_TYPE) => {
+        console.log('TETETETET',data)
+        this._router.navigate(['/admin/screen/', data._id])
+  
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
   isPlaylistIncluded(data: any) {

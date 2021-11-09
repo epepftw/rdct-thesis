@@ -159,7 +159,7 @@ export class NewuserFormComponent implements OnInit {
 
 		this.admin_registration_form.valueChanges.subscribe(
 			data => {
-				console.log(data)
+				console.log('haww',data)
 				if (this.admin_registration_form.valid && this.f.password.value === this.f.re_type.value) {
 					this.form_invalid = false;
 				} else {
@@ -206,7 +206,7 @@ export class NewuserFormComponent implements OnInit {
 		
 		this.advertiser_registration_form.valueChanges.subscribe(
 			data => {
-				console.log(data)
+				console.log('hawa',data)
 				if (this.advertiser_registration_form.valid && this.v.password.value === this.v.re_type.value) {
 					this.form_invalid = false;
 				} else {
@@ -225,7 +225,7 @@ export class NewuserFormComponent implements OnInit {
 		this.f.re_type.disable();
 
 
-		console.log(this.admin_registration_form.value);
+		console.log('hawaw',this.admin_registration_form.value);
 
 		this._user.register_user(this.admin_registration_form.value).subscribe(
 			(data: {success: boolean, msg: string}) => {
@@ -239,7 +239,7 @@ export class NewuserFormComponent implements OnInit {
 			}, 
 			error => {
 				this.f.re_type.enable();
-				console.log(error);
+				console.log('hawawa',error);
 			}
 		)
 	}
@@ -253,7 +253,7 @@ export class NewuserFormComponent implements OnInit {
 		// @ts-ignore: Object is possibly 'null'.
 		this.v.re_type.disable();
 
-		console.log(this.advertiser_registration_form.value);
+		console.log('hawawat',this.advertiser_registration_form.value);
 
 		this._user.register_user(this.advertiser_registration_form.value).subscribe(
 			(data: {success: boolean, msg: string}) => {
@@ -268,7 +268,7 @@ export class NewuserFormComponent implements OnInit {
 			}, 
 			error => {
 				this.v.re_type.enable();
-				console.log(error);
+				console.log('haww',error);
 			}
 		)
 	}

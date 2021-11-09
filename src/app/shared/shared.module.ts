@@ -33,6 +33,8 @@ import { CreateTemplateComponent } from './pages/create-template/create-template
 import { CreateZoneComponent } from './components/create-zone/create-zone.component';
 import { AddedZoneLayoutComponent } from './components/added-zone-layout/added-zone-layout.component';
 
+import { ImagePipe } from './pipes/image.pipe';
+
 //Angular Material Components
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -49,6 +51,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import { CreateScreenComponent } from './components/create-screen/create-screen.component';
+import { SingleScreenComponent } from './pages/single-screen/single-screen.component';
+import { PlaylistDemoComponent } from './components/playlist-demo/playlist-demo.component';
+import { ScreenDemoComponent } from './components/screen-demo/screen-demo.component';
 
 
 
@@ -82,7 +87,10 @@ const shared_components = [
 	CreateTemplateComponent,
 	CreateZoneComponent,
 	AddedZoneLayoutComponent,
-	CreateScreenComponent
+	CreateScreenComponent,
+	SingleScreenComponent,
+	PlaylistDemoComponent,
+	ScreenDemoComponent,
 ]
 
 const ng_material = [
@@ -105,6 +113,7 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
+		ImagePipe
  
   
 	],
@@ -121,7 +130,8 @@ const ng_material = [
 	],
 	exports: [
 		shared_components,
-		ng_material
+		ng_material,
+		ImagePipe
 	]
 })
 

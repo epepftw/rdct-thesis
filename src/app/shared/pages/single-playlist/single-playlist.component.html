@@ -1,13 +1,23 @@
 <div class="p-4">
     <div class="container-fluid" *ngIf="playlist_data">
-        <div>
-            <h1>{{ playlist_data.playlist_name }}</h1>
-            <h2>{{ playlist_data.playlist_owner_name }}</h2>
-            <h4>Playlist ID : {{ playlist_data.playlist_owner_id }}</h4>
+     <div class="row">
+        <div class="col-md-6">
+            <div>
+                <h1>{{ playlist_data.playlist_name }}</h1>
+                <h2>{{ playlist_data.playlist_owner_name }}</h2>
+                <h4>Playlist ID : {{ playlist_data.playlist_owner_id }}</h4>
+            </div>
+            <div>
+                <button class="mb-4" mat-button  mat-raised-button (click)="openDialog()">Add Content</button>
+            </div>
         </div>
-        <div>
-            <button mat-button  mat-raised-button (click)="openDialog()">Add Content</button>
+        <div class="col-md-6">
+            <app-playlist-demo
+            [playlist_data]="playlist_data.contents"
+            >
+            </app-playlist-demo>
         </div>
+     </div>
     
         <div class="card text-white shadow-lg p-3 bg-white">
             <div class="row" [sortablejs]="playlist_data.contents">

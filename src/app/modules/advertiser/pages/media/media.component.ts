@@ -68,6 +68,7 @@ export class MediaComponent implements OnInit {
           'image/png',
           'video/mp4'
         ],
+        imageMax: [1280, 720],
         maxFiles: 10,
         onFileSelected: (e: any) => {
           console.log('onFilesSelected', e);
