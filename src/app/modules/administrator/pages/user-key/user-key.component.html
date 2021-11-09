@@ -2,20 +2,30 @@
     <div class="container-fluid">
         <!--TITLE-->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-6">
                 <h2 class="m-0">User Keys</h2>
+            </div>
+            <div class="col-md-6 text-end">
+
+                <!--MODAL-->
+                <button type="button" mat-raised-button color="primary" (click)="openDialog()">
+                    <i class="fas fa-key"></i>
+                    <span>Add Key</span>
+                </button>
+
+                <!-- Button trigger modal -->
+                <!--MODAL END-->
             </div>
         </div>
 
         <hr class="m4">
 
         <div class="row">
-            <div class="col-lg-3" *ngFor="let c of card_data_sample">
+            <div class="col-md-12 col-lg-6 col-xl-3" *ngFor="let c of card_data_sample">
                 <app-card
                 [digit]="c.digit"
                 [description]="c.description"
                 [logo]="c.logo">
-                
                 </app-card>
             </div>
         </div>
@@ -36,7 +46,7 @@
             [title]="table_title"
             [data]="keys"
             [column_title]="table_column_title"
-            >
+           >
             </app-keys-table>
 
             <ng-template #search_result>

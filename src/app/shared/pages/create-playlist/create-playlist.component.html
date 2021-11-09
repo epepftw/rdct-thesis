@@ -1,0 +1,53 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup" label="Fill out this form">
+      <form [formGroup]="firstFormGroup" class="w-25 d-flex flex-column example-form">
+        <mat-form-field *ngIf="options?.length > 0" class="example-full-width" appearance="fill">
+          <mat-label>Assignee</mat-label>
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select User">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Playlist Name</mat-label>
+          <input matInput placeholder="Ex. Moms Spaghetti" formControlName="playlist_name">
+        </mat-form-field>
+        <div>  
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+      
+    </mat-step>
+    <!--Media Files-->
+    <mat-step [stepControl]="secondFormGroup" label="Select media files">
+        <div>
+          <h1>Playlist Content</h1>
+          <button mat-button (click)="openDialog()">Add Content</button>
+          <button>Play Demo</button>
+        </div>
+        <div class="container">
+        </div>
+        <div>
+          <button mat-button color="accent" matStepperPrevious>Back</button>
+        </div>
+
+            <!---->
+        <div class="card text-white shadow-lg p-3 bg-white">
+          <div class="row" [sortablejs]="mediaFiles">
+              <div class="col-lg-1" *ngFor="let f of mediaFiles">
+                  <app-media-files
+                  [file_url]="f.file_url"
+                  [filename]="f.filename">
+                  </app-media-files>
+              </div>
+          </div>
+          
+        </div>
+        <!---->
+    </mat-step>
+    <!--Publishing-->

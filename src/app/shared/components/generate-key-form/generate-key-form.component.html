@@ -1,0 +1,22 @@
+<form [formGroup]="key_gen_form" (ngSubmit)="onGenKeyFormSubmit()">   
+    <h2 mat-dialog-title>Generate Key</h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field *ngIf="options?.length > 0" class="d-flex flex-column" appearance="fill">
+            <mat-label>Assignee</mat-label>
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select User">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+            </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label for="key">Keys to Add</mat-label>
+            <input matInput type="number" placeholder="Ex. 4" formControlName="count" required>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button cdkFocusInitial>Finish</button>
+    </mat-dialog-actions>
+</form>

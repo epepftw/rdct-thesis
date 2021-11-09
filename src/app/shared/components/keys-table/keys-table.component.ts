@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-keys-table',
@@ -11,9 +11,14 @@ export class KeysTableComponent implements OnInit {
   @Input() column_title: any = '';
   @Input() data: any = '';
 
+  @Output() add = new EventEmitter;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showModal(data : any){
+    this.add.emit(data)
+  }
 }

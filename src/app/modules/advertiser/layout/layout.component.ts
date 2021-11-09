@@ -13,6 +13,11 @@ export class LayoutComponent implements OnInit {
       link: "dashboard"
     },
     {
+      label: "User Keys",
+      icon: "fas fa-key",
+      link: "keys"
+    },
+    {
       label: "Media Files",
       icon: "fas fa-photo-video",
       link: "media"

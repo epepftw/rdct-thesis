@@ -1,0 +1,17 @@
+<div class="container-fluid p-4" *ngIf="screen_data">
+    <div class="row">
+        <div class="col-md-6">
+            <ng-container>
+                <h1>{{ screen_data.screen_name }}</h1>
+                <h2>Screen ID : <span style="color: rgb(0, 174, 0);">{{ screen_data.screen_id }}</span></h2>
+            </ng-container>
+        </div>
+        <div class="col-md-6">
+            <div class="template-demo">
+                <app-screen-demo
+                [zone_playlist]="screen_data">
+                </app-screen-demo>
+            </div>
+        </div>
+    </div>
+</div>

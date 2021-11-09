@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UsersTableComponent implements OnInit {
 
   @Input() column_title: any = '';
-  @Input() data: any = '';
+  @Input() users: any = 'N/A';
 
 
 

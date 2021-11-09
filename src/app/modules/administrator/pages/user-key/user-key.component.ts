@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
+import { GenerateKeyFormComponent } from 'src/app/shared/components/generate-key-form/generate-key-form.component';
+import { Keys } from 'src/app/core/types/Keys.types';
+import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-key',
@@ -7,50 +11,86 @@ import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.servi
   styleUrls: ['./user-key.component.scss']
 })
 export class UserKeyComponent implements OnInit {
+    keys: any[] = []; 
     table_title: string = "Keys";
     search_key: string = "";
     searching: boolean = false;
     search_results: any[] = [];
 
-    keys: {
-      name: string;
-      total_key: string;
-      online_key: string;
-      offline_key: string;
-    }[] = [];
+    myControl = new FormControl();
+    options: string[] = ['One', 'Two', 'Three'];
     
     card_data_sample: any = [
       {
         digit: 420,
         description: "Total Keys Generated",
-        logo: "fas fa-key fa-5x"
+        logo: "fas fa-key"
       },
       {
         digit: 69,
         description: "Newly Generated Keys",
-        logo: "fab fa-keybase fa-5x"
+        logo: "fab fa-keybase"
       }
     ]
     
     table_column_title: any = [
       {
-        title: "Name"
+        title: "Key Holder"
       },
       {
-        title: "Total Keys"
+        title: "Key"
       },
       {
-        title: "Online Keys"
+        title: "Status"
       },
       {
-        title: "Offline Keys"
+        title: "Date Created"
       }
     ]
-  constructor(/*private _keys: UserKeysService*/) { }
+  closeResult: string = '';
+
+  constructor(
+          public dialog: MatDialog,
+          private _keys: UserKeysService) { 
+                
+              }
 
   ngOnInit(): void {
     this.getKeys();
   }
+
+//   openAdd() {
+//     const modalRef = this.modalService.open(GenerateKeyFormComponent);
+//     modalRef.componentInstance.test = 'Generate Key';
+//     modalRef.closed.subscribe(
+//       (res) => {
+//         console.log(res)
+//       },
+//       (err) => {
+
+//       }
+//     )
+//   //   modalRef.componentInstance.rawdata = data;
+//   //   console.log(data)
+//  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(GenerateKeyFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+
+  
+  // openDelete(data : any) {
+  //   const modalRef = this.modalService.open(GenerateKeyFormComponent);
+  //   modalRef.componentInstance.test = 'Delete';
+  //   modalRef.componentInstance.rawdata = data;
+  //   console.log(data)
+  // }
 
   searchData(){
     if (this.search_key !== '') {
@@ -64,47 +104,14 @@ export class UserKeyComponent implements OnInit {
       }
     }
 
-  // getKeys() {
-  //   this._keys.get_keys().subscribe(
-  //     (data: any) => {
-  //       this.keys = data;
-  //       console.log("Keys", this.keys)
-  //     }
-  //   )
-  // }
-
-  getKeys(){
-    this.keys = [
-      {
-        name: "Ubuvwe Ossas",
-        total_key: "25",
-        online_key: "20",
-        offline_key: "5"
-      },
-      {
-        name: "Kwaza Waza",
-        total_key: "300",
-        online_key: "200",
-        offline_key: "100"
-      },
-      {
-        name: "Kokwala Ossas",
-        total_key: "90",
-        online_key: "20",
-        offline_key: "70"
-      },
-      {
-        name: "Foreva Ossas",
-        total_key: "25",
-        online_key: "20",
-        offline_key: "5"
-      },
-      {
-        name: "Ubuvwevwe Ossas",
-        total_key: "25",
-        online_key: "20",
-        offline_key: "5"
+  getKeys() {
+    this._keys.get_keys().subscribe(
+      (data: Keys[]) => {
+        this.keys = data;
+        console.log("#Keys", this.keys)
       }
-    ]
+    )
   }
+
+ 
 }

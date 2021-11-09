@@ -1,1 +1,53 @@
-<p>playlist works!</p>
+
+    <div class="container-fluid p-4 admin-playlist-page">
+            <!--Title-->
+            <div class="row">
+                <div>
+                    <h2>Playlist</h2>
+                </div>
+                <div>
+                    <a [routerLink]="['/admin/playlist/create']">
+                        <button type="button">
+                            <i class="fas fa-plus"></i>
+                            Create Playlist
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <hr class="my-4">
+    
+            <!--Cards-->
+            <div class="row">
+                <div class="col-lg-4" *ngFor="let c of card_data_sample">
+                    <app-card
+                    [digit]="c.digit"
+                    [description]="c.description">
+                    </app-card>
+                </div>
+            </div>
+    
+            <!--Table-->
+            <div class="my-4 input-group justify-content-end">
+                <div class="search-box"> 
+                    <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Playlist"/>
+                        <i class="fas fa-search"></i>
+                </div>
+            </div>
+    
+            <hr class="my-4">
+            <div class="card text-white shadow-lg p-3 bg-white">
+                <h2>Playlist Table</h2>
+                <app-playlist-table
+                *ngIf="!searching; else search_result"
+                [column_title]="table_column_title"
+                [data]="playlist">
+                </app-playlist-table>
+    
+                <ng-template #search_result>
+                    <app-playlist-table
+                    [column_title]="table_column_title"
+                    [data]="search_results">
+                    </app-playlist-table>
+                </ng-template>
+            </div>
+    </div>

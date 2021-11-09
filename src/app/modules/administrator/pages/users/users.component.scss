@@ -1,7 +1,8 @@
-.buttonAdd{
+.button-add{
     float: right;
     color: #fff;
     border: none;
+    transition: 0.5s;
     i{
         padding: 5px;
     }
@@ -11,8 +12,16 @@
      margin: 0 5px;
 }
 
-.bton{
-    background: linear-gradient(to right, #1488cc, #2b32b2);;
+.bton1{
+    background: rgb(55, 138, 55);
+}
+
+.bton2{
+    background: #2ebce7;
+}
+
+.bton3{
+    background: rgb(248, 101, 101);
 }
 
 .search-box{
@@ -22,7 +31,7 @@
 }
 
 .search-txt{
-    border: 1px solid linear-gradient(to right, #243B55, #141E30);;
+    border: 1px solid linear-gradient(to right, #243B55, #141E30);
     margin: 0 10px;
     border-radius: 50px;
     outline: none;
@@ -30,6 +39,6 @@
 }
 
 .search-txt::placeholder{
-    color: linear-gradient(to right, #243B55, #141E30);;
+    color: linear-gradient(to right, #243B55, #141E30);
     
 }

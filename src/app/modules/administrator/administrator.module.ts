@@ -10,8 +10,10 @@ import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { TemplateComponent } from './pages/template/template.component';
 import { UsersComponent } from './pages/users/users.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ScreenComponent } from './pages/screen/screen.component';
 
 @NgModule({
 	declarations: [
@@ -22,13 +24,22 @@ import { UserKeyComponent } from './pages/user-key/user-key.component';
 		PlaylistComponent,
 		TemplateComponent,
 		UsersComponent,
-  UserKeyComponent
+  		UserKeyComponent,
+    	ScreenComponent
 	],
 	imports: [
 		CommonModule,
 		SharedModule,
 		FormsModule,
+		ReactiveFormsModule,
+		MatDialogModule,
 		RouterModule.forChild(ADMIN_ROUTES)
+	],
+	providers: [
+		{
+			provide: MatDialogRef,
+			useValue: {}
+		}
 	]
 })
 

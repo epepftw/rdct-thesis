@@ -9,10 +9,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let a of data">
-            <td>{{ a.name }}</td>
-            <td>{{ a.total_key }}</td>
-            <td>{{ a.online_key }}</td>
-            <td>{{ a.offline_key }}</td>
+            <td>{{ a.advertiser.name }}</td>
+            <td><a [routerLink]="[a._id]">{{ a.key }}</a></td>
+            <td>{{ a.isOnline ? 'Online':'Offline'}}</td>
+            <td>{{ a.dateCreated }}</td>
         </tr>
     </tbody>
 </table>
