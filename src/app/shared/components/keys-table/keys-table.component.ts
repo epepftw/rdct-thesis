@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-keys-table',
   templateUrl: './keys-table.component.html',
@@ -11,9 +12,11 @@ export class KeysTableComponent implements OnInit {
   @Input() column_title: any = '';
   @Input() data: any = '';
 
+
   @Output() add = new EventEmitter;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

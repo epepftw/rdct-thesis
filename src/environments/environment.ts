@@ -13,7 +13,8 @@ export const environment = {
 
   get: endpoints.get,
   post: endpoints.post,
-  put: endpoints.put
+  put: endpoints.put,
+  delete: endpoints.delete,
 };
 
 /*

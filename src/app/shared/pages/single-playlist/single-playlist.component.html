@@ -10,8 +10,8 @@
             <button class="mb-4" mat-button  mat-raised-button (click)="openDialog()">Add Content</button>
         </ng-container>
     </div>
-    <div class="col-md-6">
-        <app-playlist-demo
+    <div class="col-md-6 mb-4">
+        <app-playlist-demo *ngIf="!playlist_preparing"
         [is_single_demo]="true"
         [playlist_data]="playlist_data.contents">
         </app-playlist-demo>
@@ -20,11 +20,12 @@
 
     <div class="card text-white shadow-lg p-3 bg-white">
         <div class="row" [sortablejs]="playlist_data.contents">
-            <div class="col-lg-1" *ngFor="let pic of playlist_data.contents">
+            <div class="playlist-data col-lg-1" *ngFor="let pic of playlist_data.contents">
                 <app-playlist-content-table
                 [file_url]="pic.file_url"
                 [filename]="pic.filename">
                 </app-playlist-content-table>
+                <button class="delete-button m-1" (click)="deleteContent(pic.playlist_content_id)"><i class="fas fa-times"></i></button>
             </div>
         </div>
         <div class="text-right">

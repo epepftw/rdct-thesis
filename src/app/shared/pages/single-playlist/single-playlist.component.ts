@@ -21,6 +21,7 @@ export class SinglePlaylistComponent implements OnInit {
   mediaFiles: any[] = [];
   playlist_contents : any;
   updated_playlist: any[] = [];
+  playlist_preparing : boolean;
 
   constructor(
               public dialog: MatDialog,
@@ -38,9 +39,11 @@ export class SinglePlaylistComponent implements OnInit {
   }
 
   getPlaylistData() {
+    this.playlist_preparing = true;
     this._playlist.get_playlist_page(this.playlist_id).subscribe(
      (data: PLAYLIST) => {
        this.playlist_data = data;
+       this.playlist_preparing = false;
        console.log('#PLAYLIST DATAss', this.playlist_data)
      }
     )
@@ -73,11 +76,22 @@ export class SinglePlaylistComponent implements OnInit {
     console.log('afsdf', this.playlist_data.contents)
     this._playlist.update_playlist_contents(this.playlist_data).subscribe(
       (data: any) => {
-        this.getPlaylistData()
+        
         alert(data.msg)
+        this.getPlaylistData()
       },
       error => {
         console.log(error)
+      }
+    )
+  }
+
+  deleteContent(data : any) {
+    console.log(this.playlist_id, data)
+    this._playlist.delete_playlist_content(this.playlist_id, data).subscribe(
+      (data : any) => {
+        alert('CONTENT DELETED')
+        this.getPlaylistData()
       }
     )
   }
