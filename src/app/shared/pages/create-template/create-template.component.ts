@@ -9,7 +9,7 @@ import {MatAccordion} from '@angular/material/expansion';
 // Types
 import { TEMPLATE_TYPE } from 'src/app/core/types/Template.types';
 import { CreateZoneComponent } from '../../components/create-zone/create-zone.component';
-import { CREATE_ZONE } from 'src/app/core/types/Zones.types';
+import { CREATE_ZONE, ZONE_TYPE } from 'src/app/core/types/Zones.types';
 import { CREATE_TEMPLATE } from 'src/app/core/types/Template.types';
 import { TemplateService } from 'src/app/core/services/template/template.service';
 
@@ -22,6 +22,7 @@ export class CreateTemplateComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
   myControl = new FormControl();
   createTemplateForm : FormGroup;
+  added_zone: any[] = [];
   contents: any[] = [];
   zones: CREATE_ZONE[] = [];
   template: CREATE_TEMPLATE;
@@ -64,5 +65,10 @@ export class CreateTemplateComponent implements OnInit {
     )
   }
 
-
+  removeZone(data : any){
+    if (data !== -1) {
+      this.zones.splice(data, 1)
+    }
+    console.log(this.zones[data])
+  }
 }

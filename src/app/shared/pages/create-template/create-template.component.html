@@ -17,11 +17,12 @@
                 <mat-expansion-panel class=" my-3">
                   <mat-expansion-panel-header [ngStyle]="{'background': z.background}">
                     <mat-panel-title>
-                      <p style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Name: {{z.zone_name}}</p>     
+                      <p class="mx-0 my-4" style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Name: {{z.zone_name}}</p>     
                     </mat-panel-title>
                     <mat-panel-description>
-                      <p style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Size: {{z.width}} x {{z.height}}</p>
+                      <p class="mx-0 my-4" style="color: #fff; text-shadow: 1px 1px 2px #000;">Zone Size: {{z.width}} x {{z.height}}</p>
                     </mat-panel-description>
+                    
                   </mat-expansion-panel-header>
                   
                   <mat-form-field class="form-field mt-4 m-2">
@@ -59,7 +60,12 @@
                     <mat-label>Background</mat-label>
                     <input matInput type="color" [(ngModel)]="zones[i].background" [value]="zones[i].background">
                   </mat-form-field>
-              
+                  
+                  <div>
+                    <button (click)="removeZone(i)" class="mx-1" mat-raised-button color="primary" type="button">Remove Zone
+                      <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                    </button>
+                  </div>
                 </mat-expansion-panel>
               </mat-accordion>
               

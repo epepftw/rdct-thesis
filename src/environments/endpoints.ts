@@ -57,5 +57,12 @@ export const endpoints = {
         update: '/playlist/update',
         // Keys
         update_key: '/keys/update'
+    },
+
+    delete: {
+        // Keys
+        delete_key: '/keys/delete',   
+        // Playlist
+        delete_playlist_content: '/playlist/deleteContent'  
     }
 }
