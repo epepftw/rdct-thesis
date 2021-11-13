@@ -78,14 +78,14 @@ export class CreatePlaylistComponent implements OnInit {
         this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
         console.log('#PLAYLIST CREATOR ID',data[0]._id)
       }
-    })
+    });
 
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
         this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
         console.log('#PLAYLIST CREATOR',data[0].name)
       }
-    })
+    });
   }
   
   displayFn(user: User): string {

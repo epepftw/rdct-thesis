@@ -5,6 +5,8 @@ import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.servi
 import { Keys } from 'src/app/core/types/Keys.types';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
+import { SCREEN } from 'src/app/core/types/Screen.types';
+import { ScreenService } from 'src/app/core/services/screen/screen.service';
 
 @Component({
   selector: 'app-single-key',
@@ -14,15 +16,16 @@ import { AssignKeyComponent } from '../../components/assign-key/assign-key.compo
 export class SingleKeyComponent implements OnInit {
   key_id: string;
   key_data: Keys;
-  playlist: any[] = [];
+  screen: SCREEN[] = [];
   contents: any[] = [];
 
 
   constructor(
               public dialog: MatDialog,
               private _keys: UserKeysService,
-              private _playlist: PlaylistService,
+              private _screen : ScreenService,
               private _router: ActivatedRoute,
+
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class SingleKeyComponent implements OnInit {
       (data: any) => {
         this.key_id = data.params.id;
         this.getKeyData();
-        this.getPlaylist();
+        this.getScreen();
       }
     )
   }
@@ -44,11 +47,11 @@ export class SingleKeyComponent implements OnInit {
     )
   }
 
-  getPlaylist(){
-    this._playlist.get_playlist().subscribe(
+  getScreen(){
+    this._screen.get_screen().subscribe(
       (data: any) => {
-        this.playlist = data;
-        console.log('#Playlist DATA', this.playlist)
+        this.screen = data;
+        console.log('#screen DATA', this.screen)
       }
     )
   }

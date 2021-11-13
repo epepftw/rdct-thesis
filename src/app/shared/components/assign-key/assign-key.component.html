@@ -1,12 +1,12 @@
-<form [formGroup]="playlist_form" (ngSubmit)="onFormSubmit()">   
-    <h2 mat-dialog-title>Assign a Playlist</h2>
+<form [formGroup]="screen_form" (ngSubmit)="onFormSubmit()">   
+    <h2 mat-dialog-title>Assign a Screen</h2>
     <mat-dialog-content class="mat-typography">
         <mat-form-field *ngIf="options?.length > 0" class="d-flex flex-column" appearance="fill">
-            <mat-label>Playlist Name</mat-label>
-            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select Playlist">
+            <mat-label>Screen Name</mat-label>
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select Screen">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option.playlist_name}}
+                {{option.screen_name}}
             </mat-option>
             </mat-autocomplete>
         </mat-form-field>
