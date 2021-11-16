@@ -7,6 +7,8 @@ import { PlaylistService } from 'src/app/core/services/playlist/playlist.service
 import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
 import { SCREEN } from 'src/app/core/types/Screen.types';
 import { ScreenService } from 'src/app/core/services/screen/screen.service';
+//SOCKET
+import { io } from "socket.io-client";
 
 @Component({
   selector: 'app-single-key',
@@ -18,15 +20,19 @@ export class SingleKeyComponent implements OnInit {
   key_data: Keys;
   screen: SCREEN[] = [];
   contents: any[] = [];
+  socket: any;
+
 
 
   constructor(
-              public dialog: MatDialog,
-              private _keys: UserKeysService,
-              private _screen : ScreenService,
-              private _router: ActivatedRoute,
-
-  ) { }
+  public dialog: MatDialog,
+  private _keys: UserKeysService,
+  private _screen : ScreenService,
+  private _router: ActivatedRoute
+) { 
+  //SOCKET CONNECT         
+  this.socket = io('http://localhost:3000', { transports: ['websocket']})
+}
 
   ngOnInit(): void {
     this._router.paramMap.subscribe(
@@ -34,6 +40,8 @@ export class SingleKeyComponent implements OnInit {
         this.key_id = data.params.id;
         this.getKeyData();
         this.getScreen();
+        this.acceptData();
+        this.playerDisconnected();
       }
     )
   }
@@ -73,5 +81,27 @@ export class SingleKeyComponent implements OnInit {
       
       }
     });
+  }
+
+  //SOCKET UPDATE
+  pushContents() {
+    let goToKey = {
+      name: 'hello',
+      age: '12'
+    }
+    this.socket.emit('dashboardUI_pushUpdates', goToKey);
+
+  }
+
+  acceptData() {
+    this.socket.on('player', (data : any) => {
+      alert(data)
+    })
+  }
+
+  playerDisconnected() {
+    this.socket.on('playerDisconnected', (data : any) => {
+      alert(`PLAYER DISCONNECTED ${data}`)
+    })
   }
 }

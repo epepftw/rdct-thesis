@@ -6,7 +6,9 @@
             <h4>Key ID : {{ key_data._id }}</h4>
         </div>
         <div>
-            <button mat-button  mat-raised-button (click)="openDialog()">Assign Screen</button>
+            <button mat-raised-button (click)="openDialog()">Assign Screen</button>
+            
+            <button mat-raised-button color="primary" class="mx-2" (click)="pushContents()">Push Updates</button>
         </div>
     
         <div class="card text-white shadow-lg p-3 bg-white my-4">
