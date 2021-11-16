@@ -11,7 +11,6 @@
             </ng-container>
         </div>
         <div class="col-md-6 mb-4">
-
             <app-playlist-demo *ngIf="!playlist_preparing"
             [is_single_demo]="true"
             [playlist_data]="playlist_data.contents">
@@ -32,5 +31,5 @@
         <div class="text-right">
             <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
         </div>
-        </div>
+    </div>
 </div>

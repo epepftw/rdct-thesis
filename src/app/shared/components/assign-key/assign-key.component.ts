@@ -11,6 +11,8 @@ import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
+import { SCREEN } from 'src/app/core/types/Screen.types';
+import { ScreenService } from 'src/app/core/services/screen/screen.service';
 
 @Component({
   selector: 'app-assign-key',
@@ -20,10 +22,10 @@ import { PlaylistService } from 'src/app/core/services/playlist/playlist.service
 export class AssignKeyComponent implements OnInit {
   
   myControl = new FormControl();
-  options : PLAYLIST[] = []; 
+  options : SCREEN[] = []; 
   keys: Keys[] = []; 
   selected_playlist : PLAYLIST;
-  playlist_form! : FormGroup;
+  screen_form! : FormGroup;
   selected_name : string;
   filteredOptions: Observable<any[]>;
   
@@ -37,17 +39,18 @@ export class AssignKeyComponent implements OnInit {
     private _router: ActivatedRoute,
     private _route: Router,
     private _form: FormBuilder,
+    private _screen : ScreenService,
     @Inject(MAT_DIALOG_DATA) public key_id: string
     ) { 
     }
 
   ngOnInit(): void {
-    this.getPlaylist();
+    this.getScreen();
 
-    this.playlist_form = this._form.group(
+    this.screen_form = this._form.group(
       {
-        playlist_id :['', Validators.required],
-        playlist_name: ['', Validators.required]
+        screen_id :['', Validators.required],
+        screen_name: ['', Validators.required]
       }
     )
 
@@ -55,41 +58,42 @@ export class AssignKeyComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
+        map(value => typeof value === 'string' ? value : value.screen_name),
+        map(screen_name => screen_name ? this._filter(screen_name) : this.options.slice())
       );
     
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
         // console.log(data[0])
 
-        this.playlist_form.controls['playlist_name'].setValue(data[0].playlist_name);
-        this.playlist_form.controls['playlist_id'].setValue(data[0]._id);
+        this.screen_form.controls['screen_name'].setValue(data[0].screen_name);
+        this.screen_form.controls['screen_id'].setValue(data[0]._id);
+        console.log('fckng', data[0])
       }
     }); 
     
   } 
 
   displayFn(user: any): string {
-    return user && user.playlist_name ? user.playlist_name : '';
+    return user && user.screen_name ? user.screen_name : '';
   }
 
-  private _filter(playlist_name: string): any[] {
-    console.log("#FILTERED playlist_name",playlist_name)
-    const filterValue = playlist_name.toLowerCase();
+  private _filter(screen_name: string): any[] {
+    console.log("#FILTERED screen_name",screen_name)
+    const filterValue = screen_name.toLowerCase();
 
     this.options.filter(option => {
       
-      console.log('$Filtered Values',option.playlist_name.toLowerCase().includes(filterValue))
+      console.log('$Filtered Values',option.screen_name.toLowerCase().includes(filterValue))
     })
 
-    return this.options.filter(option => option.playlist_name.toLowerCase().includes(filterValue));
+    return this.options.filter(option => option.screen_name.toLowerCase().includes(filterValue));
   }
 
 
-  getPlaylist() {
-    this._playlist.get_userPlaylist(this._auth.getCurrentUser().user._id).subscribe(
-      (data: PLAYLIST[]) => {
+  getScreen() {
+    this._screen.get_screen().subscribe(
+      (data: SCREEN[]) => {
         this.options = data;
         console.log("#Playlist", this.options)
       }
@@ -98,15 +102,15 @@ export class AssignKeyComponent implements OnInit {
 
 
   onFormSubmit() {
-    console.log(this.playlist_form.get('playlist_name').value)
-    console.log(this.playlist_form.get('playlist_id').value)
+    console.log(this.screen_form.get('screen_name').value)
+    console.log(this.screen_form.get('screen_id').value)
     console.log(this.keys);
 
     const payload = {
       _id: this.key_id,
-      assignedPlaylist: {
-        playlistId: this.playlist_form.get('playlist_id').value,
-        playlistName: this.playlist_form.get('playlist_name').value
+      assignedScreen: {
+        screenId: this.screen_form.get('screen_id').value,
+        screenName: this.screen_form.get('screen_name').value
       }
     }
 

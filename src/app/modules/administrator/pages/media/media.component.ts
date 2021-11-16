@@ -1,7 +1,7 @@
 // IMPORT
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { io } from "socket.io-client";
+
 import * as filestack from 'filestack-js'
 // ENVIRONMENT AND SERVICES
 import { environment } from 'src/environments/environment';
@@ -18,18 +18,15 @@ import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 export class MediaComponent implements OnInit {
   filestack_client: any;
   mediaFiles: any[] = [];
-  socket: any;
-
   card_data_sample: any;
   
   
 
   constructor(
     private _mediaFiles: MediaFileService,
-    private _auth: AuthService ) { 
-                this.socket = io('http://localhost:3200')
-                this.filestack_client = filestack.init(environment.filestackAPI)
-              }
+    private _auth: AuthService ) {
+      this.filestack_client = filestack.init(environment.filestackAPI)
+    }
 
   ngOnInit(): void {
     this.getMediaFiles();
@@ -62,9 +59,7 @@ export class MediaComponent implements OnInit {
     )
   }
 
-  pushContents() {
-    this.socket.emit('pushUpdates');
-  }
+  
 
   uploadContents() {
     console.log('Test',this._auth.getCurrentUser().user);
