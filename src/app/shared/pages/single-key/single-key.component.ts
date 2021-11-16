@@ -31,7 +31,7 @@ export class SingleKeyComponent implements OnInit {
   private _router: ActivatedRoute
 ) { 
   //SOCKET CONNECT         
-  this.socket = io('http://localhost:3000', { transports: ['websocket']})
+  this.socket = io('https://rcdt-api.herokuapp.com/', { transports: ['websocket']})
 }
 
   ngOnInit(): void {
