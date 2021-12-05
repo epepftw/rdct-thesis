@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
 	selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DashboardComponent implements OnInit {
-
+	current_user: any
 	ad_players: {
 		alias: string;
 		player_key: string;
@@ -45,10 +46,13 @@ export class DashboardComponent implements OnInit {
 		}
 	]
 
-	constructor() { }
+	constructor(
+		private _auth: AuthService
+	) { }
 
 	ngOnInit(): void {
 		this.getAllPlayer();
+		this.getCurrentUser();
 	}
 
 	getAllPlayer() {
@@ -80,5 +84,9 @@ export class DashboardComponent implements OnInit {
 			},
 		]
 	}	
+
+	getCurrentUser(){
+		this.current_user = this._auth.getCurrentUser().user.name
+	}
 
 }
