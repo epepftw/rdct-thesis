@@ -1,5 +1,5 @@
 
-    <div class="container-fluid p-4 admin-playlist-page">
+    <div class="container-fluid white-text p-4 main-color admin-playlist-page">
             <!--Title-->
             <div class="row">
                 <div>
@@ -7,7 +7,7 @@
                 </div>
                 <div>
                     <a [routerLink]="['/admin/playlist/create']">
-                        <button type="button">
+                        <button mat-raised-button color="primary" type="button">
                             <i class="fas fa-plus"></i>
                             Create Playlist
                         </button>
@@ -35,7 +35,7 @@
             </div>
     
             <hr class="my-4">
-            <div class="card text-white shadow-lg p-3 bg-white">
+            <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
                 <h2>Playlist Table</h2>
                 <app-playlist-table
                 *ngIf="!searching; else search_result"
