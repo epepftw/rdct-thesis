@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { CREATE_PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { PLAYLIST } from 'src/app/core/types/Playlist.types';
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
@@ -7,18 +8,20 @@ import { MediaFileModalComponent } from '../../components/media-file-modal/media
 import {MatDialog} from '@angular/material/dialog';
 import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
 import * as Sortable from 'sortablejs';
+import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
 @Component({
   selector: 'app-single-playlist',
   templateUrl: './single-playlist.component.html',
   styleUrls: ['./single-playlist.component.scss']
 })
 export class SinglePlaylistComponent implements OnInit {
-  playlist_id: string;
+  playlist_id: string = '';
   playlist_data: PLAYLIST;
   contents: any[] = [];
   mediaFiles: any[] = [];
   playlist_contents : any;
   updated_playlist: any[] = [];
+  playlist_preparing : boolean;
 
   constructor(
               public dialog: MatDialog,
@@ -36,10 +39,12 @@ export class SinglePlaylistComponent implements OnInit {
   }
 
   getPlaylistData() {
+    this.playlist_preparing = true;
     this._playlist.get_playlist_page(this.playlist_id).subscribe(
      (data: PLAYLIST) => {
        this.playlist_data = data;
-       console.log('#PLAYLIST DATA', this.playlist_data)
+       this.playlist_preparing = false;
+       console.log('#PLAYLIST DATAss', this.playlist_data)
      }
     )
   }
@@ -57,7 +62,6 @@ export class SinglePlaylistComponent implements OnInit {
   //MODAL
   openDialog() {
     const dialogRef = this.dialog.open(MediaFileModalComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result:', result);
       this.contents = result;
@@ -72,11 +76,22 @@ export class SinglePlaylistComponent implements OnInit {
     console.log('afsdf', this.playlist_data.contents)
     this._playlist.update_playlist_contents(this.playlist_data).subscribe(
       (data: any) => {
-        this.getPlaylistData()
+        
         alert(data.msg)
+        this.getPlaylistData()
       },
       error => {
         console.log(error)
+      }
+    )
+  }
+
+  deleteContent(data : any) {
+    console.log(this.playlist_id, data)
+    this._playlist.delete_playlist_content(this.playlist_id, data).subscribe(
+      (data : any) => {
+        alert('CONTENT DELETED')
+        this.getPlaylistData()
       }
     )
   }

@@ -1,0 +1,40 @@
+<h1>Create Zone</h1>
+<form [formGroup]="create_zone_form" class="d-flex">
+    <div class="px-3">
+        <mat-form-field appearance="fill" class="d-block"> 
+            <mat-label>Zone Name</mat-label>
+            <input type="text" matInput placeholder="Ex. Main Display" formControlName="zone_name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Z-Index</mat-label>
+            <input type="number" matInput placeholder="Ex. 1" formControlName="z_index">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Width</mat-label>
+            <input type="number" matInput placeholder="Ex. 1920" formControlName="width">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Height</mat-label>
+            <input type="number" matInput placeholder="Ex. 1080" formControlName="height">
+        </mat-form-field>
+        <mat-dialog-actions align="start">
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="create_zone_form.value" type="submit">Finish</button>
+        </mat-dialog-actions>
+    </div>
+    <div class="px-3">
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>X-Position</mat-label>
+            <input type="number" matInput placeholder="Ex. 0" formControlName="position_x">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Y-Position</mat-label>
+            <input type="number" matInput placeholder="Ex. 0" formControlName="position_y">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Background Color</mat-label>
+            <input style="height: 40px" type="color" [ngModel]="backgroundColor" (change)="setSelectedColor($event)" [value]="backgroundColor || '#333333'" matInput formControlName="background">
+            <p class="pt-3"><span class="fw-bold">Selected Color:</span> {{ backgroundColor }}</p>
+        </mat-form-field>
+    </div>
+</form>

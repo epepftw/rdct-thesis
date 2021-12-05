@@ -122,7 +122,7 @@ export class MediaFileModalComponent implements OnInit {
       this.selected_files.push(data)
     }
 
-    console.log(this.selected_files);
+    console.log('BOOBS',this.selected_files);
   }
   // Function
   isFileIncluded(data : any){

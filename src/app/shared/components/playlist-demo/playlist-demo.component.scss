@@ -1,0 +1,27 @@
+.playlist-player {
+    background-color: #000;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+}
+
+.is-single-demo {
+    padding-bottom: 56.25%;
+}

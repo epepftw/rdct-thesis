@@ -2,14 +2,14 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th class="text-center" *ngFor="let t of column_title">
+            <th class="text-center text-white" *ngFor="let t of column_title">
                 {{ t.title }}
             </th>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let a of data">
+        <tr class="text-white" *ngFor="let a of data">
             <td class="text-center">{{ a.name }}</td>
             <td class="text-center">{{ a.total_key }}</td>
             <td class="text-center">{{ a.total_playlist }}</td>

@@ -1,26 +1,35 @@
-<div class="p-4">
-    <div class="container-fluid" *ngIf="playlist_data">
-        <div>
-            <h1>{{ playlist_data.playlist_name }}</h1>
-            <h2>{{ playlist_data.playlist_owner_name }}</h2>
-            <h4>Playlist ID : {{ playlist_data.playlist_owner_id }}</h4>
+<div class="container-fluid p-4" *ngIf="playlist_data">
+    <div class="row">
+        <div class="col-md-6">
+            <ng-container>
+                <h1>{{ playlist_data.playlist_name }}</h1>
+                <h2>{{ playlist_data.playlist_owner_name }}</h2>
+                <h4>Playlist ID : <span style="color: rgb(0, 174, 0);">{{ playlist_data.playlist_owner_id }}</span></h4>
+            </ng-container>
+            <ng-container>
+                <button class="mb-4" mat-button  mat-raised-button (click)="openDialog()">Add Content</button>
+            </ng-container>
         </div>
-        <div>
-            <button mat-button (click)="openDialog()">Add Content</button>
+        <div class="col-md-6 mb-4">
+            <app-playlist-demo *ngIf="!playlist_preparing"
+            [is_single_demo]="true"
+            [playlist_data]="playlist_data.contents">
+            </app-playlist-demo>
         </div>
-    
-        <div class="card text-white shadow-lg p-3 bg-white">
-            <div class="row" [sortablejs]="playlist_data.contents">
-                <div class="col-lg-1" *ngFor="let pic of playlist_data.contents">
-                    <app-playlist-content-table
-                    [file_url]="pic.file_url"
-                    [filename]="pic.filename">
-                    </app-playlist-content-table>
-                </div>
+    </div>
+
+    <div class="card text-white shadow-lg p-3 bg-white">
+        <div class="row" [sortablejs]="playlist_data.contents">
+            <div class="playlist-data col-lg-1" *ngFor="let pic of playlist_data.contents">
+                <app-playlist-content-table
+                [file_url]="pic.file_url"
+                [filename]="pic.filename">
+                </app-playlist-content-table>
+                <button class="delete-button m-1" (click)="deleteContent(pic.playlist_content_id)"><i class="fas fa-times"></i></button>
             </div>
-            <div class="text-right">
-                <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
-            </div>
-          </div>
+        </div>
+        <div class="text-right">
+            <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
+        </div>
     </div>
 </div>

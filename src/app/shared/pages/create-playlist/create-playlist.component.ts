@@ -1,6 +1,6 @@
  import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
@@ -27,7 +27,6 @@ export class CreatePlaylistComponent implements OnInit {
   formSubmitted: any;
   isLinear = true;
   user_name: any[] = [];
-  keys: any;
   mediaFiles: any[] = [];
   contents: any[] = [];
   firstFormGroup: FormGroup;
@@ -79,14 +78,14 @@ export class CreatePlaylistComponent implements OnInit {
         this.firstFormGroup.controls['playlist_owner_id'].setValue(data[0]._id)
         console.log('#PLAYLIST CREATOR ID',data[0]._id)
       }
-    })
+    });
 
     this.filteredOptions.subscribe((data : any[]) => {
       if (data.length > 0) {
         this.firstFormGroup.controls['playlist_owner_name'].setValue(data[0].name)
         console.log('#PLAYLIST CREATOR',data[0].name)
       }
-    })
+    });
   }
   
   displayFn(user: User): string {

@@ -1,3 +1,4 @@
+
 export type Keys = {
     advertiser: UserIdName,
     createdBy: UserIdName,
@@ -5,7 +6,8 @@ export type Keys = {
     isActive : boolean,
     isOnline : boolean,
     key : string,
-    _id : string
+    _id : string,
+    assignedPlaylist?: string[]
 }
 
 type UserIdName = {

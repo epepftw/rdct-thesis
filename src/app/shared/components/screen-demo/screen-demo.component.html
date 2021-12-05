@@ -1,0 +1,8 @@
+<ng-container *ngIf="zone_playlist">
+    <div class="screen-demo">
+        <app-zone-template *ngFor="let s of zone_playlist.zones"
+        [zone]="s.zone_data"
+        [playlist]="s.zone_playlist_data">
+        </app-zone-template>
+    </div>
+</ng-container>

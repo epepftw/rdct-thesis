@@ -1,4 +1,4 @@
-<div class="admin-keys-page p-4">
+<div class="admin-keys-page white-text main-color main-color p-4">
     <div class="container-fluid">
         <!--TITLE-->
         <div class="row">
@@ -21,7 +21,7 @@
         <hr class="m4">
 
         <div class="row">
-            <div class="col-md-12 col-lg-6 col-xl-3" *ngFor="let c of card_data_sample">
+            <div class="col-md-6" *ngFor="let c of card_data_sample">
                 <app-card
                 [digit]="c.digit"
                 [description]="c.description"
@@ -39,7 +39,7 @@
 
         <hr>
 
-        <div class="card text-white shadow-lg p-5 bg-white">
+        <div class="card text-white shadow-lg secondary-colors p-4 bottom-shadows">
             
             <app-keys-table
             *ngIf="!searching; else search_result"

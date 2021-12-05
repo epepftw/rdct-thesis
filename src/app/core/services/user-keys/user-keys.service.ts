@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Keys } from '../../types/Keys.types';
+import { PLAYLIST } from '../../types/Playlist.types';
 import { AuthService } from '../auth.service';
 
 @Injectable({
@@ -23,12 +25,35 @@ export class UserKeysService {
                 }
                }
 
+ 
+
+  //POST
+  gen_keys(advertiserId : string, count : string): Observable<any> {
+    console.log(advertiserId)
+    return this._http.post(`${environment.base_api}${environment.post.gen_key}?advertiserId=${advertiserId}&count=${count}`, null, this.header)
+  }    
+
+  //GET
   get_keys(): Observable<any> {
     return this._http.get<any>(`${environment.base_api}${environment.get.keys}`, this.header)
   }
 
-  gen_keys(advertiserId : string, count : string): Observable<any> {
-    console.log(advertiserId)
-    return this._http.post(`${environment.base_api}${environment.post.gen_key}?advertiserId=${advertiserId}&count=${count}`, null, this.header)
-  }         
+  get_userKeys(userId : string): Observable<any> {
+    return this._http.get<any>(`${environment.base_api}${environment.get.keys_by_userId}?userId=${userId}`, this.header)
+  }
+
+  get_key_page(keyId : string) : Observable<any> {
+    return this._http.get<any>(`${environment.base_api}${environment.get.keys_by_keyId}?id=${keyId}`, this.header)
+  }
+
+  //UPDATE
+  update_keys(keyData : any) : Observable<any> {
+    return this._http.put(`${environment.base_api}${environment.put.update_key}`, keyData, this.header)
+  }
+
+  //DELETE
+  delete_key(data: any): Observable<any> {
+    return this._http.delete(`${environment.base_api}${environment.delete.delete_key}`, this.header)
+  }
+
 }

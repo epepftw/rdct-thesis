@@ -1,54 +1,53 @@
-<div class="admin-playlist-page">
-    <div class="container-fluid">
 
-        <!--Title-->
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Playlist</h2>
+    <div class="container-fluid white-text p-4 main-color admin-playlist-page">
+            <!--Title-->
+            <div class="row">
+                <div>
+                    <h2>Playlist</h2>
+                </div>
+                <div>
+                    <a [routerLink]="['/admin/playlist/create']">
+                        <button mat-raised-button color="primary" type="button">
+                            <i class="fas fa-plus"></i>
+                            Create Playlist
+                        </button>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-6 text-right">
-                <a [routerLink]="['/admin/playlist/create']">
-                    <button type="button">
-                        <i class="fas fa-plus"></i>
-                        Create Playlist
-                    </button>
-                </a>
+            <hr class="my-4">
+    
+            <!--Cards-->
+            <div class="row">
+                <div class="col-lg-4" *ngFor="let c of card_data_sample">
+                    <app-card
+                    [digit]="c.digit"
+                    [description]="c.description">
+                    </app-card>
+                </div>
             </div>
-        </div>
-        <hr class="my-4">
-
-        <!--Cards-->
-        <div class="row">
-            <div class="col-lg-4" *ngFor="let c of card_data_sample">
-                <app-card
-                [digit]="c.digit"
-                [description]="c.description">
-                </app-card>
+    
+            <!--Table-->
+            <div class="my-4 input-group justify-content-end">
+                <div class="search-box"> 
+                    <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Playlist"/>
+                        <i class="fas fa-search"></i>
+                </div>
             </div>
-        </div>
-
-        <!--Table-->
-        <div class="my-4 input-group justify-content-end">
-            <div class="search-box"> 
-                <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Playlist"/>
-                    <i class="fas fa-search"></i>
-            </div>
-        </div>
-
-        <hr class="my-4">
-        <div class="card text-white shadow-lg p-3 bg-white">
-            <app-playlist-table
-            *ngIf="!searching; else search_result"
-            [column_title]="table_column_title"
-            [data]="playlist">
-            </app-playlist-table>
-
-            <ng-template #search_result>
+    
+            <hr class="my-4">
+            <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
+                <h2>Playlist Table</h2>
                 <app-playlist-table
+                *ngIf="!searching; else search_result"
                 [column_title]="table_column_title"
-                [data]="search_results">
+                [data]="playlist">
                 </app-playlist-table>
-            </ng-template>
-        </div>
+    
+                <ng-template #search_result>
+                    <app-playlist-table
+                    [column_title]="table_column_title"
+                    [data]="search_results">
+                    </app-playlist-table>
+                </ng-template>
+            </div>
     </div>
-</div>

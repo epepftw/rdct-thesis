@@ -1,0 +1,51 @@
+<div class="container-fluid white-text main-color p-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Screens</h2>
+        </div>
+        <div class="col-md-6 text-end">
+            <a [routerLink]="['/admin/screen/create']">
+                <button mat-raised-button color="primary" type="button">
+                    <i class="fas fa-plus"></i>
+                    Create Screen
+                </button>
+            </a>
+        </div>
+    </div>
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col-lg-6" *ngFor="let c of card_data_sample">
+            <app-card
+            [digit]="c.digit"
+            [description]="c.description">
+            </app-card>
+        </div>
+    </div>
+
+
+     <!--Table-->
+    <div class="my-4 secondary-color input-group justify-content-end">
+        <div class="search-box"> 
+            <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search Playlist"/>
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+    <hr class="my-4">
+
+    <div class="secondary-colors bottom-shadows card text-white shadow-lg p-3">
+        <h2>Screen Table</h2>
+        <app-screen-table
+        *ngIf="!searching; else search_result"
+        [column_title]="table_column_title"
+        [data]="screen">
+        </app-screen-table>
+
+        <ng-template #search_result>
+            <app-screen-table
+            [column_title]="table_column_title"
+            [data]="search_results">
+            </app-screen-table>
+        </ng-template>
+    </div>
+</div>

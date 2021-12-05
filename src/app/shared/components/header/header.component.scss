@@ -1,0 +1,33 @@
+
+.user-info {
+    color: black;
+
+    h1{
+        text-transform: uppercase;
+        color:rgb(69, 69, 126);
+        font-weight: 600;
+        font-size: 30px;
+    };
+};
+
+.img-1 > img{
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.user-info{
+    border: none;
+    border-bottom: 2px solid rgb(214, 211, 211);
+    
+};
+
+.main-table > td{
+    border: none;
+};
+
+.main-table > th{
+    border: none;
+}

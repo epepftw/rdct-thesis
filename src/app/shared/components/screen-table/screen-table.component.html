@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th *ngFor="let t of column_title" class="text-white">
+                {{ t.title }}
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let a of data" class="text-white">
+            <td><a [routerLink]="[a._id]">{{ a.screen_name }}</a></td>
+            <td>{{ a._id }}</td>
+            <td>{{ a.template_id }}</td>
+            <td>{{ a.action }}</td>
+        </tr>
+    </tbody>
+</table>

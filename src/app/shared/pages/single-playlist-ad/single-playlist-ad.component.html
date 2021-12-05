@@ -1,0 +1,27 @@
+<div class="p-4">
+    <div class="container-fluid" *ngIf="playlist_data">
+        <div>
+            <h1>{{ playlist_data.playlist_name }}</h1>
+            <h2>{{ playlist_data.playlist_owner_name }}</h2>
+            <h4>Playlist ID : {{ playlist_data.playlist_owner_id }}</h4>
+        </div>
+        <div>
+            <button mat-button  mat-raised-button (click)="openDialog()">Add Content</button>
+            <button mat-button mat-raised-button color="accent"><a [routerLink]="['../../keys']">Assign to Key</a></button>
+        </div>
+    
+        <div class="card text-white shadow-lg p-3 bg-white">
+            <div class="row" [sortablejs]="playlist_data.contents">
+                <div class="col-lg-1" *ngFor="let pic of playlist_data.contents">
+                    <app-playlist-content-table
+                    [file_url]="pic.file_url"
+                    [filename]="pic.filename">
+                    </app-playlist-content-table>
+                </div>
+            </div>
+            <div class="text-right">
+                <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
+            </div>
+          </div>
+    </div>
+</div>

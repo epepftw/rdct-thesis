@@ -1,14 +1,14 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th *ngFor="let t of column_title">
+            <th *ngFor="let t of column_title" class="text-white">
                 {{ t.title }}
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let a of users">
-            <td>{{ a.name }}</td>
+        <tr *ngFor="let a of users" class="text-white">
+            <td><a [routerLink]="['profile']">{{ a.name }}</a></td>
             <td>{{ a.username }}</td>
             <td>{{ a.email }}</td>
             <td>{{ a.phone }}</td>
