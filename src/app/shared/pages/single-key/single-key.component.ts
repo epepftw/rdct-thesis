@@ -77,7 +77,7 @@ export class SingleKeyComponent implements OnInit {
       this.contents = result;
       
       if(result && result.length > 0){
-        this.key_data.assignedPlaylist.push(...result)
+        this.key_data.assignedScreen.push(...result)
       
       }
     });
