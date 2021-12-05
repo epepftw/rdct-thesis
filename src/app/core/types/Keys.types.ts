@@ -7,7 +7,7 @@ export type Keys = {
     isOnline : boolean,
     key : string,
     _id : string,
-    assignedPlaylist?: string[]
+    assignedScreen?: string[]
 }
 
 type UserIdName = {
