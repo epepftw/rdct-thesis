@@ -10,6 +10,7 @@ export class MyChartComponent implements OnInit {
 
   constructor() { 
     Chart.register(...registerables);
+    Chart.defaults.color = "#fff";
   }
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class MyChartComponent implements OnInit {
               label: 'Added Licenses',
               data: [20, 30, 47, 70, 60, 70, 60, 80, 90],
               fill: true,
-              backgroundColor: '	#FFA07A',
+              backgroundColor: 'rgba(207, 106, 83, 0.6)',
               tension: 0.6,
           }]
       }
@@ -35,7 +36,7 @@ export class MyChartComponent implements OnInit {
               label: 'Added Advertisers',
               data: [20, 30, 47, 30, 60, 40, 60, 80, 90],
               fill: true,
-              backgroundColor: '#3CB371'
+              backgroundColor: ' rgba(81, 176, 131, 0.5)',
           }]
       }
   });

@@ -2,13 +2,13 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th *ngFor="let t of column_title">
+            <th *ngFor="let t of column_title" class="text-white">
                 {{ t.title }}
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let a of data">
+        <tr *ngFor="let a of data" class="text-white">
             <td>{{ a.advertiser.name }}</td>
             <td><a [routerLink]="[a._id]">{{ a.key }}</a></td>
             <td>{{ a.isOnline ? 'Online':'Offline'}}</td>

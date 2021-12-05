@@ -1,4 +1,4 @@
-<div class="admin-users-page p-4">
+<div class="admin-users-page white-text main-color p-4">
     <div class="container-fluid">
         <!-- Title -->
         <div class="row">
@@ -26,36 +26,36 @@
         <hr class="mb-4">
     </div>
 
-        <div class="px-5 card text-white shadow-lg p-3 bg-white">
-            <div class="row">
-                <div class="my-4 input-group justify-content-end">
-                    <div class="search-box"> 
-                        <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search User"/>
-                            <i class="fas fa-search" style="color: #555"></i>
-                    </div>
+    <div class="px-5 card text-white p-3 bg-white secondary-colors bottom-shadows">
+        <div class="row">
+            <div class="my-4 input-group justify-content-end">
+                <div class="search-box"> 
+                    <input [(ngModel)]="search_key" (keyup)="searchData()" type="search" class="search-txt" placeholder="Search User"/>
+                        <i class="fas fa-search" style="color: #555"></i>
                 </div>
+            </div>
 
-                <!-- <div class="col-lg-12">
+            <!-- <div class="col-lg-12">
+                <app-users-table
+                [column_title]="table_column_title"
+                [data]="users">
+                </app-users-table>
+            </div> -->
+                <app-users-table
+                *ngIf="!searching; else search_result"
+                [column_title]="table_column_title"
+                [users]="users">
+                </app-users-table>
+    
+                <ng-template #search_result>
                     <app-users-table
                     [column_title]="table_column_title"
-                    [data]="users">
+                    [users]="search_results">
                     </app-users-table>
-                </div> -->
-                    <app-users-table
-                    *ngIf="!searching; else search_result"
-                    [column_title]="table_column_title"
-                    [users]="users">
-                    </app-users-table>
-        
-                    <ng-template #search_result>
-                        <app-users-table
-                        [column_title]="table_column_title"
-                        [users]="search_results">
-                        </app-users-table>
-                    </ng-template>
+                </ng-template>
 
-            </div> 
-        </div>
+        </div> 
+    </div>
 
 
 </div>
