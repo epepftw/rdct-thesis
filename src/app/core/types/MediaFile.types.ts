@@ -6,5 +6,6 @@ export type SAVE_FILE_INFO = {
     user_id: string,
     mimetype: string,
     size: number,
-    playlist_content_id?: string
+    playlist_content_id?: string,
+    duration?: number
 }

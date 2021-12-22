@@ -42,7 +42,7 @@ export class UserKeysService {
     return this._http.get<any>(`${environment.base_api}${environment.get.keys_by_userId}?userId=${userId}`, this.header)
   }
 
-  get_key_page(keyId : string) : Observable<any> {
+  get_key_data(keyId : string) : Observable<any> {
     return this._http.get<any>(`${environment.base_api}${environment.get.keys_by_keyId}?id=${keyId}`, this.header)
   }
 

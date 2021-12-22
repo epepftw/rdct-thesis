@@ -56,6 +56,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import { ZoneTemplateComponent } from './components/zone-template/zone-template.component';
+import { DurationModalComponent } from './components/duration-modal/duration-modal.component';
 
 
 
@@ -117,7 +118,8 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
-		ImagePipe
+		ImagePipe,
+  DurationModalComponent
  
   
 	],

@@ -11,7 +11,7 @@ import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 })
 export class PlaylistDemoComponent implements OnInit {
 
-  @Input() playlist_data:  SAVE_FILE_INFO[] = [];
+  @Input() playlist_data:  any;
   @Input() is_single_demo: boolean; 
   current_assets : string = '';
   current_file_type : string = '';
@@ -30,7 +30,8 @@ export class PlaylistDemoComponent implements OnInit {
   checkFileType(sequence : number) : void {
     setTimeout(() => {
       this.current_file_type = this.playlist_data[sequence].mimetype;
-      console.log('asdfasdfasdfasdfasdfassdfasdfasdf', sequence, this.current_file_type)
+      this.img_duration = this.playlist_data[sequence].duration;
+      console.log('asdfasdfasdfasdfasdfassdfasdfasdf', sequence, this.current_file_type, this.playlist_data[sequence].duration)
       if(this._image.transform(this.playlist_data[sequence].mimetype)) {
         console.log('qweqweqweqweqweqwe')
         this.displayImage(this.playlist_data[sequence].file_url)
@@ -39,6 +40,7 @@ export class PlaylistDemoComponent implements OnInit {
         this.displayVideo(this.playlist_data[sequence].file_url)
       }
     }, 0)
+    
   }
 
   displayImage(image_url : string) {

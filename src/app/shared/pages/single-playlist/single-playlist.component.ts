@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.service';
 import * as Sortable from 'sortablejs';
 import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
+import { DurationModalComponent } from '../../components/duration-modal/duration-modal.component';
 @Component({
   selector: 'app-single-playlist',
   templateUrl: './single-playlist.component.html',
@@ -86,14 +87,32 @@ export class SinglePlaylistComponent implements OnInit {
     )
   }
 
+  openMediaInfo(file : any) {
+    console.log('OPENMEDIAINFO', file)
+    const dialogRef = this.dialog.open(DurationModalComponent, {
+      data: {file, playlist_id : this.playlist_id}});
+    console.log('DURATION',this.playlist_data, file)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result:', result);
+      if(result == 1){
+        this.getPlaylistData();
+      }
+      
+    });
+  }
+
+
+  //DELETE
   deleteContent(data : any) {
     console.log(this.playlist_id, data)
-    this._playlist.delete_playlist_content(this.playlist_id, data).subscribe(
-      (data : any) => {
-        alert('CONTENT DELETED')
-        this.getPlaylistData()
-      }
-    )
+    if(confirm("Are you sure you want to delete this content?")) {
+      this._playlist.delete_playlist_content(this.playlist_id, data).subscribe(
+        (data : any) => {
+          alert('CONTENT DELETED')
+          this.getPlaylistData()
+        }
+      )
+    }
   }
 
 }

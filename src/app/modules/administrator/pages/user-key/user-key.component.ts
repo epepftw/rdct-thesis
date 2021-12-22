@@ -43,6 +43,9 @@ export class UserKeyComponent implements OnInit {
       {
         title: "Status"
       },
+      // {
+      //   title: "Assigned Screen"
+      // },
       {
         title: "Date Created"
       }
