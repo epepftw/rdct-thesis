@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute }from '@angular/router';
 import { UserKeysService } from 'src/app/core/services/user-keys/user-keys.service';
-import { Keys } from 'src/app/core/types/Keys.types';
+
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
 import { AssignKeyComponent } from '../../components/assign-key/assign-key.component';
 import { SCREEN } from 'src/app/core/types/Screen.types';
@@ -17,8 +17,8 @@ import { io } from "socket.io-client";
 })
 export class SingleKeyComponent implements OnInit {
   key_id: string;
-  key_data: Keys;
-  screen: SCREEN[] = [];
+  key_data: any;
+  screen: SCREEN;
   contents: any[] = [];
   socket: any;
 
@@ -39,7 +39,6 @@ export class SingleKeyComponent implements OnInit {
       (data: any) => {
         this.key_id = data.params.id;
         this.getKeyData();
-        this.getScreen();
         this.acceptData();
         this.playerDisconnected();
       }
@@ -47,16 +46,17 @@ export class SingleKeyComponent implements OnInit {
   }
 
   getKeyData() {
-    this._keys.get_key_page(this.key_id).subscribe(
-      (data: Keys) => {
+    this._keys.get_key_data(this.key_id).subscribe(
+      (data: any) => {
         this.key_data = data;
-        console.log('#KEY DATA',this.key_data)
+        this.getScreen()
+        console.log('#KEY DATAsss',this.key_data)
       }
     )
   }
 
   getScreen(){
-    this._screen.get_screen().subscribe(
+    this._screen.get_screen_byId(this.key_data.screenData._id).subscribe(
       (data: any) => {
         this.screen = data;
         console.log('#screen DATA', this.screen)

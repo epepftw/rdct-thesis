@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./keys-table.component.scss']
 })
 export class KeysTableComponent implements OnInit {
-
+  
   @Input() title: any = '';
   @Input() column_title: any = '';
   @Input() data: any = '';

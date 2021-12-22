@@ -8,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MediaFilesComponent implements OnInit {
 
   @Input() filename: any = '';
-  @Input() file_url: any = '';
+  @Input() file_url: any = ''; 
+  @Input() mimetype: any = '';
 
   constructor() { }
 

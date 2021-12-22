@@ -55,6 +55,7 @@ export const endpoints = {
     put: {
         // Playlist
         update: '/playlist/update',
+        media_info: '/playlist/setDuration',
         // Keys
         update_key: '/keys/update'
     },

@@ -1,6 +1,20 @@
-<div class="mb-4 card mThumbnail">
-    <img class="card-img-top" [src]="file_url" alt="">
-    <div class="card-body title">
-        <p class="card-text">{{ filename }}</p>
+
+
+<ng-template [ngIf]="mimetype | image">
+    <div class="mb-4 card mThumbnail">
+        <img class="card-img-top" [src]="file_url" alt="">
+        <div class="card-body title">
+            <p class="card-text">{{ filename }}</p>
+        </div>
     </div>
-</div>
+</ng-template>
+
+<ng-template [ngIf]="mimetype == 'video/mp4'">
+    <div class="mb-4 card mThumbnail">
+        <video [src]="file_url" autoplay muted loop>
+        </video>
+        <div class="card-body title">
+            <p class="card-text">{{ filename }}</p>
+        </div>
+    </div>
+</ng-template>

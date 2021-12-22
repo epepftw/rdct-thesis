@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <ng-container>
-                <h1 class="text-white">{{ playlist_data.playlist_name }}</h1>
-                <h2 class="text-white">{{ playlist_data.playlist_owner_name }}</h2>
+                <h1 class="text-white">Playlist Name : {{ playlist_data.playlist_name }}</h1>
+                <h2 class="text-white">Playlist Owner : {{ playlist_data.playlist_owner_name }}</h2>
                 <h4 class="text-white">Playlist ID : <span style="color: rgb(0, 174, 0);">{{ playlist_data.playlist_owner_id }}</span></h4>
             </ng-container>
             <ng-container>
@@ -19,15 +19,21 @@
     </div>
 
     <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
-        <div class="row" [sortablejs]="playlist_data.contents">
+        <h2 class="text-white">Playlist Contents</h2>
+        <div class="row no-gutters" [sortablejs]="playlist_data.contents">            
             <div class="playlist-data col-lg-1" *ngFor="let pic of playlist_data.contents">
+                <div class="mx-2">
                 <app-playlist-content-table
-                [file_url]="pic.file_url"
-                [filename]="pic.filename">
+                    [file_url]="pic.file_url"
+                    [filename]="pic.filename"
+                    [mimetype]="pic.mimetype">
                 </app-playlist-content-table>
-                <button class="delete-button m-1" (click)="deleteContent(pic.playlist_content_id)"><i class="fas fa-times"></i></button>
+                </div>
+                <button class="delete-button m-1" (click)="deleteContent(pic.playlist_content_id)"><span style="color:#fff;"><i class="fas fa-trash"></i></span></button>
+                <button class="edit-button m-1" (click)="openMediaInfo(pic)"><span style="color:#fff;"><i class="fas fa-info"></i></span></button>
             </div>
         </div>
+        <p style="font-size: .80rem;">(Drag content to arrange sequence)</p>
         <div class="text-right">
             <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
         </div>

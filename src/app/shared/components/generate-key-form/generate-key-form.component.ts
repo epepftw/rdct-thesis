@@ -24,8 +24,6 @@ export class GenerateKeyFormComponent implements OnInit {
   filteredOptions: Observable<any[]>;
 
   constructor(
-    private _users: UserService,
-    private _formBuilder: FormBuilder,
     private _advertiser: AdvertiserService,
     private _keys: UserKeysService,
     private _form: FormBuilder
