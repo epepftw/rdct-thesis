@@ -3,6 +3,6 @@
     <img [src]="current_assets" alt="">
   </ng-container>
   <ng-container *ngIf="current_file_type == 'video/mp4'">
-    <video [src]="current_assets" (ended)="onVideoEnded()" autoplay muted></video>
+    <video [src]="current_assets" (ended)="onVideoEnded()" autoplay [muted]="true"></video>
   </ng-container>
 </div>

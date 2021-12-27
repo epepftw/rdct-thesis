@@ -1,9 +1,8 @@
-<div class="admin-dashboard-page backgroundmain p-4">
-    <div class="container-fluid">
+<div class="container-fluid admin-dashboard-page backgroundmain p-4">
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="m-0 title">Welcome Back {{ current_user }}</h2>
+                <h2 class="mb-4 title">Welcome Back {{ current_user }}</h2>
             </div>
         </div>
         <!-- Title -->
@@ -16,6 +15,7 @@
 
         <!-- Contents -->
             <div class="row">
+                <h2 class="mb-4 title">Player(s) Info</h2>
                 <div class="col-lg-4" *ngFor="let c of card_data_sample">
                     <app-card
                     [digit]="c.digit"
@@ -33,6 +33,4 @@
             [data]="players">
             </app-players-table>
         </div>
-
-    </div>
 </div>

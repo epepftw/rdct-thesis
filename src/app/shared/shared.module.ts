@@ -37,6 +37,9 @@ import { SingleScreenComponent } from './pages/single-screen/single-screen.compo
 import { PlaylistDemoComponent } from './components/playlist-demo/playlist-demo.component';
 import { ScreenDemoComponent } from './components/screen-demo/screen-demo.component';
 import { ScreenTableComponent } from './components/screen-table/screen-table.component';
+import { ZoneTemplateComponent } from './components/zone-template/zone-template.component';
+import { DurationModalComponent } from './components/duration-modal/duration-modal.component';
+import { YoutubeMediaComponent } from './components/youtube-media/youtube-media.component';
 
 import { ImagePipe } from './pipes/image.pipe';
 
@@ -55,8 +58,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
-import { ZoneTemplateComponent } from './components/zone-template/zone-template.component';
-import { DurationModalComponent } from './components/duration-modal/duration-modal.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -112,14 +116,18 @@ const ng_material = [
 	MatFormFieldModule,
 	MatDatepickerModule,
 	MatExpansionModule,
-	MatSelectModule
+	MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule
 ]
 
 @NgModule({
 	declarations: [
 		shared_components,
 		ImagePipe,
-  DurationModalComponent
+  DurationModalComponent,
+  YoutubeMediaComponent
  
   
 	],

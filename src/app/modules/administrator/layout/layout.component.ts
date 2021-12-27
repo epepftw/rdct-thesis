@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -23,7 +24,7 @@ export class LayoutComponent implements OnInit {
       link: "keys"
     },
     {
-      label: "Media Files",
+      label: "Media Library",
       icon: "fas fa-photo-video",
       link: "media"
     },
