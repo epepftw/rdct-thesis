@@ -11,7 +11,7 @@
 
 <ng-template [ngIf]="mimetype == 'video/mp4'">
     <div class="mb-4 card mThumbnail">
-        <video [src]="file_url" autoplay muted>
+        <video [src]="file_url" autoplay loop [muted]="true">
         </video>
         <div class="card-body title">
             <p class="card-text">{{ filename }}</p>
