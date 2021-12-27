@@ -43,6 +43,10 @@ export class PlaylistService {
       return this._http.put<any>(`${environment.base_api}${environment.put.update}`, data, this.header )
     }
 
+    set_duration(data : any): Observable<any> {
+      return this._http.put<any>(`${environment.base_api}${environment.put.media_info}`, data, this.header)
+    }
+
     get_userPlaylist(userId : string): Observable<any> {
       return this._http.get<any>(`${environment.base_api}${environment.get.playlist_by_userId}?userId=${userId}`, this.header)
     }

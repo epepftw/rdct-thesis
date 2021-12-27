@@ -1,0 +1,45 @@
+
+
+<ng-template [ngIf]="media_info.file.mimetype == 'video/mp4'">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" >
+                <h2>File Info</h2>
+                    <div class="text-center">
+                        <video style="height: 20rem;width: 18.75rem; margin-bottom: 20px;" [src]="media_info.file.file_url" autoplay muted loop>
+                        </video>
+                    </div>
+                    <h3>File Name : {{ media_info.file.filename }}</h3>
+                    <p>Uploaded by : {{ media_info.file.uploaded_by }}</p>
+                    <p>File Type : {{ media_info.file.mimetype }}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template [ngIf]="media_info.file.mimetype | image">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>File Info</h2>
+                    <div class="text-center">
+                        <img style="width: 18.75rem; margin-bottom: 20px;" [src]="media_info.file.file_url" alt="">
+                    </div>
+                    <h3>File Name : {{ media_info.file.filename }}</h3>
+                    <p>Uploaded by : {{ media_info.file.uploaded_by }}</p>
+                    <p>File Type : {{ media_info.file.mimetype }}</p>
+                    <form [formGroup]="set_duration_form" (ngSubmit)="onFormSubmit()">
+                        <mat-form-field appearance="fill" floatLabel="always">
+                            <mat-label>Duration</mat-label>
+                            <input matInput type="number" class="example-right-align" formControlName="duration" placeholder="0">
+                            <span matPrefix>&nbsp;</span>
+                            <span matSuffix>.secs</span>          
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button color="primary">Save</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</ng-template>
+

@@ -4,22 +4,15 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2 class="m-0">Users</h2>
-            </div>
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary d-flex button-add bton3">
-                    <i class="fas fa-user-times"></i>
-                    <p>Delete</p>
-                </button>
-                <button type="button" class="btn btn-primary d-flex button-add bton2">
-                    <i class="fas fa-user-edit"></i>
-                    <p>Edit</p>
-                </button>
                 <a [routerLink]="['/admin/user/add']">
-                    <button type="button" class="btn btn-primary d-flex button-add bton1">
-                        <i class="fas fa-user-plus"></i>
-                        <p>Add</p>
+                    <button type="button" mat-raised-button color="primary" class="my-2
+                    ">
+                        <i class="fas fa-user-plus"></i> Add User
                     </button>
                 </a>
+            </div>
+            <div class="col-lg-6">
+               
                 
             </div>
         </div>

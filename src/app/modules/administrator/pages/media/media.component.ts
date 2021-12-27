@@ -1,7 +1,7 @@
 // IMPORT
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { MatDialog } from '@angular/material/dialog';
 import * as filestack from 'filestack-js'
 // ENVIRONMENT AND SERVICES
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,8 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
 // TYPES
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
+import { YoutubeMediaComponent } from 'src/app/shared/components/youtube-media/youtube-media.component';
+
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -23,6 +25,7 @@ export class MediaComponent implements OnInit {
   
 
   constructor(
+    public dialog: MatDialog,
     private _mediaFiles: MediaFileService,
     private _auth: AuthService ) {
       this.filestack_client = filestack.init(environment.filestackAPI)
@@ -105,16 +108,20 @@ export class MediaComponent implements OnInit {
     this.filestack_client.picker(filestack_options).open();
   }
   
-    saveUploadedFileInfo(data: SAVE_FILE_INFO[]) {
-      this._mediaFiles.save_uploaded_file(data).subscribe(
-        data => {
-          console.log(data)
-          this.getMediaFiles();
-        }, 
-        error => {
-          console.log('Error', error)
-        }
-      )
-    }
-  
+  saveUploadedFileInfo(data: SAVE_FILE_INFO[]) {
+    this._mediaFiles.save_uploaded_file(data).subscribe(
+      data => {
+        console.log(data)
+        this.getMediaFiles();
+      }, 
+      error => {
+        console.log('Error', error)
+      }
+    )
+  }
+
+
+  openYtDialog() {
+    const dialogRef = this.dialog.open(YoutubeMediaComponent);
+  }  
 }

@@ -2,8 +2,15 @@
     <div class="row">
         <div class="col-md-6">
             <ng-container>
-                <h1>{{ screen_data.screen_name }}</h1>
-                <h2>Screen ID : <span style="color: rgb(0, 174, 0);">{{ screen_data.screen_id }}</span></h2>
+                <h1 class="text-white">Screen name : <span style="color: rgb(0, 174, 0);">{{ screen_data.screen_name }}</span></h1>
+                <h2 class="text-white">Screen ID : <span style="color: rgb(0, 174, 0);">{{ screen_data.screen_id }}</span></h2>
+                <h2 class="text-white">Template : <span style="color: rgb(0, 174, 0);">{{ screen_data.template.name }}</span></h2>
+                <div>
+                    <h2 class="text-white">Playlist(s) assigned :</h2>
+                    <div *ngFor="let f of screen_data.zones">
+                        <h4 class="text-white"><span style="color: rgb(0, 174, 0);">{{ f.zone_data.zone_name }}</span></h4>
+                    </div>
+                </div>
             </ng-container>
         </div>
         <div class="col-md-6 mb-4">

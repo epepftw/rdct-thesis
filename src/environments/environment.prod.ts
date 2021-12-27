@@ -5,7 +5,6 @@ export const environment = {
   base_api: 'https://rcdt-api.herokuapp.com/api',
   filestackAPI: 'A46sEWzSWRjyg8LO7w6ntz',
   
-
   get: endpoints.get,
   post: endpoints.post,
   put: endpoints.put,

@@ -3,8 +3,9 @@
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="m-0">Media Files</h2>
-                <button mat-raised-button color="primary" (click)="uploadContents()">Upload</button>
+                <h2 class="mb-2">Media Library</h2>
+                <button class="mx-1" mat-raised-button color="primary" (click)="uploadContents()">Upload</button>
+                <button class="mx-1" mat-raised-button color="secondary" (click)="openYtDialog()">Youtube URL</button>
             </div>
         </div>
         <!-- Title -->
@@ -23,12 +24,15 @@
     <!-- Contents -->
         <hr class="my-4">
         <div class="card secondary-colors bottom-shadows shadow-lg p-3 bg-white">
-            <div class="row">
+            <div class="row no-gutters">
                 <div class="col-lg-1" *ngFor="let f of mediaFiles">
-                    <app-media-files
-                    [file_url]="f.file_url"
-                    [filename]="f.filename">
-                    </app-media-files>
+                   <div class="mx-2">
+                        <app-media-files
+                        [file_url]="f.file_url"
+                        [filename]="f.filename"
+                        [mimetype]="f.mimetype">
+                        </app-media-files>
+                   </div>
                 </div>
             </div>
             

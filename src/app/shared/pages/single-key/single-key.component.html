@@ -1,9 +1,9 @@
 <div class="p-4">
     <div class="container-fluid" *ngIf="key_data">
         <div>
-            <h1 class="text-white">{{ key_data.advertiser.name }}</h1>
-            <h2 class="text-white">License Key : {{ key_data.key }}</h2>
-            <h4 class="text-white">Key ID : {{ key_data._id }}</h4>
+            <h1 class="text-white">{{ key_data.keyData.advertiser.name }}</h1>
+            <h2 class="text-white">License Key : {{ key_data.keyData.key }}</h2>
+            <h4 class="text-white">Key ID : {{ key_data.keyData._id }}</h4>
         </div>
         <div>
             <button mat-raised-button (click)="openDialog()">Assign Screen</button>
@@ -13,7 +13,14 @@
     
         <div class="secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white my-4">
            <h2 class="text-white">Screen Assigned</h2>
-           <h4>(These are just samples.)</h4>
+           <h3 class="text-white">Screen Name : <span style="color: rgb(255, 159, 33)">{{ key_data.screenData.screen_name }}</span></h3>
+           <div class="col-md-6 mb-4">
+                <div class="template-demo">
+                    <app-screen-demo
+                    [zone_playlist]="screen">
+                    </app-screen-demo>
+                </div>
+            </div>
         </div>
     </div>
 </div>

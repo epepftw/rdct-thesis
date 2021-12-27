@@ -27,17 +27,21 @@
     <mat-step [stepControl]="secondFormGroup" label="Select media files">
         <div>
           <h1>Playlist Content</h1>
-          <button class="m-2" mat-raised-button color="primary" (click)="openDialog()">Add Content</button>
+          <button class="m-2" mat-raised-button color="primary" (click)="openDialog()">Select Content</button>
           <button class="m-2" mat-raised-button color="accent" matStepperPrevious>Back</button>
         </div>
             <!---->
         <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
-          <div class="row" [sortablejs]="mediaFiles">
+          <h2 class="text-white">Your Contents</h2>
+          <div class="row no-gutters" [sortablejs]="mediaFiles">
               <div class="col-lg-1" *ngFor="let f of mediaFiles">
-                  <app-media-files
-                  [file_url]="f.file_url"
-                  [filename]="f.filename">
-                  </app-media-files>
+                  <div class="mx-2">
+                    <app-media-files
+                      [file_url]="f.file_url"
+                      [filename]="f.filename"
+                      [mimetype]="f.mimetype">
+                    </app-media-files>
+                  </div>
               </div>
           </div>
           
