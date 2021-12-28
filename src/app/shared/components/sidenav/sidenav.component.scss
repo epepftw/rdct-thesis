@@ -1,5 +1,5 @@
 .sidenav {
-    height: 90%;
+    height: 88%;
     position: fixed;
     left: 0;
     top: 0;
@@ -13,13 +13,14 @@
     }
     .side-links{
        list-style: none;
-       padding: 10px 20px;
+       padding: 10px 0 10px 20px;
        transition: 0.3s;
         color: #fff;
        
     }
     .side-links:hover{
-        padding-left: 30px;
+       background-color: #1F5D81;
+       transition: 0.2s ease;
     }
 
     i{
@@ -28,7 +29,7 @@
 }
 
 #sidenav .tabs a.active > li {
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    background: #03263A;
     padding-left: 40px;
     color: #fff;
 }

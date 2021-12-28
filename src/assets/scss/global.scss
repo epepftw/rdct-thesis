@@ -8392,20 +8392,20 @@
           background: #fff;
           color: #000; }
     .main-color{
-    background: #141E30;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #243B55, #141E21);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #243B55, #141E21); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    background: #064B73; 
     }
     .backgroundmain{
-      background-color: #141E30; 
+      background-color: #064B73;
+      border-radius: 20px;
     }
     body{
       background-color: #141E30;  /* fallback for old browsers */   
     }
     .secondary-colors{
-      background: #2C3E50;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background:#1F5D81;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #03263A, #1F5D81);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #03263A, #1F5D81); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      border-radius: 20px;
     }
     .bottom-shadows{
       box-shadow: -1px 9px 9px 0px rgba(0,0,0,0.46);
