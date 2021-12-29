@@ -1,4 +1,4 @@
-<div class="container-fluid p-4" *ngIf="playlist_data">
+<div class="container-fluid backgroundmain p-4" *ngIf="playlist_data">
     <div class="row">
         <div class="col-md-6">
             <ng-container>
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
+    <div class="card ss bottom-shadows shadow-lg p-3 secondary-colors">
         <h2 class="text-white">Playlist Contents</h2>
         <div class="row no-gutters" [sortablejs]="playlist_data.contents">            
             <div class="playlist-data col-lg-1" *ngFor="let pic of playlist_data.contents">
@@ -33,7 +33,7 @@
                 <button class="edit-button m-1" (click)="openMediaInfo(pic)"><span style="color:#fff;"><i class="fas fa-info"></i></span></button>
             </div>
         </div>
-        <p style="font-size: .80rem;">(Drag content to arrange sequence)</p>
+        <p class="text-white" style="font-size: .80rem;">(Drag content to arrange sequence)</p>
         <div class="text-right">
             <button class="save_seq" type="button" mat-raised-button color="primary" (click)="saveOrder()" >Save Sequence</button>
         </div>

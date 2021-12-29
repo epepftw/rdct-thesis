@@ -1,7 +1,6 @@
-<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button> -->
-  <mat-stepper [linear]="isLinear" #stepper>
+<div class="container-fluid create-bg p-4">
+  <h1>Create playlist form</h1>
+  <mat-stepper class="create-bg" [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup" label="Fill out this form">
       <form [formGroup]="firstFormGroup" class="w-25 d-flex flex-column example-form">
         <mat-form-field *ngIf="options?.length > 0" class="example-full-width" appearance="fill">
@@ -27,8 +26,8 @@
     <mat-step [stepControl]="secondFormGroup" label="Select media files">
         <div>
           <h1>Playlist Content</h1>
-          <button class="m-2" mat-raised-button color="primary" (click)="openDialog()">Select Content</button>
-          <button class="m-2" mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button class="mr-1 mb-3" mat-raised-button color="primary" (click)="openDialog()">Select Content</button>
+          <button class="mb-3" mat-raised-button color="info" matStepperPrevious>Back</button>
         </div>
             <!---->
         <div class="card secondary-colors bottom-shadows text-white shadow-lg p-3 bg-white">
@@ -48,4 +47,6 @@
         </div>
         <!---->
     </mat-step>
+    </mat-stepper>
     <!--Publishing-->
+</div>
