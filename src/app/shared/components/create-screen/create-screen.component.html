@@ -1,18 +1,18 @@
-<div class="container-fluid bg-white p-4">
+<div class="container-fluid create-bg p-4">
     <div class="row">
         <h2>Create Screen</h2>
     </div>
     <div class="row">
-        <mat-stepper orientation="vertical">
+        <mat-stepper class="create-bg" orientation="vertical">
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Screen Info</ng-template>
                     <ng-template matStepContent>
-                        <mat-form-field class="m-2">
+                        <mat-form-field class="m-2" appearance="fill">
                             <mat-label>Screen Name</mat-label>
                             <input matInput type="text" placeholder="Ex. Spaghetti Dessert" formControlName="screen_name" required>
                         </mat-form-field>
-                        <mat-form-field class="m-2" *ngIf="options?.length > 0">
+                        <mat-form-field class="m-2" *ngIf="options?.length > 0" appearance="fill">
                             <mat-label>Select Advertiser</mat-label>
                             <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select Advertiser">
                             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
