@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,11 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
   @Input() sidenavLinks: {label: string, icon: string, link: string}[] = [];
-  constructor() {
+  current_user : any;
+  constructor(
+    private _authService:AuthService,
+  ) {
     
    }
 
   ngOnInit(): void {
-    console.log(this.sidenavLinks)
+    this.getCurrentUser();
+  }
+
+  getCurrentUser(){
+    this.current_user = this._authService.getCurrentUser().user.name
+    console.log('#BITLOG',this.current_user)
   }
 }

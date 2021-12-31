@@ -5,7 +5,7 @@
       <button mat-raised-button color="primary" (click)="uploadContents()">Upload</button>
     </div>
     <div class="card text-white shadow-lg p-3 bg-white">
-      <div class="row no-gutters" [sortablejs]="mediaFiles">
+      <div class="row no-gutters">
           <div class="col-lg-1" *ngFor="let f of mediaFiles" (click)="selectedFile(f)" [ngClass]="isFileIncluded(f) ? 'highlight' : ''">
               <div class="mx-2">
                 <app-media-files

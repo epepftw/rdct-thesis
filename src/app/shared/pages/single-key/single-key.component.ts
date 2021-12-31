@@ -32,6 +32,9 @@ export class SingleKeyComponent implements OnInit {
 ) { 
   //SOCKET CONNECT         
   this.socket = io('https://rcdt-api.herokuapp.com/', { transports: ['websocket']})
+  
+  //LOCALHOST
+  // this.socket = io('http://localhost:3000/', { transports: ['websocket']});
 }
 
   ngOnInit(): void {
@@ -85,12 +88,19 @@ export class SingleKeyComponent implements OnInit {
 
   //SOCKET UPDATE
   pushContents() {
-    let goToKey = {
-      name: 'hello',
-      age: '12'
+    let key_info = {
+      advertiser_name: this.key_data.keyData.advertiser.name,
+      key : this.key_data.keyData.key
     }
-    this.socket.emit('dashboardUI_pushUpdates', goToKey);
+    this.socket.emit('dashboardUI_pushUpdates', key_info);
+  }
 
+  assignKey() {
+    let key_info = {
+      advertiser_name: this.key_data.keyData.advertiser.name,
+      key : this.key_data.keyData.key
+    }
+    this.socket.emit('assign_key', key_info);
   }
 
   acceptData() {
