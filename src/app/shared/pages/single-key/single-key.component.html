@@ -7,12 +7,15 @@
         </div>
         <div>
             <button mat-raised-button (click)="openDialog()">Assign Screen</button>
-            
-            <button mat-raised-button color="primary" class="mx-2" (click)="pushContents()">Set License Key</button>
+            <button mat-raised-button color="warn" class="mx-2" (click)="pushContents()">Push updates</button>
+            <button mat-raised-button color="primary" (click)="assignKey()">Set License Key</button>
         </div>
     
             <div class="secondary-colors bottom-shadows shadows-lg p-3 my-4">
                 <h2 class="text-white">Assigned screen Demo</h2>
+                <ng-container *ngIf="key_data.screenData">
+                    <h4 class="text-white">Screen Name : <span style="color: rgb(255, 159, 33)">{{ key_data.screenData.screen_name }}</span></h4>
+                </ng-container>
                 <div class="col-md-6 mb-4">
                      <div class="template-demo">
                          <app-screen-demo
