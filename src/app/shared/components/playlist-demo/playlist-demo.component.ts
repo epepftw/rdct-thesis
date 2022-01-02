@@ -80,6 +80,6 @@ export class PlaylistDemoComponent implements OnInit {
       }
       this.current_file_type = '';
       this.current_assets = '';
-    }, this.img_duration * 1000)
+    }, this.img_duration * 1000 || 5000)
   }
 }
