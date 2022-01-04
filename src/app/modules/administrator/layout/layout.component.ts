@@ -13,11 +13,11 @@ export class LayoutComponent implements OnInit {
       icon: "fas fa-columns",
       link: "dashboard"
     },
-    {
-      label: "Advertisers",
-      icon: "fas fa-portrait",
-      link: "advertiser"
-    },
+    // {
+    //   label: "Advertisers",
+    //   icon: "fas fa-portrait",
+    //   link: "advertiser"
+    // },
     {
       label: "User Keys",
       icon: "fas fa-key",
@@ -42,12 +42,12 @@ export class LayoutComponent implements OnInit {
       label: "Templates",
       icon: "fas fa-object-group",
       link: "template"
-    },
-    {
-      label: "Users",
-      icon: "fas fa-users",
-      link: "user"
     }
+    // {
+    //   label: "Users",
+    //   icon: "fas fa-users",
+    //   link: "user"
+    // }
   ]
 
   constructor() { }
