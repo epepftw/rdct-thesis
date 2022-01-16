@@ -28,6 +28,7 @@ export class CreatePlaylistComponent implements OnInit {
   isLinear = true;
   user_name: any[] = [];
   mediaFiles: any[] = [];
+  tickers: any[] = [];
   contents: any[] = [];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -51,6 +52,7 @@ export class CreatePlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMediaFiles();
+    this.getTickers();
     this.getUsers();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -111,6 +113,15 @@ export class CreatePlaylistComponent implements OnInit {
       (data: any) =>  {
         this.mediaFiles = data;
         console.log('#MEDIA FILES', this.mediaFiles)
+      }
+    )
+  }
+
+  getTickers() {
+    this._mediaFiles.get_ticker().subscribe(
+      (data : any) => {
+        this.tickers = data;
+        console.log('#TICKERS', this.tickers)
       }
     )
   }

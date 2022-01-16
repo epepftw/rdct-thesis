@@ -17,6 +17,7 @@ import { PlaylistService } from 'src/app/core/services/playlist/playlist.service
 })
 
 export class MediaFileModalComponent implements OnInit {
+  tickers: any[] = [];
   filestack_client: any;
   mediaFiles: any[] = [];
   selected_files: any[] = [];
@@ -36,6 +37,7 @@ export class MediaFileModalComponent implements OnInit {
   ngOnInit(): void {
     this.getMediaFiles();
     this.getPlaylist();
+    this.getTickers();
   }
 
   
@@ -45,6 +47,15 @@ export class MediaFileModalComponent implements OnInit {
       (data: any) =>  {
         this.mediaFiles = data;
         console.log('#MEDIA FILES', this.mediaFiles)
+      }
+    )
+  }
+
+   getTickers() {
+    this._mediaFiles.get_ticker().subscribe(
+      (data : any) => {
+        this.tickers = data;
+        console.log('#TICKERS', this.tickers)
       }
     )
   }

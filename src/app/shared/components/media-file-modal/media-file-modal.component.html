@@ -2,7 +2,7 @@
 <mat-dialog-content class="mat-typography">
   <!---->
     <div class="col-lg-12">
-      <button mat-raised-button color="primary" (click)="uploadContents()">Upload</button>
+      <button class="my-2" mat-raised-button color="primary" (click)="uploadContents()">Upload</button>
     </div>
     <div class="card text-white shadow-lg p-3 bg-white">
       <div class="row no-gutters">
@@ -16,7 +16,18 @@
               </div>
           </div>
       </div>
-      
+      <div class="row no-gutters">
+        <h1>Feeds</h1>
+        <p style="color: rgb(143, 143, 143);">(Tickers)</p>
+        <div class="col-lg-12" *ngFor="let f of tickers" (click)="selectedFile(f)" [ngClass]="isFileIncluded(f) ? 'highlight' : ''"> 
+           <div class="m-2">
+               
+                <app-ticker-demo
+                [data]="f">
+                </app-ticker-demo>
+           </div>
+        </div>
+    </div>
     </div>
      <!---->
 </mat-dialog-content>

@@ -19,6 +19,8 @@ import { AdvertiserModule } from './modules/advertiser/advertiser.module';
 import { AdministratorModule } from './modules/administrator/administrator.module';
 import { SortablejsModule } from 'ngx-sortablejs';
 
+import { NgMarqueeModule } from 'ng-marquee';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -30,7 +32,8 @@ import { SortablejsModule } from 'ngx-sortablejs';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     SortablejsModule.forRoot({ animation: 150 }),
-    AppRoutingModule
+    AppRoutingModule,   
+    NgMarqueeModule
   ],
   providers: [
     AuthService, 

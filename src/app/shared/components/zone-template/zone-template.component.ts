@@ -9,6 +9,7 @@ export class ZoneTemplateComponent implements OnInit {
 
   @Input() zone : any;
   @Input() playlist : any;
+  @Input() data : any;
 
   constructor() { }
 

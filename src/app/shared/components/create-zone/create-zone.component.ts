@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
 import { TemplateService } from 'src/app/core/services/template/template.service';
-
-import{ CREATE_ZONE } from 'src/app/core/types/Zones.types'
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,8 +11,7 @@ import { Router } from '@angular/router';
 export class CreateZoneComponent implements OnInit {
   myControl = new FormControl();
   create_zone_form : FormGroup;
-  backgroundColor: string = "#000000";
-  zonePayload: any = "haiasd";
+  backgroundColor: string = "#fff585";
 
   constructor(
     private _form: FormBuilder,

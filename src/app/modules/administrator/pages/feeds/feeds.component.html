@@ -1,0 +1,51 @@
+<div class="container-fluid admin-media-page white-text backgroundmain p-4">
+    <!-- Title -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="mb-2">Feeds</h2>
+            <a [routerLink]="['/admin/feeds/create']">
+                <button mat-raised-button color="primary" type="button">
+                    <i class="fas fa-plus"></i>
+                    Create Feed
+                </button>
+            </a>
+        </div>
+    </div>
+    <!-- Title -->
+
+    <hr class="mb-4">
+
+      <!-- Contents -->
+      <div class="row">
+        <div class="col-lg-4" *ngFor="let c of card_data_sample">
+            <app-card
+            [digit]="c.digit"
+            [description]="c.description">
+            </app-card>
+        </div>
+      </div>
+<!-- Contents -->
+    <hr class="my-4">
+    <div class="card secondary-colors bottom-shadows shadow-lg p-3 bg-white">
+        <div class="row no-gutters">   
+            <h1 class="text-white">Feeds</h1>
+            <p style="color: rgb(143, 143, 143);">(Tickers)</p>
+            <div class="col-lg-12" *ngFor="let f of feeds">
+               <div style="height:60px;" class="m-2">
+                    <app-ticker-demo
+                    [data]="f">
+
+                    </app-ticker-demo>
+               </div>
+            </div>
+            <!-- <hr>
+            <p style="color: rgb(143, 143, 143);">(YoutubeUrl)</p>
+            <div class="col-lg-4" *ngFor="let y of youtubeUrl">
+               <div class="m-2">
+                    <app-youtube-demo [youtube_data]="youtubeUrl">
+                    </app-youtube-demo>
+               </div>
+            </div> -->
+        </div>
+</div>
+

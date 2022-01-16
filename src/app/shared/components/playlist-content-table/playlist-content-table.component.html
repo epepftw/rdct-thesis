@@ -18,3 +18,14 @@
         </div>
     </div>
 </ng-template>
+
+<ng-template [ngIf]="mimetype == 'marquee'">
+   <div class="mb-4 card mThumbnail">
+            <app-ticker-demo
+            [data]="data">
+            </app-ticker-demo>
+        <div class="card-body title">
+            <p class="card-text">{{ data.name }}</p>
+        </div>
+   </div>
+</ng-template>

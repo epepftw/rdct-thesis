@@ -19,6 +19,10 @@
             </div>
          </div>
     </ng-container>
+
+    <div *ngIf="data">
+        <app-ticker-demo [data]="data"></app-ticker-demo>
+    </div>
     
     <div class="playlist-container" *ngIf="playlist">
         <app-playlist-demo [playlist_data]="playlist.contents"></app-playlist-demo>

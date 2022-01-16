@@ -1,0 +1,40 @@
+<h1>Create Ticker</h1>
+<form [formGroup]="create_ticker_form" class="d-flex">
+    <div class="col-md-6 px-3">
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Ticker Name</mat-label>
+            <input type="text" matInput placeholder="News Headline" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Ticker Color</mat-label>
+            <input style="height: 40px" type="color" [ngModel]="tickerColor" (change)="setTickerColor($event)" [value]="tickerColor || '#ff4d4d'" matInput formControlName="backgroundColor">
+            <p class="pt-3"><span class="fw-bold">Selected Color:</span> {{ tickerColor }}</p>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Text Color</mat-label>
+            <input style="height: 40px" type="color" [ngModel]="textColor" (change)="setTextColor($event)" [value]="textColor || '#ffffff'" matInput matInput formControlName="textColor">
+            <p class="pt-3"><span class="fw-bold">Selected Color:</span> {{ textColor }}</p>
+        </mat-form-field>
+        <mat-dialog-actions align="start">
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="create_ticker_form.value" type="submit">Finish</button>
+        </mat-dialog-actions>
+    </div>
+    <div class="col-md-6 px-3">
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Font Size</mat-label>
+            <input type="number" matInput placeholder="0" formControlName="fontSize">
+            <span matPrefix>&nbsp;</span>
+            <span style="color: rgb(60, 60, 60);" matSuffix>px</span>  
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Ticker Content</mat-label>
+            <textarea matInput placeholder="News Headline" formControlName="content"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="d-block">
+            <mat-label>Ticker Speed</mat-label>
+            <input type="number" matInput placeholder="News Headline" formControlName="marqueeSpeed">
+            <span matPrefix>&nbsp;</span>
+        </mat-form-field>
+    </div>
+</form>

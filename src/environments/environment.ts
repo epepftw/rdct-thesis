@@ -8,7 +8,7 @@ export const environment = {
   production: false,
   base_api: 'http://localhost:3000/api',
                // 'https://rcdt-api.herokuapp.com/api',
-  filestackAPI: 'AjV2NdsjfScKcYKZPaWK6z',
+  filestackAPI: 'AUtDJLO2LRcaiKeFPmyXQz',
 
   get: endpoints.get,
   post: endpoints.post,

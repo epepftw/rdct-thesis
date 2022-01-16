@@ -1,15 +1,18 @@
 import { Routes } from '@angular/router';
 import { CreateScreenComponent } from 'src/app/shared/components/create-screen/create-screen.component';
+import { CreateFeedComponent } from 'src/app/shared/pages/create-feed/create-feed.component';
 import { CreatePlaylistComponent } from 'src/app/shared/pages/create-playlist/create-playlist.component';
 import { CreateTemplateComponent } from 'src/app/shared/pages/create-template/create-template.component';
 import { NewUserComponent } from 'src/app/shared/pages/new-user/new-user.component';
 import { SingleKeyComponent } from 'src/app/shared/pages/single-key/single-key.component';
 import { SinglePlaylistComponent } from 'src/app/shared/pages/single-playlist/single-playlist.component';
 import { SingleScreenComponent } from 'src/app/shared/pages/single-screen/single-screen.component';
+import { SingleTickerComponent } from 'src/app/shared/pages/single-ticker/single-ticker.component';
 import { UserProfileComponent } from 'src/app/shared/pages/user-profile/user-profile.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AdvertisersComponent } from './pages/advertisers/advertisers.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FeedsComponent } from './pages/feeds/feeds.component';
 import { MediaComponent } from './pages/media/media.component';
 import { PlaylistComponent } from './pages/playlist/playlist.component';
 import { ScreenComponent } from './pages/screen/screen.component';
@@ -45,6 +48,18 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'media',
                 component: MediaComponent
+            },
+            {
+                path: 'feeds',
+                component: FeedsComponent
+            },
+            {
+                path: 'feeds/create',
+                component: CreateFeedComponent
+            },
+            {
+                path: 'feeds/ticker/:id',
+                component: SingleTickerComponent
             },
             {
                 path: 'playlist',

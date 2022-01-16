@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PlaylistService } from 'src/app/core/services/playlist/playlist.service';
+import { TICKER } from 'src/app/core/types/MediaFile.types';
 import { ImagePipe } from 'src/app/shared/pipes/image.pipe';
 
 @Component({
@@ -9,6 +10,8 @@ import { ImagePipe } from 'src/app/shared/pipes/image.pipe';
   providers: [ImagePipe]
 })
 export class PlaylistContentTableComponent implements OnInit {
+  
+  @Input() data: any;
 
   @Input() filename: any = '';
   @Input() file_url: any = '';

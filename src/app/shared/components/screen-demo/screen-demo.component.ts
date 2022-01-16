@@ -8,7 +8,8 @@ import { SCREEN, SCREEN_TYPE } from 'src/app/core/types/Screen.types';
 })
 export class ScreenDemoComponent implements OnInit {
 
-  @Input() zone_playlist : SCREEN;
+  @Input() zone_playlist : any;
+  @Input() ticker_content : any;
 
   constructor() { }
 

@@ -1,0 +1,112 @@
+<div class="container-fluid create-bg p-4">
+    <h1>Create Feeds</h1>
+    <form>
+        <p>(Create and save one at a time only.)</p>
+        <div>
+          <button class="m-1" mat-raised-button (click)="openDialog()">Create Ticker</button>
+          <!-- <button class="m-1" mat-raised-button (click)="openYtDialog()">Youtube URL</button> -->
+          <button class="m-1" mat-raised-button color="primary" (click)="onSave()">Save</button>     
+          <!-- <button class="m-1" mat-raised-button color="primary" (click)="onYtSave()">Save Youtube</button> -->
+         </div>
+    </form>
+    <ng-template [ngIf]="ticker_feed">
+      <div class="row">
+        <div class="col-lg-5">
+          <div *ngFor="let t of ticker_feed">        
+                <mat-accordion class="example-headers-align">
+                  <mat-expansion-panel class=" my-3">
+                    <mat-expansion-panel-header [ngStyle]="{'background': t.backgroundColor}">
+                      <mat-panel-title>
+                        <p class="mx-0 my-4" style="color: #fff; text-shadow: 1px 1px 2px #000;">Ticker Name: {{t.name}}</p>     
+                      </mat-panel-title>        
+                     </mat-expansion-panel-header>
+                    
+                    <mat-form-field class="form-field mt-4 m-2">
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" [(ngModel)]="t.name" [value]="t.name">
+                    </mat-form-field>
+  
+                    <mat-form-field class="form-field mt-4 m-2">
+                      <mat-label>Background Color</mat-label>
+                      <input matInput type="color" [(ngModel)]="t.backgroundColor" [value]="t.backgroundColor">
+                    </mat-form-field>
+  
+  
+                    <mat-form-field class="form-field mt-4 m-2">
+                      <mat-label>Text Color</mat-label>
+                      <input matInput type="string" [(ngModel)]="t.textColor" [value]="t.textColor">
+                    </mat-form-field>
+                        
+                    <mat-form-field class="form-field mt-4 m-2">
+                      <mat-label>Font Size</mat-label>
+                      <input matInput type="number" [(ngModel)]="t.fontSize" [value]="t.fontSize">
+                    </mat-form-field>
+  
+                    <mat-form-field class="form-field m-2">
+                      <mat-label>Content</mat-label>
+                      <input matInput type="text" [(ngModel)]="t.content" [value]="t.content">
+                    </mat-form-field>
+  
+                    <mat-form-field class="form-field m-2">
+                      <mat-label>Ticker Speed</mat-label>
+                      <input matInput type="number" [(ngModel)]="t.marqueeSpeed" [value]="t.marqueeSpeed">
+                    </mat-form-field>
+  
+                    <div>
+                      <button (click)="removeTicker(t)" class="mx-1" mat-raised-button color="primary" type="button">Delete Ticker
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                      </button>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+          </div> 
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- <ng-template [ngIf]="youtube_feed">
+      <div class="row">
+        <div class="col-lg-5">
+          <div *ngFor="let y of youtube_feed">        
+                <mat-accordion class="example-headers-align">
+                  <mat-expansion-panel class=" my-3">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <p class="mx-0 my-4" style="color: #fff; text-shadow: 1px 1px 2px #000;">Name: {{y.name}}</p>     
+                      </mat-panel-title>        
+                     </mat-expansion-panel-header>
+                    
+                    <mat-form-field class="form-field mt-4 m-2">
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" [(ngModel)]="y.name" [value]="y.name">
+                    </mat-form-field> 
+                    <mat-form-field class="form-field m-2">
+                      <mat-label>Youtube URL</mat-label>
+                      <input matInput type="text" [(ngModel)]="y.youtubeUrl" [value]="y.youtubeUrl">
+                    </mat-form-field>
+                    <div>
+                      <button (click)="removeYt(y)" class="mx-1" mat-raised-button color="primary" type="button">Delete YoutubeUrl
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                      </button>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+          </div> 
+        </div>
+      </div>
+    </ng-template> -->
+      
+    <div class="container">
+      <div class="ticker" *ngFor="let t of ticker_feed">
+          <div class="title">
+              <h5>{{ t.name }}</h5>
+          </div>
+          <div [ngStyle]="{'background' : t.backgroundColor}" class="news">
+              <marquee scrollamount="t.marqueeSpeed" class="news-content">
+                  <p [ngStyle]="{'font-size.rem': (t.fontSize)*0.0625,
+                                 'color': t.textColor}">{{ t.content }}</p>
+              </marquee>
+          </div>
+      </div>
+    </div>
+</div>
