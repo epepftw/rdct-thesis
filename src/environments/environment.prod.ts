@@ -3,7 +3,7 @@ import { endpoints } from "./endpoints";
 export const environment = {
   production: false,
   base_api: 'https://rcdt-api.herokuapp.com/api',
-  filestackAPI: 'AjV2NdsjfScKcYKZPaWK6z',
+  filestackAPI: 'AUtDJLO2LRcaiKeFPmyXQz',
   
   get: endpoints.get,
   post: endpoints.post,

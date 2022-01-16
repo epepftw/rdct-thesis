@@ -12,17 +12,7 @@ export class ScreenComponent implements OnInit {
 	searching: boolean = false;
   screen: any[] = [];
 
-  card_data_sample: any = [
-		{
-			digit: 40,
-			description: "Total Screens(s)"
-		},
-		{
-			digit: 23,
-			description: "Recently Created Screens(s)"
-		}
-	]
-
+  card_data_sample: any;
   table_column_title: any = [
 		{
 			title: "Screen Name"
@@ -32,10 +22,10 @@ export class ScreenComponent implements OnInit {
 		},
 		{
 			title: "Template ID"
-		},
-		{
-			title: "Action"
 		}
+		// {
+		// 	title: "Action"
+		// }
 	]
 
 
@@ -66,6 +56,12 @@ export class ScreenComponent implements OnInit {
     this._screen.get_screen().subscribe(
       (data : any) => {
         this.screen = data;
+        this.card_data_sample = [
+         {
+          digit: this.screen.length,
+          description: "All Screen"
+         }
+        ]
         console.log('#SCREEEN',this.screen)
       }
     )

@@ -41,6 +41,8 @@ import { ZoneTemplateComponent } from './components/zone-template/zone-template.
 import { DurationModalComponent } from './components/duration-modal/duration-modal.component';
 import { YoutubeMediaComponent } from './components/youtube-media/youtube-media.component';
 
+import { NgMarqueeModule } from 'ng-marquee';
+
 import { ImagePipe } from './pipes/image.pipe';
 
 //Angular Material Components
@@ -61,6 +63,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { TickerComponent } from './components/ticker/ticker.component';
+import { TickerDemoComponent } from './components/ticker-demo/ticker-demo.component';
+import { CreateFeedComponent } from './pages/create-feed/create-feed.component';
+import { SingleTickerComponent } from './pages/single-ticker/single-ticker.component';
+import { YoutubeDemoComponent } from './components/youtube-demo/youtube-demo.component';
 
 
 
@@ -99,7 +106,14 @@ const shared_components = [
 	PlaylistDemoComponent,
 	ScreenDemoComponent,
   	ScreenTableComponent,
-	ZoneTemplateComponent
+	ZoneTemplateComponent,
+	DurationModalComponent,
+	YoutubeMediaComponent,
+	TickerComponent,
+	TickerDemoComponent,
+	CreateFeedComponent,
+	SingleTickerComponent,
+	YoutubeDemoComponent,
 ]
 
 const ng_material = [
@@ -125,9 +139,8 @@ const ng_material = [
 @NgModule({
 	declarations: [
 		shared_components,
-		ImagePipe,
-  DurationModalComponent,
-  YoutubeMediaComponent
+		ImagePipe
+  
  
   
 	],
@@ -140,7 +153,8 @@ const ng_material = [
 		ReactiveFormsModule,
 		ng_material,
 		SortablejsModule,
-		RouterModule
+		RouterModule,
+		NgMarqueeModule
 	],
 	exports: [
 		shared_components,

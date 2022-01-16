@@ -1,0 +1,11 @@
+<div class="container-fluid backgroundmain p-4" *ngIf="data">
+    <div>
+        <h1 class="text-white">Ticker Name : <span style="color: rgb(0, 225, 0);">{{ data.name }}</span></h1>
+        <h4 class="text-white">Ticker Content : <span style="color: rgb(0, 225, 0);">({{ data.content }})</span></h4>
+        
+    </div>
+
+    <app-ticker-demo
+    [data]="data">
+    </app-ticker-demo>
+</div>

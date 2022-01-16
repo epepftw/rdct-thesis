@@ -38,9 +38,6 @@ export class PlaylistComponent implements OnInit {
 		},
 		{
 			title: "Playlist Owner"
-		},
-		{
-			title: "Action"
 		}
 	]
 

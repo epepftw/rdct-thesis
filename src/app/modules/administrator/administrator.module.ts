@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserKeyComponent } from './pages/user-key/user-key.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ScreenComponent } from './pages/screen/screen.component';
+import { FeedsComponent } from './pages/feeds/feeds.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { ScreenComponent } from './pages/screen/screen.component';
 		TemplateComponent,
 		UsersComponent,
   		UserKeyComponent,
-    	ScreenComponent
+    	ScreenComponent,
+   		FeedsComponent,
 	],
 	imports: [
 		CommonModule,

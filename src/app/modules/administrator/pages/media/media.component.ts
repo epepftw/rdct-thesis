@@ -11,6 +11,7 @@ import { MediaFileService } from 'src/app/core/services/mediaFile/media-file.ser
 import { SAVE_FILE_INFO } from 'src/app/core/types/MediaFile.types';
 import { UPLOADED_FILE } from 'src/app/core/types/Filestack.types';
 import { YoutubeMediaComponent } from 'src/app/shared/components/youtube-media/youtube-media.component';
+import { TickerComponent } from 'src/app/shared/components/ticker/ticker.component';
 
 @Component({
   selector: 'app-media',
@@ -121,7 +122,7 @@ export class MediaComponent implements OnInit {
   }
 
 
-  openYtDialog() {
-    const dialogRef = this.dialog.open(YoutubeMediaComponent);
+  openDialog() {
+    const dialogRef = this.dialog.open(TickerComponent);
   }  
 }

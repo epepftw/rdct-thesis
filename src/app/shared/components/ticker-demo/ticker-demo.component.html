@@ -1,0 +1,14 @@
+<div class="container" style="height: 100%;">
+    <div class="ticker">
+        <div class="title">
+            <a [routerLink]="['ticker/',data._id]"><h5>{{ data.name }}</h5></a>
+        </div>
+        <div [ngStyle]="{'background' : data.backgroundColor}" class="news">
+            <marquee scrollamount="data.marqueeSpeed" class="news-content">
+                <p [ngStyle]="{'font-size.rem': (data.fontSize)*0.0625,
+                               'color': data.textColor}">{{ data.content }}</p>
+            </marquee>
+        </div>
+    </div>
+</div>
+

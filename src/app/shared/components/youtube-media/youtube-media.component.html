@@ -1,13 +1,16 @@
 <h2>Youtube URL form</h2>
-<form class="form-field">
+<form [formGroup]="create_youtube_form" class="form-field">
     <mat-form-field appearance="fill">
         <mat-label>Media Name</mat-label>
-        <input matInput placeholder="Input Name">
+        <input matInput placeholder="Input Name" formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Paste URL</mat-label>
-        <input matInput placeholder="Youtube URL">
+        <input matInput placeholder="Youtube URL" formControlName="youtubeUrl">
         <mat-icon matSuffix>link</mat-icon>
     </mat-form-field>
-      <button mat-raised-button color="primary">Submit</button>
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="create_youtube_form.value" type="submit">Submit</button>
+    </mat-dialog-actions>
 </form>

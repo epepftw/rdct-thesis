@@ -29,6 +29,11 @@ export class LayoutComponent implements OnInit {
       link: "media"
     },
     {
+      label: "Feeds",
+      icon: "fas fa-rss-square",
+      link: "feeds"
+    },
+    {
       label: "Screens",
       icon: "fas fa-tv",
       link: "screen"

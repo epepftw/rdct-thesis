@@ -12,6 +12,7 @@
         </div>
         <div class="col-md-6 mb-4">
             <app-playlist-demo *ngIf="!playlist_preparing"
+            
             [is_single_demo]="true"
             [playlist_data]="playlist_data.contents">
             </app-playlist-demo>
@@ -24,6 +25,7 @@
             <div class="playlist-data col-lg-1" *ngFor="let pic of playlist_data.contents">
                 <div class="mx-2">
                 <app-playlist-content-table
+                    [data]="pic"
                     [file_url]="pic.file_url"
                     [filename]="pic.filename"
                     [mimetype]="pic.mimetype">

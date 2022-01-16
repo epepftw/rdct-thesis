@@ -13,6 +13,7 @@ export class PlaylistDemoComponent implements OnInit {
 
   @Input() playlist_data:  any;
   @Input() is_single_demo: boolean; 
+  ticker_data : any;
   current_assets : string = '';
   current_file_type : string = '';
   current_sequence : number = 0;
@@ -38,6 +39,8 @@ export class PlaylistDemoComponent implements OnInit {
       } else if (this.current_file_type == 'video/mp4') {
         console.log('zxczxczxczxczxc')
         this.displayVideo(this.playlist_data[sequence].file_url)
+      } else if (this.current_file_type == 'marquee') {
+        this.displayMarquee(this.playlist_data[sequence])
       }
     }, 0)
     
@@ -50,6 +53,10 @@ export class PlaylistDemoComponent implements OnInit {
 
   displayVideo(video_url : string) {
     this.current_assets = video_url;
+  }
+
+  displayMarquee(data : any) {
+    this.ticker_data = data;
   }
 
   onVideoEnded() {

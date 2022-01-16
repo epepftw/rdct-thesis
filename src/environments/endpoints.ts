@@ -29,18 +29,29 @@ export const endpoints = {
         zone: '/zones',
 
         // Screen
-        screen: '/screen'
+        screen: '/screen',
+
+        // Ticker
+        ticker: '/media/get-ticker',
+
+        // YoutubeUrl
+        youtubeUrl: '/media/get-youtubeUrl'
+
     },
     post: {
         // Users
         authenticate: '/user/authenticate',
         register: '/user/register',
+
         // Keys
         gen_key: '/keys/add',
+
         // Media
         save_uploaded_file: '/media/add',
+
         // Playlist
         create_playlist: '/playlist/create',
+
         // Template
         create_template: '/template/create',
 
@@ -50,6 +61,11 @@ export const endpoints = {
         // Screen
         create_screen: '/screen/create',
         
+        // Ticker
+        create_ticker : '/media/create-ticker',
+
+        // YoutubeUrl
+        add_youtubeUrl: '/media/add-youtubeUrl'
     },
 
     put: {
